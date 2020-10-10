@@ -12,8 +12,10 @@
   //DECLARE & CREATE ELEMS
   const body = document.querySelector("body");
   const spinButton = document.createElement("button");
-  const spinButtonCopy = document.createTextNode("Spin");
+  const spinButtonCopy = document.createTextNode("Spin Random");
   const spinner = document.createElement("div");
+
+  const randomSpinDegrees = Math.floor(Math.random() * 100);
 
   //APPEND ELEMS
   body.appendChild(spinner);
@@ -23,25 +25,25 @@
   spinButton.append(spinButtonCopy);
   
   //EVENT LISTENER LOGIC
-  spinButton.addEventListener("click", spinSpinner);
+  spinButton.addEventListener("click", randomSpinRotate);
 
   //FUNCTION SPINS SPINNERS
-  function spinSpinner() {
-
-    // Randomize Spin Degrees
-    const randomSpinDegrees = Math.floor(Math.random()* 100);
-    console.log(randomSpinDegrees);
-
-    // Pass randomSpinDegrees to a rotation
-
+  function randomSpinRotate () {
+    const randomSpinDegrees = Math.floor(Math.random() * 5000);
+    const rotateNumber = 'rotate(' + randomSpinDegrees + 'deg)' ;
+    spinner.style.setProperty('transform', rotateNumber);
   }
 
-
   //ADD STYLING
-  // spinner = [{style: }]
-
-  //https://stackoverflow.com/questions/34133265/passing-attributes-objects-through-an-attribute-javascript
-
+  spinner.style.background = "red";
+  spinner.style.borderRadius = "120px";
+  spinner.style.borderBottom = "10px solid blue";
+  spinner.style.width = "200px";
+  spinner.style.height = "200px";
+  spinner.style.transition = "2s";
+  spinButton.style.marginTop = "50px";
+  
+  // setProperty() is dope https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty
 </script>
 
 </html>
