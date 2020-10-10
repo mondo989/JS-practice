@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun3</title>
+</head>
+<style>
+   
+  @keyframes moveUp {
+    0% {
+      transform: translateY(0);
+    } 
+    50% {
+      transform: translateY(-10em);
+    } 
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes moveBottom {
+    0% {
+      transform: translateY(0em);
+    } 
+    50% {
+      transform: translateY(10em);
+    } 
+    100% {
+      transform: translateY(0em);
+    }
+  }
+
+  @keyframes moveRight {
+    0% {
+      transform: translateX(0em);
+    } 
+    50% {
+      transform: translateX(10em);
+    } 
+    100% {
+      transform: translateX(0em);
+    }
+  }
+
+  @keyframes moveLeft {
+    0% {
+      transform: translateX(0em);
+    } 
+    50% {
+      transform: translateX(-10em);
+    } 
+    100% {
+      transform: translateX(0em);
+    }
+  }
+
+  .up {
+    animation: moveUp 2s ease-out;
+  }
+
+  .right {
+    animation: moveRight 2s ease-out;
+  }
+
+  .left {
+    animation: moveLeft 2s ease-out;
+  }
+
+  .down {
+    animation: moveBottom 2s ease-out;
+  }
+
+</style>
+<body></body>
+
+<script>
+
+  //DECLARE ELEMENTS
+  const body = document.querySelector("body");
+  const cube = document.createElement("div");
+  const button = document.createElement("button");
+
+  //SET ELEMENT CONTENT
+  const buttonText = "move";
+
+  //APPEND ELEMENTS
+  body.appendChild(cube);
+  body.appendChild(button);
+  button.append(buttonText);
+
+  //STYLING
+  body.style.textAlign = "center";
+  cube.style.margin = "0 auto";
+  cube.style.height = "50px";
+  cube.style.width = "50px";
+  cube.style.border = "2px solid #cecece";
+  cube.style.borderRadius = "120px"
+  cube.style.position = "relative";
+
+  //ADD EVENT LISTENERS
+  button.addEventListener("click", moveCube);
+
+  //SET FUNCTIONS
+  function resetCubeClasses() {
+    cube.classList = "";
+  }
+
+  function moveCube() {
+    //CLEAR CLASSES
+    cube.classList = "";
+
+    //CREATE RANDOM NUMBER
+    const randomNum = Math.floor(Math.random() * 4)
+
+    //SET RANDOM NUMBER TO CLASSNAME
+    if (randomNum === 0) {
+      console.log("1")
+      cube.classList.add("up");
+    } else if (randomNum === 1) {
+      console.log("2")
+      cube.classList.add("right");
+    } else if (randomNum === 2) {
+      console.log("3")
+      cube.classList.add("down");
+    } else if (randomNum === 3) {
+      console.log("4")
+      cube.classList.add("left");
+    }
+    //RESET BUTTON RESETS CLASSES
+  }
+
+
+</script>
+
+</html>
