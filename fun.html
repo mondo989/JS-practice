@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body></body>
+
+<script>
+
+  // Define Elements
+  // Define Elements
+  var body = document.querySelector("body");
+  var homeScoreTitle = document.createElement("p");
+  var awayScoreTitle = document.createElement("p");
+  var homeScore = document.createElement("p");
+  var awayScore = document.createElement("p");
+  
+  var teamSliderLabel = document.createElement("label")
+  var teamSlider = document.createElement("input");
+  
+  // TODO Update the logic to change input tp
+  // var sliderAttr = {type: "checkbox"}
+
+  var fgButton = document.createElement("button"); 
+  var tdButton = document.createElement("button");
+
+  // Set Text Nodes
+  // Set Text Nodes
+  var homeScoreCopy = document.createTextNode("Home Score");
+  var awayScoreCopy = document.createTextNode("Away Score");
+  var fgButtonCopy = document.createTextNode("Field Goal");
+  var tdButtonCopy = document.createTextNode("Touch Down");
+  var homeScoreCount = 0;
+  var awayScoreCount = 0;
+
+      //Append Elements
+      //Append Elements
+      body.appendChild(homeScoreTitle);
+      body.appendChild(awayScoreTitle);
+      body.appendChild(homeScore);
+      body.appendChild(teamSliderLabel);
+      teamSliderLabel.appendChild(teamSlider);
+      body.appendChild(fgButton);
+      body.appendChild(tdButton);
+
+      awayScoreTitle.appendChild(awayScoreCopy);
+      homeScoreTitle.appendChild(homeScoreCopy);
+      fgButton.appendChild(fgButtonCopy);
+      tdButton.appendChild(tdButtonCopy);
+      // score.appendChild/
+
+
+      // teamSlider.setAttribute("type", JSON.stringify(sliderAttr));
+
+      // teamSlider.type = 
+
+      awayScore.innerHTML = awayScoreCount;
+      homeScore.innerHTML = homeScoreCount;
+
+      // Event Listeners
+      // Event Listeners
+      fgButton.addEventListener("click", fgScored);
+      tdButton.addEventListener("click", tdScored);
+
+  // Fieldgoal is scored
+  function fgScored() {
+    homeScoreCount += 3;
+    console.log(homeScoreCount);
+    homeScore.innerHTML = homeScoreCount;
+  }
+
+  function tdScored() {
+    homeScoreCount += 7;
+    console.log(homeScoreCount);
+    homeScore.innerHTML = homeScoreCount;
+  }
+
+</script>
+</html>

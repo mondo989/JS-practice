@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body></body>
+
+
+<script>
+
+  /* 
+    Shopping List Title - h1
+    Main List - ul
+    Shopping items - li
+
+    Shopping list input - input
+    Shopping list add button - button
+  */
+
+  // Define Variables
+  // Define Variables
+  var body = document.querySelector('body');
+
+  var shoppingListTitle = document.createElement("h1");
+  var shoppingListForm = document.createElement("form");
+  var shoppingListInput = document.createElement("input");
+  var addButton = document.createElement("button")
+  var shoppingListUl = document.createElement("ul");
+
+  // Define El Copy
+  shoppingListTitleContent = document.createTextNode("Here's your list");
+  addButtonText = document.createTextNode("ADD");
+
+  // Define El Event Listener
+  addButton.addEventListener("click", checktoAddItemToList);
+
+  // Append Elements
+  // Append Elements
+  body.append(shoppingListTitle, shoppingListForm, addButton, shoppingListUl);
+
+  shoppingListForm.append(shoppingListInput, shoppingListInput);
+
+  shoppingListTitle.append(shoppingListTitleContent);
+  addButton.append(addButtonText);
+
+
+// tOdo fix the logic
+  function checktoAddItemToList() {
+    if (shoppingListInput.typof === false) {
+      // addConentToList()
+      alert("Ok then");
+    } else {
+      alert("add content");
+    }
+  }
+
+
+
+</script>
+</html>

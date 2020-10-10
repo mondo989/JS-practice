@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun3</title>
+</head>
+<body>
+  
+</body>
+
+<script>
+
+  //DECLARE & CREATE ELEMS
+  const body = document.querySelector("body");
+  const spinButton = document.createElement("button");
+  const spinButtonCopy = document.createTextNode("Spin");
+  const spinner = document.createElement("div");
+
+  //APPEND ELEMS
+  body.appendChild(spinner);
+  body.appendChild(spinButton);
+
+  //DECLARE INNER HTML
+  spinButton.append(spinButtonCopy);
+  
+  //EVENT LISTENER LOGIC
+  spinButton.addEventListener("click", spinSpinner);
+
+  //FUNCTION SPINS SPINNERS
+  function spinSpinner() {
+
+    // Randomize Spin Degrees
+    const randomSpinDegrees = Math.floor(Math.random()* 100);
+    console.log(randomSpinDegrees);
+  }
+
+</script>
+
+</html>
