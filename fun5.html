@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun5</title>
+</head>
+<style>
+  @keyframes striaghtKick {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-600%);
+    }
+  }
+
+  @keyframes badKick {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-300%) translateX(-420%);
+    }
+  }
+
+  .goodKick {
+    animation: striaghtKick 1s ease-out;
+  }
+  .badKick {
+    animation: badKick 1s ease-out;
+  }
+
+</style>
+<body>
+</body>
+<script>
+  // Declare Elements
+  const body = document.querySelector("body");
+  const button = document.createElement("button");
+  const football = document.createElement("div");
+  const fieldGoalPost = new Image(500, 400);
+  fieldGoalPost.src = '../imgs/fieldgoal.svg';
+
+  // Declare Functions
+  function kickFieldGoal () {
+    // Clear classes * 
+    football.classList = "";
+
+    // Set fgRandomness
+    const fgRandomNess = Math.floor(Math.random() * 100);
+    
+    // fg passes or fails based on fgRandomness
+    console.log(fgRandomNess);
+    if (fgRandomNess >= 75) {
+      console.log("FG GOOD!")
+      football.classList.add("goodKick");
+    } else {
+      console.log("FG MISSED!");
+      football.classList.add("badKick");
+    }
+  }
+
+  // Declare Events
+  button.addEventListener("click", kickFieldGoal);
+
+  // Append Elements set InnerHTML
+  body.appendChild(fieldGoalPost);
+  body.appendChild(football);
+  body.appendChild(button);
+  button.innerText = "Kick Field Goal";
+
+  // Style Elements
+  body.style.textAlign = "center";
+  button.style.marginTop = "50px";
+  football.style.width = "200px";
+  football.style.height = "120px";
+  football.style.background = "green";
+  football.style.borderRadius = "100px 200px";
+  football.style.display = "block";
+  football.style.margin = "50px auto 0";
+
+</script>
+</html>
