@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun 7</title>
+</head>
+<body>
+  <div id="log"></div>
+</body>
+
+<script>
+  // Setup Elems
+  const body = document.querySelector("body");
+  const motorcycle = document.createElement("div");
+  const log = document.getElementById('log');
+
+  // Setup Functions
+  function moveMotorcycle () {
+
+  }
+
+  window.onkeydown = logKey;
+
+  function logKey(e) {
+    console.log( `${e.code}`);
+  }
+
+  if (logKey == ArrowDown) {
+    console.log("Hi")
+  }
+
+  // Setup Listeners
+
+  // Append Elems and add Innertext
+  body.appendChild(motorcycle);
+
+  // Add styles
+  motorcycle.style.background = "red";
+  motorcycle.style.width = "100px";
+  motorcycle.style.height = "100px";
+</script>
+</html>

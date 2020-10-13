@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun8</title>
+</head>
+<style>
+  .active {
+    background: green!important;
+    transition: 0.5s;
+  }
+</style>
+<body></body>
+
+<script>
+  // Dec Elems
+  const body = document.querySelector("body");
+  const fanBlades = document.createElement("div");
+  const fanLight = document.createElement("div");
+  const fanButton = document.createElement("button");
+  const lightButton = document.createElement("button");
+  var fanSpeed = 0;
+
+  // Dec Funcs
+  function toggleLight() {
+    fanLight.classList.toggle("active");
+    console.log("light is toggled")
+  }
+
+  function updateFanSpeed() {
+    var i = "";
+    // Create fanspeed
+    
+    while (i <= 3) {
+      return i++, console.log("fanspeed is " + i);
+    }
+
+
+    // Check fanspeed
+    // if (fanspeed <= 0) {
+    //   console.log("Fan's off");
+    //   fanspeed ++;
+    // } else if (fanspeed = 1) {
+    //   console.log("Speed 1");
+    //   fanspeed ++;
+    // }
+    // Iterate through 3 speeds
+  }
+
+  // Dec Events
+  lightButton.addEventListener("click", toggleLight);
+  fanButton.addEventListener("click", updateFanSpeed);
+
+  // App Els & Inner Text
+  body.append(fanBlades, fanLight, fanButton, lightButton);
+  // body.appendChild(fanBlades, fanLight, fanButton, lightButton);
+
+  // Add styles
+  lightButton.innerText = "Light"
+  fanButton.innerText = "Fan";
+  fanLight.style.background = "red";
+  fanLight.style.width = "50px";
+  fanLight.style.height = "50px";
+  fanBlades.style.height = "200px";
+  fanBlades.style.width = "200px";
+  fanBlades.style.background = "blue";
+
+</script>
+</html>
