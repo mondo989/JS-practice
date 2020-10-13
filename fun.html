@@ -16,15 +16,29 @@
   var awayScoreTitle = document.createElement("p");
   var homeScore = document.createElement("p");
   var awayScore = document.createElement("p");
-  
+  var fgButton = document.createElement("button"); 
+  var tdButton = document.createElement("button");
+
+
   var teamSliderLabel = document.createElement("label")
   var teamSlider = document.createElement("input");
+      teamSlider.setAttribute("type", "checkbox");
+      teamSlider.addEventListener("click", updateScoringTeam)
+
+  function updateScoringTeam () {
+
+  }
+      if (teamSlider.checked = true) {
+        console.log("Home Scored");
+
+      } else {
+        console.log("Away Scored");
+      }
   
   // TODO Update the logic to change input tp
   // var sliderAttr = {type: "checkbox"}
 
-  var fgButton = document.createElement("button"); 
-  var tdButton = document.createElement("button");
+  
 
   // Set Text Nodes
   // Set Text Nodes
@@ -34,23 +48,6 @@
   var tdButtonCopy = document.createTextNode("Touch Down");
   var homeScoreCount = 0;
   var awayScoreCount = 0;
-
-      //Append Elements
-      //Append Elements
-      body.appendChild(homeScoreTitle);
-      body.appendChild(awayScoreTitle);
-      body.appendChild(homeScore);
-      body.appendChild(teamSliderLabel);
-      teamSliderLabel.appendChild(teamSlider);
-      body.appendChild(fgButton);
-      body.appendChild(tdButton);
-
-      awayScoreTitle.appendChild(awayScoreCopy);
-      homeScoreTitle.appendChild(homeScoreCopy);
-      fgButton.appendChild(fgButtonCopy);
-      tdButton.appendChild(tdButtonCopy);
-      // score.appendChild/
-
 
       // teamSlider.setAttribute("type", JSON.stringify(sliderAttr));
 
@@ -76,6 +73,22 @@
     console.log(homeScoreCount);
     homeScore.innerHTML = homeScoreCount;
   }
+
+  //Append Elements
+  //Append Elements
+  body.appendChild(homeScoreTitle);
+  body.appendChild(awayScoreTitle);
+  body.appendChild(homeScore);
+  body.appendChild(teamSliderLabel);
+  teamSliderLabel.appendChild(teamSlider);
+  body.appendChild(fgButton);
+  body.appendChild(tdButton);
+
+  awayScoreTitle.appendChild(awayScoreCopy);
+  homeScoreTitle.appendChild(homeScoreCopy);
+  fgButton.appendChild(fgButtonCopy);
+  tdButton.appendChild(tdButtonCopy);
+  // score.appendChild/
 
 </script>
 </html>
