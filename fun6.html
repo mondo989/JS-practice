@@ -12,29 +12,22 @@
   //Dec Variables
   const body = document.querySelector("body");
   const button = document.createElement("button");
+  const drawRow = document.createElement("div");
   const slotOptions = ['👫','🤑','🤠','🤡'];
 
   //Dec Functions
   function spinSlots(){
-    // const slotRandom = slotOptions[Math.floor(Math.random() * slotOptions.length)];
+    // Get 3 different slotDraws? 
+    const slotDraw1 = slotOptions[Math.floor(Math.random() * slotOptions.length)];
+    const slotDraw2 = slotOptions[Math.floor(Math.random() * slotOptions.length)];
+    const slotDraw3 = slotOptions[Math.floor(Math.random() * slotOptions.length)];
 
-    const slotItem1 = slotRandom();
-    const slotItem2 = slotRandom();
-    const slotItem3 = slotRandom();
-
-    console.log(slotOptions);
-    console.log(slotRandom);
-
-    console.log(slotItem1, slotItem2, slotItem3);
-
-    // Get 3 different slotRandoms? 
+    // Append SlotItems
+    drawRow.append(slotDraw1, slotDraw2, slotDraw3);
 
     // Check if 3 match
-  }
 
-  function slotRandom() {
-   randomResult = slotOptions[Math.floor(Math.random() * slotOptions.length)];
-   console.log(slotRandom);
+    // Alert Winner
   }
 
   //Dec Events
@@ -43,7 +36,7 @@
   //Dec Style 
 
   //Append Elems & Text
-  body.appendChild(button);
+  body.append(button, drawRow);
   button.innerText = "Spin Machine";
 
   // Cool to get a random value from an array
