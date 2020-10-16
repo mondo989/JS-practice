@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+.active {
+  background-color: red;
+  padding: 10px;
+  display: inline-block;
+}
+a {
+  text-decoration: underline;
+  padding: 10px;
+  color: blue;
+  cursor: pointer;
+}
+ul {
+  padding-left: 0;
+}
+li {
+  display: inline;
+}
+</style>
+<body></body>
+<script>
+  // Declare Elements
+  const body = document.querySelector("body");
+  const coinButton = document.createElement("div");
+  const jukeBoxButtonRow = document.createElement("div");
+  const jukeBoxButtonsNumbers = ["1", "2", "3", "4", "5", "6"];
+  const currentJukeBoxCoins = "0";
+
+  // Declare Functions
+  function addedCoin () {        
+    jukeBoxActive();
+  };
+
+  function jukeBoxActive () {
+    // Set Buttons and Screen Active;
+    jukeBoxButtonRow.classList.add("active");
+    
+    // Clicking Jukeboxx button makes youtube video play
+    text = "<ul>";
+    for (i=0; i<jukeBoxButtonsNumbers.length; i++) {
+      text += "<li> <a>" + i + "</a> </li>";
+    }
+    text += "</ul>";
+    
+    jukeBoxButtonRow.innerHTML = text;
+  }
+
+
+  // Add Event Listener
+  coinButton.addEventListener("click", addedCoin);
+
+  // Append Elements & Innertext
+  body.append(coinButton, jukeBoxButtonRow);
+  coinButton.innerText = "Add Coin";
+
+
+  // Add styling
+
+
+</script>
+</html>

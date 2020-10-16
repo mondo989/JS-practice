@@ -12,6 +12,7 @@
   //Dec Variables
   const body = document.querySelector("body");
   const button = document.createElement("button");
+  const title = document.createElement("h1");
   const drawRow = document.createElement("div");
   const slotOptions = ['👫','🤑','🤠','🤡'];
 
@@ -22,22 +23,42 @@
     const slotDraw2 = slotOptions[Math.floor(Math.random() * slotOptions.length)];
     const slotDraw3 = slotOptions[Math.floor(Math.random() * slotOptions.length)];
 
-    // Append SlotItems
+    drawRow.innerText = "";
     drawRow.append(slotDraw1, slotDraw2, slotDraw3);
 
     // Check if 3 match
+    if(slotDraw1 == slotDraw2 && slotDraw1 == slotDraw3) {
+      alertPlayerWinner()
+      body.style.background = "yellow";
+    } else {
+      askPlayerTryAgain();
+      body.style.background = "white";
+    }
+  }
 
-    // Alert Winner
+  function askPlayerTryAgain () {
+    console.log("Try Again")
+  }
+
+  function alertPlayerWinner () {
+    console.log("You win");
   }
 
   //Dec Events
-  button.addEventListener("click", spinSlots)
+  button.addEventListener("click", spinSlots);
 
   //Dec Style 
+  drawRow.style.width = "250px";
+  drawRow.style.height = "50px";
+  drawRow.style.fontSize = "70px";
+  drawRow.style.margin = "0 auto";
 
   //Append Elems & Text
-  body.append(button, drawRow);
+  body.append(title, button, drawRow);
+  body.style.margin = "0 auto";
+  body.style.textAlign = "center";
   button.innerText = "Spin Machine";
+  title.innerText = "Slot Machine"
 
   // Cool to get a random value from an array
 </script>
