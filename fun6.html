@@ -17,10 +17,11 @@
     animation: fadeInDown 1s ease-out;
     float:left;
     width: 120px;
-    /* opacity: 0; */
+    animation-direction: normal;
   }
   li:nth-child(1) {
     animation-delay: 0.3s;
+    animation-direction: normal;
   }
   li:nth-child(2) {
     animation-delay: 0.6s;
@@ -32,6 +33,7 @@
   @keyframes fadeInDown {
     0% {
       transform: translateY(-120px);
+      opacity: 0;
     }
 
     100% {
@@ -87,18 +89,20 @@
   //Dec Events
   button.addEventListener("click", spinSlots);
 
-  //Dec Style 
-  drawRow.style.width = "500px";
-  drawRow.style.height = "50px";
-  drawRow.style.fontSize = "70px";
-  drawRow.style.margin = "0 auto";
   
   //Append Elems & Text
   body.append(title, button, drawRow);
-  body.style.margin = "0 auto";
-  body.style.textAlign = "center";
   button.innerText = "Spin Machine";
   title.innerText = "Slot Machine"
+  
+  //Dec Style 
+  body.style.margin = "0 auto";
+  body.style.textAlign = "center";
+  drawRow.style.height = "50px";
+  drawRow.style.width = "500px";
+  drawRow.style.fontSize = "70px";
+  drawRow.style.margin = "0 auto";
+
 
   // Cool to get a random value from an array
 </script>

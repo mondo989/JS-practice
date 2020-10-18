@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun11</title>
+</head>
+<body></body>
+<script>
+
+  // Declare Elements
+  const body = document.querySelector("body");
+  const button = document.createElement("button");
+  const iframe = document.createElement("iframe");
+  const videoStrings = [
+    "https://youtu.be/E4Dy-czTjAc",
+    "https://youtu.be/Zx_DBvChpvM",
+    "https://youtu.be/z0-bHDEmZko"]
+
+
+  // Decalring Functions
+  function randomizeVideo() {
+    const updatedVideo = videoStrings[Math.floor(Math.random() * videoStrings.length)];
+    iframe.setAttribute("src", updatedVideo);
+
+    console.log(updatedVideo)
+  }
+
+  // Adding Event listeners 
+  button.addEventListener("click", randomizeVideo)
+
+  // Append Elements & InnerText & styling
+  body.append( iframe, button);
+  button.innerText = "New Video";
+  video.style.height = "300px";
+  video.style.width = "120px";
+  video.style.background = "red";
+</script>
+</html>
