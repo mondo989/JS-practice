@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun12</title>
+</head>
+<style>
+  div span {
+    display: inline-block;
+    padding: 10px;
+  }
+</style>
+<body></body>
+
+<script>
+  // Declare elements
+  const body = document.querySelector("body");
+  const button = document.createElement("button");
+  const currentTimeRow = document.createElement("div");
+  
+  // Declare functions
+  function getCurrentTime () {
+    let currentTime = new Date();
+    currentTime.getHours();
+    currentTime.getMinutes()
+    currentTime.getSeconds();
+
+    text = "<div>"
+    text += "<span>" + currentTime.getHours() + "</span>";
+    text += "<span>" + currentTime.getMinutes() + "</span>";
+    text += "<span>" + currentTime.getSeconds() + "</span>";
+    text += "</div>"
+
+    currentTimeRow.innerHTML = text;
+
+    keepClockRunning();
+  }
+
+  function keepClockRunning () {
+
+  }
+
+  // Add Event Listeners
+  button.addEventListener("click", getCurrentTime);
+
+  // Append Elements
+  body.append(button, currentTimeRow);
+  button.innerText = "Get Time";
+
+  // Styling
+
+
+</script>
+</html>
