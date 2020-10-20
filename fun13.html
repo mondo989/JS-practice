@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun 13</title>
+</head>
+<body></body>
+  <style>
+    @keyframes raceCarAnim {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(8000px);
+      }
+    }
+
+    .raceCarAnim {
+      animation: raceCarAnim;
+    }
+  </style>
+  <script>
+
+    // Declare Elements
+    const body = document.querySelector("body");
+    const button = document.createElement("button");
+    const carOne = document.createElement("div");
+    const carTwo = document.createElement("div");
+    const raceTrack = document.createElement("div");
+    
+    // Declare Functions
+    function promptUserToSelectWinner() {
+
+    }
+
+    function carsRace () {
+      const randomSpeedSecs = Math.floor(Math.random() * 100);
+      const raceCarAnimation = 'raceCarAnim ' + ' ' + randomSpeedSecs + 's';
+      carOne.style.setProperty("animation", raceCarAnimation);
+      carTwo.style.setProperty("animation", raceCarAnimation);
+      console.log(raceCarAnimation);
+    }
+
+    // Declare Event Listeners
+    button.addEventListener("click", carsRace);
+  
+    // Append Elements & Text & Styling
+    body.append(button, carOne, carTwo, raceTrack);
+
+    carOne.style.width = "150px";
+    carTwo.style.width = "150px";
+    carOne.style.height = "150px";
+    carTwo.style.height = "150px";
+    carOne.style.background = "red";
+    carTwo.style.background = "blue";
+    button.innerText = "Begin Races";
+  </script>
+</html>
