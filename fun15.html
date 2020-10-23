@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun 15</title>
+</head>
+<style>
+
+</style>
+<body></body>
+<script>
+  // 
+  // Start Game
+  // User Makes Choice
+  // RPS happens
+  // Decides who wins
+  // Declare winner / loser
+
+
+  // Declare Elements
+  const body = document.querySelector("body");
+  const button = document.createElement("button");
+  const rpsRow = document.createElement("div");
+  const rpsChoices = ["Rock", "Paper", "Scissors"];
+  // rpsChoices.prop = value;
+
+
+  // Declare Functions
+  function rpsButtonsActive () {
+    text = "<div>";
+    for (i=0; i < rpsChoices.length; i++) {
+      text += "<button>" + rpsChoices[i] + "</button>";
+      
+    }
+    text += "</div>";
+    rpsRow.innerHTML = text;
+
+    button.style.display = "none";
+  }
+
+  function makeDecision () {
+    // if(){}
+  }
+
+
+  // Declare Evemr Listeners
+  button.addEventListener("click", rpsButtonsActive);
+
+  // Append / Inner Text / 
+  body.append(button, rpsRow);
+  button.innerText = "Start Game";
+
+  // Styling
+</script>
+</html>
