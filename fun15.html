@@ -10,46 +10,109 @@
 </style>
 <body></body>
 <script>
-  // 
-  // Start Game
-  // User Makes Choice
-  // RPS happens
-  // Decides who wins
-  // Declare winner / loser
-
-
   // Declare Elements
   const body = document.querySelector("body");
   const button = document.createElement("button");
   const rpsRow = document.createElement("div");
-  const rpsChoices = ["Rock", "Paper", "Scissors"];
-  // rpsChoices.prop = value;
+  const rpsDisplayResults = document.createElement("div");
+  var rpsResults = document.createElement("div");
 
+  var pickRock = document.createElement("button");
+  var pickPaper = document.createElement("button");
+  var pickScissors = document.createElement("button");
+
+  const rpsChoices = ["Rock", "Paper", "Scissors"];
 
   // Declare Functions
   function rpsButtonsActive () {
     text = "<div>";
     for (i=0; i < rpsChoices.length; i++) {
       text += "<button>" + rpsChoices[i] + "</button>";
-      
     }
     text += "</div>";
     rpsRow.innerHTML = text;
-
     button.style.display = "none";
   }
 
-  function makeDecision () {
-    // if(){}
+  function userPicksRock() {
+    const userChoice = "Rock";
+    runRPSMatch(userChoice);
+  }
+
+  function userPicksScissors() {
+    const userChoice = "Scissors";
+    runRPSMatch(userChoice);
+  }
+
+  function userPicksPaper() {
+    const userChoice = "Paper";
+    runRPSMatch(userChoice);
   }
 
 
+  function runRPSMatch(userChoice) {
+    const cpuChoice = rpsChoices[Math.floor(Math.random() * rpsChoices.length)];
+    const win = "win";
+    const lose = "lose";
+    const draw = "draw";
+
+    console.log(userChoice);
+    console.log(cpuChoice);
+
+    if (userChoice == rpsChoices[0] && cpuChoice == rpsChoices[2]) {
+      console.log("You win")
+    } else if (userChoice == rpsChoices[0] && cpuChoice == rpsChoices[0]) {
+      console.log("Its a draw");
+    } else if (userChoice == rpsChoices[0] && cpuChoice == rpsChoices[1]) {
+      console.log("You lose");
+    }
+
+    if (userChoice == rpsChoices[1] && cpuChoice == rpsChoices[2]) {
+      console.log("You lose")
+    } else if (userChoice == rpsChoices[1] && cpuChoice == rpsChoices[0]) {
+      const results = "You win";
+      declareResults(results);
+      console.log("You win");
+    } else if (userChoice == rpsChoices[1] && cpuChoice == rpsChoices[1]) {
+      console.log("It's a draw");
+    }
+
+    if (userChoice == rpsChoices[2] && cpuChoice == rpsChoices[2]) {
+      console.log("It's a draw")
+
+    } else if (userChoice == rpsChoices[2] && cpuChoice == rpsChoices[0]) {
+      console.log("You Lose");
+    } else if (userChoice == rpsChoices[2] && cpuChoice == rpsChoices[1]) {
+      console.log("You win");
+    }
+
+    body.append(rpsDisplayResults);
+
+    rpsDisplayResults.append(userChoice, cpuChoice, rpsResults);
+  }
+
+  function declareResults(results) {
+    if (declareResults == "You win") {
+      console.log("Winner winner ")
+    }
+  }
+
   // Declare Evemr Listeners
   button.addEventListener("click", rpsButtonsActive);
+  pickRock.addEventListener("click", userPicksRock);
+  pickPaper.addEventListener("click", userPicksPaper);
+  pickScissors.addEventListener("click", userPicksScissors);
 
   // Append / Inner Text / 
-  body.append(button, rpsRow);
+  body.append(button, rpsRow, pickRock, pickPaper, pickScissors);
   button.innerText = "Start Game";
+  pickRock.innerText = "Rock";
+  pickScissors.innerText = "Scissors";
+  pickPaper.innerText = "Paper";
+  rpsRow.style.background = "red";
+  rpsResults.style.width = "100%";
+  rpsResults.style.height = "100px";
+  rpsResults.style.background = "red";
 
   // Styling
 </script>
