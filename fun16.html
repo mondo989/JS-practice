@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun 16</title>
+</head>
+  <style>
+    .fancy {
+      background-color: red;
+    }
+    .section__animate {
+      transform: 1s;
+    }
+    .section__footer {
+      height: 100px;
+    }
+
+    .section__footer.animated{
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+      } 
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+<body></body>
+<script>
+  // Decalre Elements
+  const body = document.querySelector("body");
+  const heroSection = document.createElement("section");
+  const blogSection = document.createElement("section");
+  const heroHeader = document.createElement("h1");
+  const blogCopy = document.createElement("p");
+  const blogText = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh. Integer sit amet convallis lectus. Integer vestibulum blandit odio, eget dictum massa condimentum a. Sed finibus tincidunt varius. Nullam laoreet porttitor diam, vitae aliquet purus pellentesque efficitur. Sed eget luctus quam. Quisque sed elit eget elit maximus elementum vitae ac odio. \n \n Pellentesque eu urna risus. In hac habitasse platea dictumst. Nulla fermentum dapibus eleifend. Aenean pretium purus dolor, et accumsan arcu sollicitudin eu. Aenean lacinia, sapien aliquet scelerisque porta, nunc nunc molestie neque, in commodo ex nulla vitae sem. Cras sit amet nisi euismod, viverra erat nec, viverra sapien. Duis suscipit a eros quis vehicula. In hac habitasse platea dictumst. Suspendisse tristique eget mi eu vulputate. Aliquam vel varius mauris. In hac habitasse platea dictumst. \n \n Phasellus quis egestas diam, a sodales lacus. Etiam venenatis ligula vitae felis rutrum consectetur. Donec ipsum purus, facilisis a ante vel, suscipit scelerisque felis. In aliquet vulputate suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id tristique orci. Pellentesque condimentum orci vehicula efficitur malesuada. Cras quis ante quis lectus fermentum placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh."];
+  const blogFooter = document.createElement("h2");
+  blogFooter.classList = "section__animate section__footer";
+  // blogSection.classList.add("section__animate");
+  
+
+  // Append Elements
+  body.append(heroSection, blogSection);
+  heroSection.append(heroHeader);
+  blogSection.append(blogCopy, blogFooter);
+
+  heroHeader.innerText = "This is an awesome blog.";
+  blogFooter.innerText = "Footer yo";
+
+  blogCopy.append(blogText);
+  heroSection.style.height = "100vh";
+  blogSection.style.paddingBottom = "20vh";
+  heroSection.style.display = "flex";
+  heroSection.style.justifyContent = "center";
+  heroSection.style.alignItems = "center";
+
+  // Intersection Observer
+  const images = document.querySelectorAll('.section__animate');
+
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        entry.target.classList.add('animated');
+      } else {
+        entry.target.classList.remove('animated');
+      }
+    });
+  },{rootMargin: "20px"});
+
+  images.forEach(image => {
+    observer.observe(image);
+  });
+
+
+
+  // https://alligator.io/js/intersection-observer/
+</script>
+
+</html>

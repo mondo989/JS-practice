@@ -12,7 +12,6 @@
 <script>
   // Declare Elements
   const body = document.querySelector("body");
-  const button = document.createElement("button");
   const rpsRow = document.createElement("div");
   const rpsDisplayResults = document.createElement("div");
   var rpsResults = document.createElement("div");
@@ -24,16 +23,6 @@
   const rpsChoices = ["Rock", "Paper", "Scissors"];
 
   // Declare Functions
-  function rpsButtonsActive () {
-    text = "<div>";
-    for (i=0; i < rpsChoices.length; i++) {
-      text += "<button>" + rpsChoices[i] + "</button>";
-    }
-    text += "</div>";
-    rpsRow.innerHTML = text;
-    button.style.display = "none";
-  }
-
   function userPicksRock() {
     const userChoice = "Rock";
     runRPSMatch(userChoice);
@@ -52,68 +41,73 @@
 
   function runRPSMatch(userChoice) {
     const cpuChoice = rpsChoices[Math.floor(Math.random() * rpsChoices.length)];
-    const win = "win";
-    const lose = "lose";
-    const draw = "draw";
-
-    console.log(userChoice);
-    console.log(cpuChoice);
 
     if (userChoice == rpsChoices[0] && cpuChoice == rpsChoices[2]) {
-      console.log("You win")
+      const results = "You win";
+      declareResults(results);
     } else if (userChoice == rpsChoices[0] && cpuChoice == rpsChoices[0]) {
-      console.log("Its a draw");
+      const results = "It's a draw";
+      declareResults(results);
     } else if (userChoice == rpsChoices[0] && cpuChoice == rpsChoices[1]) {
-      console.log("You lose");
+      const results = "You lose";
+      declareResults(results);
     }
 
     if (userChoice == rpsChoices[1] && cpuChoice == rpsChoices[2]) {
-      console.log("You lose")
+      const results = "You lose";
+      declareResults(results);
     } else if (userChoice == rpsChoices[1] && cpuChoice == rpsChoices[0]) {
       const results = "You win";
       declareResults(results);
-      console.log("You win");
     } else if (userChoice == rpsChoices[1] && cpuChoice == rpsChoices[1]) {
-      console.log("It's a draw");
+      const results = "It's a draw";
+      declareResults(results);
     }
 
     if (userChoice == rpsChoices[2] && cpuChoice == rpsChoices[2]) {
-      console.log("It's a draw")
-
+      const results = "It's a draw";
+      declareResults(results);
     } else if (userChoice == rpsChoices[2] && cpuChoice == rpsChoices[0]) {
-      console.log("You Lose");
+      const results = "You lose";
+      declareResults(results);
     } else if (userChoice == rpsChoices[2] && cpuChoice == rpsChoices[1]) {
-      console.log("You win");
+      const results = "You win";
+      declareResults(results);
     }
 
     body.append(rpsDisplayResults);
-
     rpsDisplayResults.append(userChoice, cpuChoice, rpsResults);
   }
 
   function declareResults(results) {
-    if (declareResults == "You win") {
-      console.log("Winner winner ")
+    if (results == "You win") {
+      rpsResults.style.animation = "fadeInUp 1s easeOut";
+      rpsResults.innerText = "You Win";
+    } else if (results == "You lose") {
+      rpsResults.style.animation = "fadeInUp 1s easeOut";
+      rpsResults.innerText = "You Lose";
+    } else if (results == "It's a draw") {
+      rpsResults.style.animation = "fadeInUp 1s easeOut";
+      rpsResults.innerText = "It's a draw";
     }
   }
 
   // Declare Evemr Listeners
-  button.addEventListener("click", rpsButtonsActive);
+  // button.addEventListener("click", rpsButtonsActive);
   pickRock.addEventListener("click", userPicksRock);
   pickPaper.addEventListener("click", userPicksPaper);
   pickScissors.addEventListener("click", userPicksScissors);
 
   // Append / Inner Text / 
-  body.append(button, rpsRow, pickRock, pickPaper, pickScissors);
-  button.innerText = "Start Game";
+  body.append(rpsRow, pickRock, pickPaper, pickScissors);
+  // button.innerText = "Start Game";
   pickRock.innerText = "Rock";
   pickScissors.innerText = "Scissors";
   pickPaper.innerText = "Paper";
   rpsRow.style.background = "red";
   rpsResults.style.width = "100%";
   rpsResults.style.height = "100px";
-  rpsResults.style.background = "red";
+  rpsResults.style.textAlign = "center";
 
-  // Styling
 </script>
 </html>
