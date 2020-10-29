@@ -56,11 +56,21 @@
     feedbackButtonNo.style.animation = "fadeOut 0.5s ease forwards";
     feedbackModalSubHeader.style.animation = "fadeOut 0.5s ease forwards";
     feedbackModalHeader.style.animation = "fadeOut 0.5s ease forwards";
+    feedbackModalHeader.innerText = "Thank You"
 
-    feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
-    feedbackModalSubHeader.style.animation = "fadeIn 0.5s 0.5s ease forwards";
-    feedbackModalHeader.style.animation = "fadeIn 0.5s 0.5s ease forwards";
+    addPositiveContent()
+    // feedbackModalSubHeader.style.animation = "fadeIn 0.5s 0.5s ease forwards";
+    // feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
+    // feedbackModalHeader.style.animation = "fadeIn 0.5s 0.5s ease forwards";
   };
+
+  function addPositiveContent () {
+    setTimeout(function() {
+      feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
+      feedbackModalSubHeader.style.animation = "fadeIn 0.5s 0.5s ease forwards";
+    }, 1000);
+
+  }
 
   // Declare Event Listeners
   feedbackButtonYes.addEventListener("click", userEnjoyedArticle);
@@ -71,12 +81,15 @@
   blogSection.append(blogContent);
   feedbackModal.append(feedbackModalSubHeader, feedbackModalHeader, feedbackButtonYes, feedbackButtonNo);
 
+
   // Styling & InnerText
   feedbackModal.style.background = "red";
   feedbackModal.style.padding = "30px 20px";
   feedbackModal.style.textAlign = "center";
   feedbackButtonNo.style.padding = "15px 60px";
   feedbackButtonYes.style.padding = "15px 60px";
+  feedbackButtonNo.style.border = "0";
+  feedbackButtonYes.style.border = "0";
   feedbackButtonNo.style.borderRadius = "8px";
   feedbackButtonYes.style.borderRadius = "8px";
   feedbackButtonNo.style.cursor = "pointer";

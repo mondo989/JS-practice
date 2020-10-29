@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun19</title>
+</head>
+<body></body>
+
+<script>
+  // Declare Elements
+  const body = document.querySelector("body");
+  const row = document.createElement("row");
+  const button = document.createElement("button");
+
+  const workoutCategories = ["PushUps", "Squats/Lunges", "Seven App", "Gym"];
+
+  // Declare Functions
+  randomizeWorkOutCategory = () => {
+    const randomWorkOut = workoutCategories[Math.floor(Math.random() * workoutCategories.length)];
+    const mainMessage = "Your Workout for today is " + randomWorkOut;
+    console.log(mainMessage);
+    row.innerText = mainMessage;
+  }
+
+  // Declare Event Listeners
+  button.addEventListener("click", randomizeWorkOutCategory)
+
+  // Append Styling / Inner Text
+  body.append(row, button);
+  
+  button.innerText = "Click for Workout Category";
+  body.style.display = "flex";
+  body.style.justifyContent = "center";
+  body.style.alignItems = "center";
+  body.style.flexDirection = "column";
+
+  row.style.position = "absolute";
+  row.style.top = "40%";
+  row.style.fontSize = "30px";
+  row.style.padding = "30px 20px";
+  button.style.fontSize = "16px";
+  button.style.position = "absolute";
+  button.style.bottom = "30%";
+  button.style.padding = "15px";
+
+</script>
+</html>
