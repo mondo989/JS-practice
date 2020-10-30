@@ -27,6 +27,12 @@
       opacity: 1;
     }
   }
+
+  h4.section__animate.animated + div {
+    height: 200px !important;
+    animation: fadeIn 1.5s ease forwards;
+  }
+
 </style>
 <body></body>
 
@@ -36,6 +42,7 @@
   const blogSection = document.createElement("section");
   const blogContent = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh. Integer sit amet convallis lectus. Integer vestibulum blandit odio, eget dictum massa condimentum a. Sed finibus tincidunt varius. Nullam laoreet porttitor diam, vitae aliquet purus pellentesque efficitur. Sed eget luctus quam. Quisque sed elit eget elit maximus elementum vitae ac odio. \n \n Pellentesque eu urna risus. In hac habitasse platea dictumst. Nulla fermentum dapibus eleifend. Aenean pretium purus dolor, et accumsan arcu sollicitudin eu. Aenean lacinia, sapien aliquet scelerisque porta, nunc nunc molestie neque, in commodo ex nulla vitae sem. Cras sit amet nisi euismod, viverra erat nec, viverra sapien. Duis suscipit a eros quis vehicula. In hac habitasse platea dictumst. Suspendisse tristique eget mi eu vulputate. Aliquam vel varius mauris. In hac habitasse platea dictumst. \n \n Phasellus quis egestas diam, a sodales lacus. Etiam venenatis ligula vitae felis rutrum consectetur. Donec ipsum purus, facilisis a ante vel, suscipit scelerisque felis. In aliquet vulputate suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id tristique orci. Pellentesque condimentum orci vehicula efficitur malesuada. Cras quis ante quis lectus fermentum placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh."];
   const feedbackModal = document.createElement("div");
+  const feedbackTrigger = document.createElement("h4");
   const feedbackModalHeader = document.createElement("h1");  
   const feedbackModalSubHeader = document.createElement("h3");
   const feedbackButtonYes = document.createElement("button");
@@ -48,7 +55,6 @@
   }
 
   function userDidNotEnjoyArticle () {
-
   }
 
   function updateContent() {
@@ -66,8 +72,8 @@
 
   function addPositiveContent () {
     setTimeout(function() {
-      feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
       feedbackModalSubHeader.style.animation = "fadeIn 0.5s 0.5s ease forwards";
+      feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
     }, 1000);
 
   }
@@ -77,15 +83,21 @@
   feedbackButtonNo.addEventListener("click", userDidNotEnjoyArticle);
 
   // Append Elements
-  body.append(blogSection,feedbackModal);
+  body.append(blogSection, feedbackTrigger, feedbackModal);
   blogSection.append(blogContent);
   feedbackModal.append(feedbackModalSubHeader, feedbackModalHeader, feedbackButtonYes, feedbackButtonNo);
 
 
   // Styling & InnerText
-  feedbackModal.style.background = "red";
+  feedbackModal.style.border = "1px solid red";
+  feedbackModal.style.position = "absolute";
+  feedbackModal.style.left = "0";
+  feedbackModal.style.right = "0";
+  feedbackModal.style.height = "0";
   feedbackModal.style.padding = "30px 20px";
   feedbackModal.style.textAlign = "center";
+  // These duplicates are funny
+  // Can I style multiple?
   feedbackButtonNo.style.padding = "15px 60px";
   feedbackButtonYes.style.padding = "15px 60px";
   feedbackButtonNo.style.border = "0";
@@ -94,10 +106,36 @@
   feedbackButtonYes.style.borderRadius = "8px";
   feedbackButtonNo.style.cursor = "pointer";
   feedbackButtonYes.style.cursor = "pointer";
+  feedbackModalSubHeader.style.opacity = "0";
+  blogSection.style.height = "100vh";
+  feedbackTrigger.style.height = "20px";
+  feedbackTrigger.style.textAlign = "center";
+  feedbackTrigger.style.width = "100%";
+  feedbackTrigger.innerText = "Thanks for reading";
+  feedbackTrigger.classList = "section__animate";
 
   feedbackButtonYes.innerText = "Yes";
   feedbackButtonNo.innerText = "No";
   feedbackModalHeader.innerText = "Did you enjoy the article?";
   feedbackModalSubHeader.innerText = "Thanks for reading...";
+
+  const images = document.querySelectorAll('.section__animate');
+
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        entry.target.classList.add('animated');
+      } else {
+        entry.target.classList.remove('animated');
+      }
+    });
+  },{rootMargin: "20px"});
+
+  images.forEach(image => {
+    observer.observe(image);
+  });
+  // Thanks fun16
+  // Ok setTimeout
+
 </script>
 </html>
