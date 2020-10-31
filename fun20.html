@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun 20</title>
+</head>
+<body></body>
+<script>
+  // Declare elems
+  const body = document.querySelector("body");
+  const button = document.createElement("button");
+  const countDownContainer = document.createElement("div");
+  const workOutStartsHeader = document.createElement("h1")
+  // const timer = 
+  // const workoutTime = 120seconds;
+
+
+  // Declare functions
+  beginWorkOut = () => {
+    console.log("Hey")
+
+    // Display Countdown Timer
+    countDownContainer.style.display = "flex";
+
+    // Start countdown timer to first workout 
+    countDownTimerFiveSecs();
+
+    // Randomize and declare first workout
+    
+
+
+
+    // Set Countdown timer for the workout
+    // Notify user when 10 seconds remain.
+
+    // Prompt user their workout complete.
+
+    // Set Countdown timer for the workout
+    // Cue next workout
+
+    // After 3 timed workouts call workOutComplete.
+  }
+  
+
+  countDownTimerFiveSecs = () => {
+    // const countDownDate = new Date("")    ;
+    let currentTime = new Date();
+    currentTime.getHours();
+    currentTime.getMinutes()
+    currentTime.getSeconds();
+
+    console.log(currentTime);
+  }
+
+
+  // Add Evenet Listeners
+  button.addEventListener("click", beginWorkOut);
+
+  // Append // Inner Text
+  body.append(button, countDownContainer);
+  countDownContainer.append(workOutStartsHeader);
+  button.innerText = "Start Workout";
+  workOutStartsHeader.innerText = "Workout starts in";
+
+  // Styling 
+  countDownContainer.style.display = "none";
+
+  // Oh my countdown timers, and  randomizers. 
+
+</script>
+
+
+</html>
