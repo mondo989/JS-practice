@@ -20,21 +20,32 @@
   const fanLight = document.createElement("div");
   const fanButton = document.createElement("button");
   const lightButton = document.createElement("button");
-  var fanSpeed = 0;
+  const fanStartSpeed = 0;
+  const fanSpeeds = ["0", "1", "2", "3"];
 
   // Dec Funcs
-  function toggleLight() {
+  toggleLight = () => {
     fanLight.classList.toggle("active");
     console.log("light is toggled")
   }
 
-  function updateFanSpeed() {
-    var i = "";
+  updateFanSpeed = () => {
+
+    if (fanStartSpeed == 0) {
+      console.log("Here");
+      fanStartSpeed + 1;
+      console.log(fanStartSpeed);
+    } else {
+      fanSpeeds[i];
+    }
+
+    console.log(fanSpeeds);
+
     // Create fanspeed
     
-    while (i <= 3) {
-      return i++, console.log("fanspeed is " + i);
-    }
+    // while (i <= 3) {
+    //   return i++, console.log("fanspeed is " + i);
+    // }
 
 
     // Check fanspeed
@@ -54,17 +65,12 @@
 
   // App Els & Inner Text
   body.append(fanBlades, fanLight, fanButton, lightButton);
-  // body.appendChild(fanBlades, fanLight, fanButton, lightButton);
 
   // Add styles
   lightButton.innerText = "Light"
   fanButton.innerText = "Fan";
-  fanLight.style.background = "red";
-  fanLight.style.width = "50px";
-  fanLight.style.height = "50px";
-  fanBlades.style.height = "200px";
-  fanBlades.style.width = "200px";
-  fanBlades.style.background = "blue";
+  fanLight.style.cssText = "background: red; height: 50px; width: 50px;"
+  fanBlades.style.cssText = "background: blue; height: 150px; width: 150px;"
 
 </script>
 </html>

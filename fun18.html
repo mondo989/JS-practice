@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
       opacity: 1;
       transform: translateY(0px);
     }
+
     100% {
       transform: translateY(-10px);
       opacity: 0;
@@ -22,6 +24,7 @@
       opacity: 0;
       transform: translateY(-50px);
     }
+
     100% {
       opacity: 1;
       transform: translateY(0px);
@@ -36,7 +39,7 @@
     overflow: hidden;
   }
 
-  .section__animate.animated  {
+  .section__animate.animated {
     height: 250px;
     background: teal;
   }
@@ -44,8 +47,8 @@
   .section__animate.animated h4 {
     display: none;
   }
-
 </style>
+
 <body></body>
 
 <script>
@@ -57,22 +60,27 @@
   const feedbackModal = document.createElement("div");
   const socialLinks = document.createElement("div");
   const feedbackTrigger = document.createElement("h4");
-  const feedbackModalHeader = document.createElement("h1");  
+  const feedbackModalHeader = document.createElement("h1");
   const feedbackModalSubHeader = document.createElement("h3");
   const feedbackButtonYes = document.createElement("button");
   const feedbackButtonNo = document.createElement("button");
-  
+
+
   // Declare Array Content
-  const blogContent = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh. Integer sit amet convallis lectus. Integer vestibulum blandit odio, eget dictum massa condimentum a. Sed finibus tincidunt varius. Nullam laoreet porttitor diam, vitae aliquet purus pellentesque efficitur. Sed eget luctus quam. Quisque sed elit eget elit maximus elementum vitae ac odio. \n \n Pellentesque eu urna risus. In hac habitasse platea dictumst. Nulla fermentum dapibus eleifend. Aenean pretium purus dolor, et accumsan arcu sollicitudin eu. Aenean lacinia, sapien aliquet scelerisque porta, nunc nunc molestie neque, in commodo ex nulla vitae sem. Cras sit amet nisi euismod, viverra erat nec, viverra sapien. Duis suscipit a eros quis vehicula. In hac habitasse platea dictumst. Suspendisse tristique eget mi eu vulputate. Aliquam vel varius mauris. In hac habitasse platea dictumst. \n \n Phasellus quis egestas diam, a sodales lacus. Etiam venenatis ligula vitae felis rutrum consectetur. Donec ipsum purus, facilisis a ante vel, suscipit scelerisque felis. In aliquet vulputate suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id tristique orci. Pellentesque condimentum orci vehicula efficitur malesuada. Cras quis ante quis lectus fermentum placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh."];
-  const socialMediaOptions = ["fb", "ig", "tw"];
+  const blogContent = [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh. Integer sit amet convallis lectus. Integer vestibulum blandit odio, eget dictum massa condimentum a. Sed finibus tincidunt varius. Nullam laoreet porttitor diam, vitae aliquet purus pellentesque efficitur. Sed eget luctus quam. Quisque sed elit eget elit maximus elementum vitae ac odio. \n \n Pellentesque eu urna risus. In hac habitasse platea dictumst. Nulla fermentum dapibus eleifend. Aenean pretium purus dolor, et accumsan arcu sollicitudin eu. Aenean lacinia, sapien aliquet scelerisque porta, nunc nunc molestie neque, in commodo ex nulla vitae sem. Cras sit amet nisi euismod, viverra erat nec, viverra sapien. Duis suscipit a eros quis vehicula. In hac habitasse platea dictumst. Suspendisse tristique eget mi eu vulputate. Aliquam vel varius mauris. In hac habitasse platea dictumst. \n \n Phasellus quis egestas diam, a sodales lacus. Etiam venenatis ligula vitae felis rutrum consectetur. Donec ipsum purus, facilisis a ante vel, suscipit scelerisque felis. In aliquet vulputate suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id tristique orci. Pellentesque condimentum orci vehicula efficitur malesuada. Cras quis ante quis lectus fermentum placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh."
+  ];
+  const socialMediaOptions = ["facebook", "instagram", "linkedin"];
+  const socialMediaImagesSrc = ["../imgs/fb.png", "../imgs/tw.png", "../imgs/ig.png"]
+  // const fieldGoalPost = new Image(500, 400);
+  // fieldGoalPost.src = '../imgs/fieldgoal.svg';
 
   // Declare Functions
-  function userEnjoyedArticle () {
+  function userEnjoyedArticle() {
     updateContent();
   }
 
-  function userDidNotEnjoyArticle () {
-  }
+  function userDidNotEnjoyArticle() {}
 
   function updateContent() {
     feedbackButtonYes.style.animation = "fadeOut 0.5s ease forwards";
@@ -84,13 +92,22 @@
     addPositiveContent()
   };
 
-  function addPositiveContent () {
-    setTimeout(function() {
+  function addPositiveContent() {
+    setTimeout(function () {
       feedbackModalSubHeader.style.animation = "fadeIn 0.5s ease forwards";
       feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
 
       feedbackSection.append(socialLinks);
-      socialLinks.append(socialMediaOptions);
+      // socialLinks.append(socialMediaOptions);
+
+      socialLogos = "<ul>";
+      for (i = 0; i < socialMediaImagesSrc.length; i++) {
+        socialLogos += "<li> <a>" + "<img src=" + socialMediaImagesSrc[i] + ">" + "</a> </li>";
+        console.log(i);
+      };
+      socialLogos += "</ul>";
+      socialLinks.innerHTML = socialLogos;
+
     }, 500);
   }
 
@@ -110,7 +127,7 @@
   feedbackButtonNo.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackButtonYes.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackTrigger.style.cssText = "height: 20px; text-align: center; width: 100%;";
-  socialLinks.style.cssText = "background: blue; height: 300px; width: 300px;"
+  socialLinks.style.cssText = "background: blue; height: 150px; width: 100%; bottom: 0;"
   feedbackModalSubHeader.style.opacity = "1";
   feedbackSection.classList = "section__animate";
 
@@ -133,13 +150,15 @@
         entry.target.classList.remove('animated');
       }
     });
-  },{rootMargin: "5px"});
+  }, {
+    rootMargin: "5px"
+  });
 
   images.forEach(image => {
     observer.observe(image);
   });
   // Thanks fun16
   // Ok setTimeout
-
 </script>
+
 </html>
