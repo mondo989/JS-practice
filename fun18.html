@@ -20,28 +20,29 @@
   @keyframes fadeIn {
     0% {
       opacity: 0;
-      transform: translateY(-10px);
+      transform: translateY(-50px);
     }
     100% {
-      transform: translateY(0px);
       opacity: 1;
+      transform: translateY(0px);
     }
+  }
+
+  .section__animate {
+    border: 1px solid blue;
+    height: 50px;
+    transition: 1s;
+    position: relative;
+    overflow: hidden;
   }
 
   .section__animate.animated  {
-    height: auto;
-    transition: 3s;
-    animation: fadeIn 1.5s ease forwards;
+    height: 250px;
+    background: teal;
   }
 
-  section {
-    background: red;
-  }
-
-  section:nth-child(2n) {
-    background: green;
-    height: 1px;
-    overflow: hidden;
+  .section__animate.animated h4 {
+    display: none;
   }
 
 </style>
@@ -53,14 +54,16 @@
   // Declare 2 main sections
   const blogSection = document.createElement("section");
   const feedbackSection = document.createElement("section");
-
-  const blogContent = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh. Integer sit amet convallis lectus. Integer vestibulum blandit odio, eget dictum massa condimentum a. Sed finibus tincidunt varius. Nullam laoreet porttitor diam, vitae aliquet purus pellentesque efficitur. Sed eget luctus quam. Quisque sed elit eget elit maximus elementum vitae ac odio. \n \n Pellentesque eu urna risus. In hac habitasse platea dictumst. Nulla fermentum dapibus eleifend. Aenean pretium purus dolor, et accumsan arcu sollicitudin eu. Aenean lacinia, sapien aliquet scelerisque porta, nunc nunc molestie neque, in commodo ex nulla vitae sem. Cras sit amet nisi euismod, viverra erat nec, viverra sapien. Duis suscipit a eros quis vehicula. In hac habitasse platea dictumst. Suspendisse tristique eget mi eu vulputate. Aliquam vel varius mauris. In hac habitasse platea dictumst. \n \n Phasellus quis egestas diam, a sodales lacus. Etiam venenatis ligula vitae felis rutrum consectetur. Donec ipsum purus, facilisis a ante vel, suscipit scelerisque felis. In aliquet vulputate suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id tristique orci. Pellentesque condimentum orci vehicula efficitur malesuada. Cras quis ante quis lectus fermentum placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh."];
   const feedbackModal = document.createElement("div");
+  const socialLinks = document.createElement("div");
   const feedbackTrigger = document.createElement("h4");
   const feedbackModalHeader = document.createElement("h1");  
   const feedbackModalSubHeader = document.createElement("h3");
   const feedbackButtonYes = document.createElement("button");
   const feedbackButtonNo = document.createElement("button");
+  
+  // Declare Array Content
+  const blogContent = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh. Integer sit amet convallis lectus. Integer vestibulum blandit odio, eget dictum massa condimentum a. Sed finibus tincidunt varius. Nullam laoreet porttitor diam, vitae aliquet purus pellentesque efficitur. Sed eget luctus quam. Quisque sed elit eget elit maximus elementum vitae ac odio. \n \n Pellentesque eu urna risus. In hac habitasse platea dictumst. Nulla fermentum dapibus eleifend. Aenean pretium purus dolor, et accumsan arcu sollicitudin eu. Aenean lacinia, sapien aliquet scelerisque porta, nunc nunc molestie neque, in commodo ex nulla vitae sem. Cras sit amet nisi euismod, viverra erat nec, viverra sapien. Duis suscipit a eros quis vehicula. In hac habitasse platea dictumst. Suspendisse tristique eget mi eu vulputate. Aliquam vel varius mauris. In hac habitasse platea dictumst. \n \n Phasellus quis egestas diam, a sodales lacus. Etiam venenatis ligula vitae felis rutrum consectetur. Donec ipsum purus, facilisis a ante vel, suscipit scelerisque felis. In aliquet vulputate suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id tristique orci. Pellentesque condimentum orci vehicula efficitur malesuada. Cras quis ante quis lectus fermentum placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh."];
   const socialMediaOptions = ["fb", "ig", "tw"];
 
   // Declare Functions
@@ -79,17 +82,16 @@
     feedbackModalHeader.innerText = "Thank You"
 
     addPositiveContent()
-    // feedbackModalSubHeader.style.animation = "fadeIn 0.5s 0.5s ease forwards";
-    // feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
-    // feedbackModalHeader.style.animation = "fadeIn 0.5s 0.5s ease forwards";
   };
 
   function addPositiveContent () {
     setTimeout(function() {
-      feedbackModalSubHeader.style.animation = "fadeIn 0.5s 0.5s ease forwards";
+      feedbackModalSubHeader.style.animation = "fadeIn 0.5s ease forwards";
       feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
-    }, 1000);
 
+      feedbackSection.append(socialLinks);
+      socialLinks.append(socialMediaOptions);
+    }, 500);
   }
 
   // Declare Event Listeners
@@ -97,21 +99,20 @@
   feedbackButtonNo.addEventListener("click", userDidNotEnjoyArticle);
 
   // Append Elements
-  body.append(blogSection, feedbackSection, feedbackModal);
+  body.append(blogSection, feedbackSection);
   blogSection.append(blogContent);
   feedbackSection.append(feedbackTrigger, feedbackModal);
   feedbackModal.append(feedbackModalSubHeader, feedbackModalHeader, feedbackButtonYes, feedbackButtonNo);
 
-
   // Styling & InnerText
-  feedbackModal.style.cssText = "border: 1px solid red; height: 0; padding: 20px 30px; text-align: center;";
-  feedbackButtonNo.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer;";
-  feedbackButtonYes.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer;";
+  blogSection.style.cssText = "height: 100vh; border: 1px solid black;"
+  feedbackModal.style.cssText = "height: 0; padding: 20px 30px; text-align: center;";
+  feedbackButtonNo.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
+  feedbackButtonYes.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackTrigger.style.cssText = "height: 20px; text-align: center; width: 100%;";
-  feedbackModalSubHeader.style.opacity = "0";
-  blogSection.style.height = "100vh";
+  socialLinks.style.cssText = "background: blue; height: 300px; width: 300px;"
+  feedbackModalSubHeader.style.opacity = "1";
   feedbackSection.classList = "section__animate";
-
 
   // Inner text
   feedbackTrigger.innerText = "Thanks for reading";
@@ -119,8 +120,6 @@
   feedbackButtonNo.innerText = "No";
   feedbackModalHeader.innerText = "Did you enjoy the article?";
   feedbackModalSubHeader.innerText = "Thanks for reading...";
-
-
 
 
   // Intersection Observer
@@ -134,7 +133,7 @@
         entry.target.classList.remove('animated');
       }
     });
-  },{rootMargin: "20px"});
+  },{rootMargin: "5px"});
 
   images.forEach(image => {
     observer.observe(image);
