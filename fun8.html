@@ -7,8 +7,16 @@
 </head>
 <style>
   .active {
-    background: green!important;
-    transition: 0.5s;
+    background: yellow;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>
 <body></body>
@@ -20,43 +28,39 @@
   const fanLight = document.createElement("div");
   const fanButton = document.createElement("button");
   const lightButton = document.createElement("button");
-  const fanStartSpeed = 0;
-  const fanSpeeds = ["0", "1", "2", "3"];
+  let fanCurrentSpeed = 0;
 
   // Dec Funcs
   toggleLight = () => {
     fanLight.classList.toggle("active");
-    console.log("light is toggled")
+    console.log("light is toggled and " + fanLight.classList)
   }
 
   updateFanSpeed = () => {
+    console.log(fanCurrentSpeed);
 
-    if (fanStartSpeed == 0) {
-      console.log("Here");
-      fanStartSpeed + 1;
-      console.log(fanStartSpeed);
+    if (fanCurrentSpeed == 0) {
+      fanOn();
+      fanCurrentSpeed += 1;  
+    } else if (fanCurrentSpeed == 4) {
+      fanOff();
+      fanCurrentSpeed = 0;
     } else {
-      fanSpeeds[i];
+      fanCurrentSpeed++;
     }
+  }
 
-    console.log(fanSpeeds);
+  fanOff = () => {
+    const spinTime = 'spin ' +  "2s linear infinite";
+    fanBlades.style.setProperty("animation", spinTime);
+    // console.log(fanBlades.style);
+  };
 
-    // Create fanspeed
-    
-    // while (i <= 3) {
-    //   return i++, console.log("fanspeed is " + i);
-    // }
-
-
-    // Check fanspeed
-    // if (fanspeed <= 0) {
-    //   console.log("Fan's off");
-    //   fanspeed ++;
-    // } else if (fanspeed = 1) {
-    //   console.log("Speed 1");
-    //   fanspeed ++;
-    // }
-    // Iterate through 3 speeds
+  fanOn = () => {
+    const spinTime = 'spin ' + fanCurrentSpeed + 's linear infinite';
+    fanBlades.style.setProperty("animation", spinTime);
+    // console.log(fanBlades.style);
+    console.log(spinTime);
   }
 
   // Dec Events
@@ -69,7 +73,7 @@
   // Add styles
   lightButton.innerText = "Light"
   fanButton.innerText = "Fan";
-  fanLight.style.cssText = "background: red; height: 50px; width: 50px;"
+  fanLight.style.cssText = "border: 1px solid red; border-radius: 120px; height: 50px; width: 50px; transition: 0.5s;"
   fanBlades.style.cssText = "background: blue; height: 150px; width: 150px;"
 
 </script>
