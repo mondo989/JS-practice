@@ -13,9 +13,11 @@
       transform: translateY(0px);
     }
 
+
     100% {
       transform: translateY(-10px);
       opacity: 0;
+      z-index: -20;
     }
   }
 
@@ -47,34 +49,70 @@
   .section__animate.animated h4 {
     display: none;
   }
+
+  .social-links {
+    display: flex;
+    list-style-type: none;
+  }
+
+  .social-links li {
+    border-radius: 120px;
+    overflow: hidden;
+  }
+
+  .social-links li a {
+    background-color: red;
+    padding: 10px;
+    display: inline-block;
+  }
+
+  .social-links img {
+    height: 50px;
+    width: 50px;
+  }
 </style>
 
 <body></body>
 
 <script>
-  // Declare Elements
+  // Declare Body & 2 main Elements
   const body = document.querySelector("body");
-  // Declare 2 main sections
   const blogSection = document.createElement("section");
   const feedbackSection = document.createElement("section");
+
+  // Lots of extra stuff here:
   const feedbackModal = document.createElement("div");
-  const socialLinks = document.createElement("div");
-  const feedbackTrigger = document.createElement("h4");
   const feedbackModalHeader = document.createElement("h1");
   const feedbackModalSubHeader = document.createElement("h3");
+  const feedbackTrigger = document.createElement("h4");
   const feedbackButtonYes = document.createElement("button");
   const feedbackButtonNo = document.createElement("button");
+
+  // Declare SupportRow
+  const supportRow = document.createElement("div");
+  const socialLinks = document.createElement("div");
+  const shareContent = document.createElement("div");
+  const supportContent = document.createElement("div");
+
+
+  // Support Row
+    // Share-Side
+      // Share-Icons
+      // Share-Copy
+    // Donate-side
+      // Donate-Icons
+      // Donate-Copy
+
+
+  // Declare FeedbackRow
 
 
   // Declare Array Content
   const blogContent = [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh. Integer sit amet convallis lectus. Integer vestibulum blandit odio, eget dictum massa condimentum a. Sed finibus tincidunt varius. Nullam laoreet porttitor diam, vitae aliquet purus pellentesque efficitur. Sed eget luctus quam. Quisque sed elit eget elit maximus elementum vitae ac odio. \n \n Pellentesque eu urna risus. In hac habitasse platea dictumst. Nulla fermentum dapibus eleifend. Aenean pretium purus dolor, et accumsan arcu sollicitudin eu. Aenean lacinia, sapien aliquet scelerisque porta, nunc nunc molestie neque, in commodo ex nulla vitae sem. Cras sit amet nisi euismod, viverra erat nec, viverra sapien. Duis suscipit a eros quis vehicula. In hac habitasse platea dictumst. Suspendisse tristique eget mi eu vulputate. Aliquam vel varius mauris. In hac habitasse platea dictumst. \n \n Phasellus quis egestas diam, a sodales lacus. Etiam venenatis ligula vitae felis rutrum consectetur. Donec ipsum purus, facilisis a ante vel, suscipit scelerisque felis. In aliquet vulputate suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id tristique orci. Pellentesque condimentum orci vehicula efficitur malesuada. Cras quis ante quis lectus fermentum placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh."
   ];
-  const socialMediaOptions = ["facebook", "instagram", "linkedin"];
-  const socialMediaImagesSrc = ["../imgs/fb.png", "../imgs/tw.png", "../imgs/ig.png"]
-  // const fieldGoalPost = new Image(500, 400);
-  // fieldGoalPost.src = '../imgs/fieldgoal.svg';
-
+  const socialMediaImagesSrc = ["../imgs/fb.png", "../imgs/tw.png", "../imgs/ig.png"];
+  
   // Declare Functions
   function userEnjoyedArticle() {
     updateContent();
@@ -83,6 +121,7 @@
   function userDidNotEnjoyArticle() {}
 
   function updateContent() {
+    // Triggers FadeOut Animations
     feedbackButtonYes.style.animation = "fadeOut 0.5s ease forwards";
     feedbackButtonNo.style.animation = "fadeOut 0.5s ease forwards";
     feedbackModalSubHeader.style.animation = "fadeOut 0.5s ease forwards";
@@ -92,22 +131,28 @@
     addPositiveContent()
   };
 
+  // SetTimeout function to stagger animation events
   function addPositiveContent() {
     setTimeout(function () {
       feedbackModalSubHeader.style.animation = "fadeIn 0.5s ease forwards";
       feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
 
-      feedbackSection.append(socialLinks);
-      // socialLinks.append(socialMediaOptions);
+      feedbackSection.append(supportRow)
+      supportRow.append(shareContent, supportContent);
 
-      socialLogos = "<ul>";
+      shareContent.append(socialLinks);
+
+      supportContent.append("div");
+      // feedbackSection.append(socialLinks);
+
+      socialLogos = "<ul class='social-links'>";
       for (i = 0; i < socialMediaImagesSrc.length; i++) {
         socialLogos += "<li> <a>" + "<img src=" + socialMediaImagesSrc[i] + ">" + "</a> </li>";
         console.log(i);
       };
       socialLogos += "</ul>";
+      
       socialLinks.innerHTML = socialLogos;
-
     }, 500);
   }
 
@@ -121,15 +166,22 @@
   feedbackSection.append(feedbackTrigger, feedbackModal);
   feedbackModal.append(feedbackModalSubHeader, feedbackModalHeader, feedbackButtonYes, feedbackButtonNo);
 
+
+
+
+
   // Styling & InnerText
   blogSection.style.cssText = "height: 100vh; border: 1px solid black;"
   feedbackModal.style.cssText = "height: 0; padding: 20px 30px; text-align: center;";
   feedbackButtonNo.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackButtonYes.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackTrigger.style.cssText = "height: 20px; text-align: center; width: 100%;";
-  socialLinks.style.cssText = "background: blue; height: 150px; width: 100%; bottom: 0;"
+  socialLinks.style.cssText = "background: blue;"
   feedbackModalSubHeader.style.opacity = "1";
   feedbackSection.classList = "section__animate";
+  supportRow.style.cssText = "background: red; width: 100%; display: flex;";
+  feedbackModal.style.cssText = "background: green;"
+  shareContent.style.cssText = "border: 3px solid gray"
 
   // Inner text
   feedbackTrigger.innerText = "Thanks for reading";
@@ -137,6 +189,10 @@
   feedbackButtonNo.innerText = "No";
   feedbackModalHeader.innerText = "Did you enjoy the article?";
   feedbackModalSubHeader.innerText = "Thanks for reading...";
+
+
+
+
 
 
   // Intersection Observer
