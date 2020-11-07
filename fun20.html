@@ -6,8 +6,13 @@
   <title>Fun 20</title>
 </head>
 <body>
-  <button>Start Count Down</button>
-  <div>Registration closes in <span id="time"></span> minutes!</div>
+  <hr>
+  <div id ="time"></div>
+  <hr>
+  <div id ="timeb"></div>
+  <hr>
+  <!-- <button>Start Count Down</button>
+  <div>Registration closes in <span id="time"></span> minutes!</div> -->
 </body>
 <script>
   // Declare elems
@@ -15,24 +20,20 @@
   const button = document.createElement("button");
   const countDownContainer = document.createElement("div");
   const workOutStartsHeader = document.createElement("h1")
-  // const timer = 
-  // const workoutTime = 120seconds;
+  const workoutTypes = ["pushups", "squats", "lunges", "dips"];
 
 
   // Declare functions
   beginWorkOut = () => {
-    console.log("Hey")
-
     // Display Countdown Timer
     countDownContainer.style.display = "flex";
-
+    // Start CountDown Timer
+    // timer.start();
     // Start countdown timer to first workout 
     countDownTimerFiveSecs();
 
     // Randomize and declare first workout
-    
-
-
+    declareWorkOut();
 
     // Set Countdown timer for the workout
     // Notify user when 10 seconds remain.
@@ -45,16 +46,30 @@
     // After 3 timed workouts call workOutComplete.
   }
   
-
   countDownTimerFiveSecs = () => {
-    // const countDownDate = new Date("")    ;
-    let currentTime = new Date();
-    currentTime.getHours();
-    currentTime.getMinutes()
-    currentTime.getSeconds();
+    var display = document.querySelector('#time');
+    var timer = new CountDownTimer(5);
+    var timeObj = CountDownTimer.parse(5);
 
-    workOutStartsHeader.append(currentTime)
-    // print(currentTime);
+    format(timeObj.minutes, timeObj.seconds);
+    timer.onTick(format);
+
+    timer.start();
+
+    if (CountDownTimer.parse(5) >= 3) {
+      console.log("hihih");
+    }
+
+    function format(minutes, seconds) {
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      display.textContent = minutes + ':' + seconds;
+    }
+  }
+
+  declareWorkOut = () => {
+    const currentWorkOut = workoutTypes[Math.floor(Math.random() * workoutTypes.length)];
+    console.log(currentWorkOut);
   }
 
 
@@ -88,6 +103,7 @@ function CountDownTimer(duration, granularity) {
 
 CountDownTimer.prototype.start = function() {
   if (this.running) {
+    console.log("runnning")
     return;
   }
   this.running = true;
@@ -120,6 +136,7 @@ CountDownTimer.prototype.onTick = function(ftn) {
 };
 
 CountDownTimer.prototype.expired = function() {
+  console.log("expired");
   return !this.running;
 };
 
@@ -131,18 +148,6 @@ CountDownTimer.parse = function(seconds) {
 };
 
 window.onload = function() {
-var display = document.querySelector('#time');
-var timer = new CountDownTimer(5);
-var timeObj = CountDownTimer.parse(5);
-
-  format(timeObj.minutes, timeObj.seconds);
-
-  timer.onTick(format);
-
-  document.querySelector('button').addEventListener('click', function() {
-    timer.start();
-  });
-
   function format(minutes, seconds) {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;

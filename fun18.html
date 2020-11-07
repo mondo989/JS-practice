@@ -93,16 +93,16 @@
   const socialLinks = document.createElement("div");
   const shareContent = document.createElement("div");
   const supportContent = document.createElement("div");
+  const shareCopy = document.createElement("div");
+  shareCopy.innerText = "Social Links";
 
-
-  // Support Row
-    // Share-Side
-      // Share-Icons
-      // Share-Copy
-    // Donate-side
-      // Donate-Icons
-      // Donate-Copy
-
+  // Support-Row
+    // ShareContent
+      // ShareIcons
+      // ShareCopy
+    // SupportContent
+      // DonateIcons
+      // DonateCopy
 
   // Declare FeedbackRow
 
@@ -139,9 +139,7 @@
 
       feedbackSection.append(supportRow)
       supportRow.append(shareContent, supportContent);
-
-      shareContent.append(socialLinks);
-
+      shareContent.append(socialLinks, shareCopy);
       supportContent.append("div");
       // feedbackSection.append(socialLinks);
 
@@ -167,9 +165,6 @@
   feedbackModal.append(feedbackModalSubHeader, feedbackModalHeader, feedbackButtonYes, feedbackButtonNo);
 
 
-
-
-
   // Styling & InnerText
   blogSection.style.cssText = "height: 100vh; border: 1px solid black;"
   feedbackModal.style.cssText = "height: 0; padding: 20px 30px; text-align: center;";
@@ -181,7 +176,8 @@
   feedbackSection.classList = "section__animate";
   supportRow.style.cssText = "background: red; width: 100%; display: flex;";
   feedbackModal.style.cssText = "background: green;"
-  shareContent.style.cssText = "border: 3px solid gray"
+  shareContent.style.cssText = "background: pink; width: 100%;"
+  supportContent.style.cssText = "background: yellow; width: 100%;"
 
   // Inner text
   feedbackTrigger.innerText = "Thanks for reading";
@@ -189,10 +185,6 @@
   feedbackButtonNo.innerText = "No";
   feedbackModalHeader.innerText = "Did you enjoy the article?";
   feedbackModalSubHeader.innerText = "Thanks for reading...";
-
-
-
-
 
 
   // Intersection Observer
