@@ -8,71 +8,27 @@
 </head>
 <style>
   @keyframes fadeOut {
-    0% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-
-
-    100% {
-      transform: translateY(-10px);
-      opacity: 0;
-      z-index: -20;
-    }
+    0% { opacity: 1; transform: translateY(0px); }
+    100% { transform: translateY(-10px); opacity: 0; z-index: -20; }
   }
 
   @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0px); }
   }
 
-  .section__animate {
-    border: 1px solid blue;
-    height: 50px;
-    transition: 1s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .section__animate.animated {
-    height: 250px;
-    background: teal;
-  }
-
-  .section__animate.animated h4 {
-    display: none;
-  }
-
-  .social-links {
-    display: flex;
-    list-style-type: none;
-  }
-
-  .social-links li {
-    border-radius: 120px;
-    overflow: hidden;
-  }
-
-  .social-links li a {
-    background-color: red;
-    padding: 10px;
-    display: inline-block;
-  }
-
-  .social-links img {
-    height: 50px;
-    width: 50px;
-  }
+  .section__animate { height: 50px; overflow: hidden; position: relative; transition: 1s;}
+  .section__animate.animated { height: 100%; padding-bottom: 20px;}
+  .section__animate.animated h4 { display: none; }
+  .social-links { display: flex; justify-content: center;list-style-type: none; }
+  .social-links li a { padding: 7px; width: 30px; height: 30px; margin: 0 10px; border-radius: 120px; 
+background-color: white; border: 1px solid #cecece; display: inline-block; cursor: pointer; }
+  .social-links img { height: 100%; width: 100%; }
 </style>
 
-<body></body>
+<body>
+  <section></section>
+</body>
 
 <script>
   // Declare Body & 2 main Elements
@@ -136,10 +92,14 @@
     setTimeout(function () {
       feedbackModalSubHeader.style.animation = "fadeIn 0.5s ease forwards";
       feedbackModalSubHeader.innerText = "The author would appreciate any additional support."
+      feedbackButtonYes.style.display = "none";
+      feedbackButtonNo.style.display = "none";
+      feedbackModalHeader.style.display = "none";
+      shareCopy.style.cssText = "text-align: center; font-size: 13px; color: #343434;";
 
-      feedbackSection.append(supportRow)
-      supportRow.append(shareContent, supportContent);
+      feedbackSection.append(supportRow);
       shareContent.append(socialLinks, shareCopy);
+      supportRow.append(shareContent, supportContent);
       supportContent.append("div");
       // feedbackSection.append(socialLinks);
 
@@ -166,18 +126,18 @@
 
 
   // Styling & InnerText
-  blogSection.style.cssText = "height: 100vh; border: 1px solid black;"
+  blogSection.style.cssText = "height: 100vh;"
   feedbackModal.style.cssText = "height: 0; padding: 20px 30px; text-align: center;";
   feedbackButtonNo.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackButtonYes.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackTrigger.style.cssText = "height: 20px; text-align: center; width: 100%;";
-  socialLinks.style.cssText = "background: blue;"
+  socialLinks.style.cssText = "justify-content: center";
   feedbackModalSubHeader.style.opacity = "1";
   feedbackSection.classList = "section__animate";
-  supportRow.style.cssText = "background: red; width: 100%; display: flex;";
-  feedbackModal.style.cssText = "background: green;"
-  shareContent.style.cssText = "background: pink; width: 100%;"
-  supportContent.style.cssText = "background: yellow; width: 100%;"
+  supportRow.style.cssText = "width: 100%; display: flex;";
+  feedbackModal.style.cssText = "text-align: center;"
+  shareContent.style.cssText = "width: 100%;"
+  supportContent.style.cssText = "width: 100%;"
 
   // Inner text
   feedbackTrigger.innerText = "Thanks for reading";

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Artboard Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Artboard-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#131313" cx="200" cy="200" r="200"></circle>
+        <g id="Group" transform="translate(119.000000, 119.000000)">
+            <g id="Group-2">
+                <circle id="Oval-Copy" fill="#FFFFFF" cx="81" cy="82" r="81"></circle>
+                <text id="8" font-family="Oswald-Regular, Oswald Regular" font-size="120" font-weight="normal" fill="#08090A">
+                    <tspan x="52" y="131">8</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun 21</title>
+</head>
+<body></body>
+  <script>
+    // Declare Elemns
+    const body = document.querySelector("body");
+    const button = document.createElement("button");
+    const eightBall = document.createElement("div");
+    const eightBallFront = document.createElement("div");
+    const eightBallBack = document.createElement("div");
+    const magicResponses = ["Yes", "No", "Maybe", "You suck"];
+    const eightBallImageFront = new Image(500, 400);
+    eightBallImageFront.src = '../imgs/fieldgoal.svg';
+    // const eightBallImageBack = new Image(500, 400);
+    // eightBallImageBack.src = '../imgs/ig.png';
+  
+    // Declare Functions
+    askEightBall = () => {
+      console.log("call 8ball");
+    }
+
+
+    // // Append & Style
+    // body.append(eightBallImageFront);
+    body.append(eightBall, button);
+    // body.append(eightBallImageFront);
+    eightBall.append(eightBallFront);
+    // eightBallFront.append("div");
+
+    // 8ball
+      // 8ballFront
+        // IMG
+      // 8ballBack
+        // IMG
+          // Content
+
+    // Add Event listeners
+    button.addEventListener("click", askEightBall);
+
+    
+
+    // InnerTxt
+    eightBallFront.innerText = "This front";
+    eightBallBack.innerText = "This back";
+    button.innerText = "Ask Magic 8 ball";
+
+    
+    eightBall.style.cssText = "border: 1px solid red;"
+    eightBallFront.style.cssText = "border: 1px solid green; height: 200px; width: 120px; background: red; padding: 30px;"
+    eightBallBack.style.cssText = "border: 1px solid blue; background: pink;"
+    eightBallImageFront.style.cssText = "width: 300px; height: 120px; background: pink; padding: 30px;";
+
+  </script>
+</html>
