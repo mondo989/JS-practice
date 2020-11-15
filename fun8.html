@@ -3,32 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>fun8</title>
+  <title>Light/fan</title>
 </head>
 <style>
-  .active {
-    background: yellow;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+  .active { background: yellow; }
+  @keyframes spin { 0% { transform: rotate(0); } 100% { transform: rotate(360deg);}}
 </style>
 <body></body>
 
 <script>
   // Dec Elems
   const body = document.querySelector("body");
+  const fanContainer = document.createElement("div");
   const fanBlades = document.createElement("div");
   const fanLight = document.createElement("div");
   const fanButton = document.createElement("button");
   const lightButton = document.createElement("button");
-  let fanCurrentSpeed = 0;
+  var fanCurrentSpeed = 0;
 
   // Dec Funcs
   toggleLight = () => {
@@ -37,43 +28,37 @@
   }
 
   updateFanSpeed = () => {
-    console.log(fanCurrentSpeed);
-
     if (fanCurrentSpeed == 0) {
-      fanOn();
-      fanCurrentSpeed += 1;  
-    } else if (fanCurrentSpeed == 4) {
-      fanOff();
+      fanCurrentSpeed += 1;
+      updateFanAnimationSpeed();
+    } else if (fanCurrentSpeed == 3) {
       fanCurrentSpeed = 0;
+      updateFanAnimationSpeed();
     } else {
       fanCurrentSpeed++;
+      updateFanAnimationSpeed();
     }
   }
 
-  fanOff = () => {
-    const spinTime = 'spin ' +  "2s linear infinite";
-    fanBlades.style.setProperty("animation", spinTime);
-    // console.log(fanBlades.style);
-  };
-
-  fanOn = () => {
+  updateFanAnimationSpeed = () => {
     const spinTime = 'spin ' + fanCurrentSpeed + 's linear infinite';
     fanBlades.style.setProperty("animation", spinTime);
-    // console.log(fanBlades.style);
-    console.log(spinTime);
+    console.log("The current fanspeed is " + fanCurrentSpeed);
   }
 
-  // Dec Events
+  // Dec Event Listeners
   lightButton.addEventListener("click", toggleLight);
   fanButton.addEventListener("click", updateFanSpeed);
 
   // App Els & Inner Text
-  body.append(fanBlades, fanLight, fanButton, lightButton);
+  body.append(fanContainer, fanButton, lightButton);
+  fanContainer.append(fanBlades, fanLight);
 
   // Add styles
   lightButton.innerText = "Light"
   fanButton.innerText = "Fan";
-  fanLight.style.cssText = "border: 1px solid red; border-radius: 120px; height: 50px; width: 50px; transition: 0.5s;"
+  fanContainer.style.cssText = "display: flex; justify-content: center; align-content: center; position: relative;"
+  fanLight.style.cssText = "border: 1px solid red; border-radius: 120px; height: 50px; width: 50px; transition: 0.5s; position: absolute; top: 45px; bottom:0;"
   fanBlades.style.cssText = "background: blue; height: 150px; width: 150px;"
 
 </script>

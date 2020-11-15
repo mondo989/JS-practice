@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun24</title>
+</head>
+<body></body>
+
+  <script>
+
+    // Declare Elements
+    const body = document.querySelector("body");
+    const inputField = document.createElement("input");
+    const responseField = document.createElement("div");
+    const submitButton = document.createElement("button");
+    // Endpoint URL
+    const url = 'https://pokeapi.co/api/v2/pokemon/';
+
+    // Declare Functions
+    checkPokemon = () => {
+      const pokeQuery = inputField.value;
+      const endpoint = url + pokeQuery;
+
+      console.log(endpoint);
+
+      fetch(endpoint,{
+       cache: 'no-cache'
+      }).then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+        throw new Error('Request failed');
+      }, networkError => {
+        console.log(networkError.message);
+      }).then(jsonResponse => {
+        renderResponse(jsonResponse);
+      })
+    }
+
+    const renderResponse = res => {
+      if(!res) {
+        console.log(res.status);
+      }
+
+      if(!res.length) {
+        responseField.innerHTML = "<p>Try Again</p>";
+        return;
+      }
+    }
+
+    // Add Event Listeners
+    submitButton.addEventListener("click", checkPokemon);
+
+    // Append & Inner Text & Styling
+    body.append(inputField, responseField, submitButton);
+    submitButton.innerText = 'Submit';
+
+  </script>
+</html>
