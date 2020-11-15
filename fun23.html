@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>fun 21</title>
+  <title>Magic8ball</title>
 </head>
 <body></body>
   <script>
@@ -11,49 +11,36 @@
     const body = document.querySelector("body");
     const button = document.createElement("button");
     const eightBall = document.createElement("div");
-    const eightBallFront = document.createElement("div");
-    const eightBallBack = document.createElement("div");
+    const eightBallFront = new Image(200, 200);
+          eightBallFront.src = '../imgs/8ball.svg';
+    const eightBallBack = new Image(200, 200);
+          eightBallBack.src = '../imgs/8ballback.svg';
     const magicResponses = ["Yes", "No", "Maybe", "You suck"];
-    const eightBallImageFront = new Image(500, 400);
-    eightBallImageFront.src = '../imgs/fieldgoal.svg';
-    // const eightBallImageBack = new Image(500, 400);
-    // eightBallImageBack.src = '../imgs/ig.png';
+    const eightBallResponse = document.createElement("div");
   
     // Declare Functions
     askEightBall = () => {
       console.log("call 8ball");
+      eightBall.style.transform = "rotateY(180deg)";
+      eightBallResponse.style.transform = "rotateY(180deg)";
+      eightBall.append(eightBallResponse);
+      eightBallResponse.innerText = magicResponses[Math.floor(Math.random() * magicResponses.length)];
     }
 
-
-    // // Append & Style
-    // body.append(eightBallImageFront);
+    // Append & Style
     body.append(eightBall, button);
-    // body.append(eightBallImageFront);
-    eightBall.append(eightBallFront);
-    // eightBallFront.append("div");
-
-    // 8ball
-      // 8ballFront
-        // IMG
-      // 8ballBack
-        // IMG
-          // Content
+    eightBall.append(eightBallFront, eightBallBack);
+    // Why cant I append an object to an object that is appended?
 
     // Add Event listeners
     button.addEventListener("click", askEightBall);
 
-    
-
-    // InnerTxt
-    eightBallFront.innerText = "This front";
-    eightBallBack.innerText = "This back";
+    // InnerTxt & Styling
     button.innerText = "Ask Magic 8 ball";
-
-    
-    eightBall.style.cssText = "border: 1px solid red;"
-    eightBallFront.style.cssText = "border: 1px solid green; height: 200px; width: 120px; background: red; padding: 30px;"
-    eightBallBack.style.cssText = "border: 1px solid blue; background: pink;"
-    eightBallImageFront.style.cssText = "width: 300px; height: 120px; background: pink; padding: 30px;";
+    eightBall.style.cssText = "width: 350px; height: 350px; perspective: 1000px;  position: relative;  transform-style: preserve-3d; transition: 0.5s; display: flex; jusify-content: center; align-items: center; width: 100%;"
+    eightBallFront.style.cssText = "position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden;"
+    eightBallBack.style.cssText = "color: white; position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; transform: rotateY(180deg);"
+    eightBallResponse.style.cssText = "color: white; position: relative; top: 20px; font-size: 50px; justify-content: center; align-content: center; width: 100%; text-align: center;"
 
   </script>
 </html>
