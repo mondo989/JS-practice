@@ -20,10 +20,10 @@
   .section__animate { height: 50px; overflow: hidden; position: relative; transition: 1s;}
   .section__animate.animated { height: 100%; padding-bottom: 20px;}
   .section__animate.animated h4 { display: none; }
-  .social-links { display: flex; justify-content: center;list-style-type: none; }
-  .social-links li a { padding: 7px; width: 30px; height: 30px; margin: 0 10px; border-radius: 120px; 
+  .social-links, .donate-links { display: flex; justify-content: center;list-style-type: none; }
+  .social-links li a, .donate-links li a { padding: 7px; width: 30px; height: 30px; margin: 0 10px; border-radius: 120px;
 background-color: white; border: 1px solid #cecece; display: inline-block; cursor: pointer; }
-  .social-links img { height: 100%; width: 100%; }
+  .social-links img, .donate-links img { height: 100%; width: 100%; }
 </style>
 
 <body>
@@ -46,28 +46,19 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
 
   // Declare SupportRow
   const supportRow = document.createElement("div");
-  const socialLinks = document.createElement("div");
+  const shareLinks = document.createElement("div");
   const shareContent = document.createElement("div");
   const supportContent = document.createElement("div");
+  const donateLinks = document.createElement("div");
   const shareCopy = document.createElement("div");
   shareCopy.innerText = "Social Links";
-
-  // Support-Row
-    // ShareContent
-      // ShareIcons
-      // ShareCopy
-    // SupportContent
-      // DonateIcons
-      // DonateCopy
-
-  // Declare FeedbackRow
-
+  const donateCopy = document.createElement("div");
+  donateCopy.innerText = "Donation Links";
 
   // Declare Array Content
-  const blogContent = [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh. Integer sit amet convallis lectus. Integer vestibulum blandit odio, eget dictum massa condimentum a. Sed finibus tincidunt varius. Nullam laoreet porttitor diam, vitae aliquet purus pellentesque efficitur. Sed eget luctus quam. Quisque sed elit eget elit maximus elementum vitae ac odio. \n \n Pellentesque eu urna risus. In hac habitasse platea dictumst. Nulla fermentum dapibus eleifend. Aenean pretium purus dolor, et accumsan arcu sollicitudin eu. Aenean lacinia, sapien aliquet scelerisque porta, nunc nunc molestie neque, in commodo ex nulla vitae sem. Cras sit amet nisi euismod, viverra erat nec, viverra sapien. Duis suscipit a eros quis vehicula. In hac habitasse platea dictumst. Suspendisse tristique eget mi eu vulputate. Aliquam vel varius mauris. In hac habitasse platea dictumst. \n \n Phasellus quis egestas diam, a sodales lacus. Etiam venenatis ligula vitae felis rutrum consectetur. Donec ipsum purus, facilisis a ante vel, suscipit scelerisque felis. In aliquet vulputate suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id tristique orci. Pellentesque condimentum orci vehicula efficitur malesuada. Cras quis ante quis lectus fermentum placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh."
-  ];
+  const blogContent = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh. Integer sit amet convallis lectus. Integer vestibulum blandit odio, eget dictum massa condimentum a. Sed finibus tincidunt varius. Nullam laoreet porttitor diam, vitae aliquet purus pellentesque efficitur. Sed eget luctus quam. Quisque sed elit eget elit maximus elementum vitae ac odio. \n \n Pellentesque eu urna risus. In hac habitasse platea dictumst. Nulla fermentum dapibus eleifend. Aenean pretium purus dolor, et accumsan arcu sollicitudin eu. Aenean lacinia, sapien aliquet scelerisque porta, nunc nunc molestie neque, in commodo ex nulla vitae sem. Cras sit amet nisi euismod, viverra erat nec, viverra sapien. Duis suscipit a eros quis vehicula. In hac habitasse platea dictumst. Suspendisse tristique eget mi eu vulputate. Aliquam vel varius mauris. In hac habitasse platea dictumst. \n \n Phasellus quis egestas diam, a sodales lacus. Etiam venenatis ligula vitae felis rutrum consectetur. Donec ipsum purus, facilisis a ante vel, suscipit scelerisque felis. In aliquet vulputate suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id tristique orci. Pellentesque condimentum orci vehicula efficitur malesuada. Cras quis ante quis lectus fermentum placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis mauris nec tellus blandit efficitur vitae nec massa. In mollis pellentesque porta. Nam tristique arcu non felis viverra, non viverra ligula euismod. Maecenas nulla turpis, luctus in dignissim id, dignissim auctor nibh." ];
   const socialMediaImagesSrc = ["../imgs/fb.png", "../imgs/tw.png", "../imgs/ig.png"];
+  const donateImagesSrc = ["../imgs/fb.png", "../imgs/tw.png", "../imgs/ig.png"];
   
   // Declare Functions
   function userEnjoyedArticle() {
@@ -78,6 +69,7 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
 
   function updateContent() {
     // Triggers FadeOut Animations
+    // Gotta be a way to trigger all these in a single function
     feedbackButtonYes.style.animation = "fadeOut 0.5s ease forwards";
     feedbackButtonNo.style.animation = "fadeOut 0.5s ease forwards";
     feedbackModalSubHeader.style.animation = "fadeOut 0.5s ease forwards";
@@ -96,12 +88,12 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
       feedbackButtonNo.style.display = "none";
       feedbackModalHeader.style.display = "none";
       shareCopy.style.cssText = "text-align: center; font-size: 13px; color: #343434;";
+      donateCopy.style.cssText = "text-align: center; font-size: 13px; color: #343434;";
 
       feedbackSection.append(supportRow);
-      shareContent.append(socialLinks, shareCopy);
       supportRow.append(shareContent, supportContent);
-      supportContent.append("div");
-      // feedbackSection.append(socialLinks);
+      shareContent.append(shareLinks, shareCopy);
+      supportContent.append(donateLinks, donateCopy);
 
       socialLogos = "<ul class='social-links'>";
       for (i = 0; i < socialMediaImagesSrc.length; i++) {
@@ -109,8 +101,14 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
         console.log(i);
       };
       socialLogos += "</ul>";
-      
-      socialLinks.innerHTML = socialLogos;
+      shareLinks.innerHTML = socialLogos;
+
+      donateLogos = "<ul class='donate-links'>";
+      for (i=0; i<donateImagesSrc.length; i++) {
+        donateLogos += "<li> <a>" + "<img src=" + donateImagesSrc[i] + ">" + "</a> </li>"
+      }
+      donateLogos += "</ul>";
+      donateLinks.innerHTML = donateLogos;
     }, 500);
   }
 
@@ -131,11 +129,11 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
   feedbackButtonNo.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackButtonYes.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackTrigger.style.cssText = "height: 20px; text-align: center; width: 100%;";
-  socialLinks.style.cssText = "justify-content: center";
   feedbackModalSubHeader.style.opacity = "1";
   feedbackSection.classList = "section__animate";
   supportRow.style.cssText = "width: 100%; display: flex;";
   feedbackModal.style.cssText = "text-align: center;"
+  shareLinks.style.cssText = "justify-content: center";
   shareContent.style.cssText = "width: 100%;"
   supportContent.style.cssText = "width: 100%;"
 
@@ -145,7 +143,6 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
   feedbackButtonNo.innerText = "No";
   feedbackModalHeader.innerText = "Did you enjoy the article?";
   feedbackModalSubHeader.innerText = "Thanks for reading...";
-
 
   // Intersection Observer
   const images = document.querySelectorAll('.section__animate');
