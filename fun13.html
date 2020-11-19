@@ -7,24 +7,15 @@
 </head>
 <body></body>
   <style>
-    @keyframes raceCarAnim {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(8000px);
-      }
-    }
-
-    .raceCarAnim {
-      animation: raceCarAnim;
-    }
+    @keyframes raceCarAnim { 0% { transform: translateX(0); } 100% { transform: translateX(8000px); }}
+    .raceCarAnim { animation: raceCarAnim; }
   </style>
   <script>
 
     // Declare Elements
     const body = document.querySelector("body");
     const button = document.createElement("button");
+    const button2 = document.createElement("button");
     const carOne = document.createElement("div");
     const carTwo = document.createElement("div");
     const raceTrack = document.createElement("div");
@@ -35,25 +26,47 @@
     }
 
     function carsRace () {
-      const randomSpeedSecs = Math.floor(Math.random() * 100);
-      const raceCarAnimation = 'raceCarAnim ' + ' ' + randomSpeedSecs + 's';
-      carOne.style.setProperty("animation", raceCarAnimation);
-      carTwo.style.setProperty("animation", raceCarAnimation);
-      console.log(raceCarAnimation);
+      // Send to Dryer
+      const randomSpeedCarA = Math.floor(Math.random() * 10);
+      const randomSpeedCarB = Math.floor(Math.random() * 10);
+      const raceCarASpeed = 'raceCarAnim ' + ' ' + randomSpeedCarA + 's';
+      const raceCarBSpeed = 'raceCarAnim ' + ' ' + randomSpeedCarB + 's';
+      carOne.style.setProperty("animation", raceCarASpeed);
+      carTwo.style.setProperty("animation", raceCarBSpeed);
+      console.log(raceCarASpeed, raceCarBSpeed);
+    }
+
+    pickColor = () => {
+      body.innerText = "Click on the color you think will win";
     }
 
     // Declare Event Listeners
     button.addEventListener("click", carsRace);
+    button2.addEventListener("click", pickColor);
   
     // Append Elements & Text & Styling
-    body.append(button, carOne, carTwo, raceTrack);
+    body.append(button, button2, carOne, carTwo, raceTrack);
 
-    carOne.style.width = "150px";
-    carTwo.style.width = "150px";
-    carOne.style.height = "150px";
-    carTwo.style.height = "150px";
-    carOne.style.background = "red";
-    carTwo.style.background = "blue";
+    carOne.style.cssText = "width: 150px; height: 150px; background: red;";
+    carOne.classList = "section__animate";
+    carTwo.style.cssText = "width: 150px; height: 150px; background: blue;";
+    raceTrack.style.cssText = "background: green; position: absolute; right: 0; top: 0; width: 120px; height: 500px;"
     button.innerText = "Begin Races";
+    button2.innerText = "Pick Color";
+
+    // https://stackoverflow.com/questions/211703/is-it-possible-to-get-the-position-of-div-within-the-browser-viewport-not-withi
+
+    let raceArea = {
+      root: document.querySelector('.section__animate'),
+      rootMargin: '50px 50px 50p 50px',
+      threshold: 1.0
+    }
+
+    let observer = new IntersectionObserver(alertWinner, raceArea);
+
+    const alertWinner = () => {
+      console.log("Winner");
+    }
+
   </script>
 </html>

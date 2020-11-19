@@ -10,28 +10,11 @@
       display: none;
     }
     .propellar-container,
-    .propellar-container svg {
-      transition: 0.7s;
-    }
-    .propellar-container:hover svg {
-      transform: scale(1.1);
-      cursor: pointer;
-    }
+    .propellar-container svg { transition: 0.7s;}
+    .propellar-container:hover svg { transform: scale(1.1); cursor: pointer;}
+    #propellar--blade-a { animation: rotateBlades 10s ease infinite; transform-origin: center;}
 
-    #propellar--blade-a {
-      animation: rotateBlades 10s ease infinite;
-
-      transform-origin: center;
-    }
-
-    @keyframes rotateBlades {
-      0% {
-        transform: rotate(0);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+    @keyframes rotateBlades { 0% { transform: rotate(0); } 100% { transform: rotate(360deg);}}
 
   </style>
 <body>
