@@ -26,24 +26,18 @@
   }
 
   @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
+    0% {transform: translateY(10px);opacity: 0;}
+    100% {opacity: 1; transform: translateY(0);}
   }
 
-  .battle-container { display: flex; justify-content: center; align-content: center; }
-  .battle-container svg{ width: 500px; margin: 20px; }
+  .battle-container {display: flex; justify-content: center; align-content: center; }
   svg #scissors,
-  svg #paper { background: blue; display: none;}
-  .hand_full--left svg #scissors { display: block;}
-  .scissors-picked svg #scissors { display: block !important;}
-  .paper-picked svg #paper { display: block !important;}
+  svg #paper {display: none;}
+  .hand_full--left svg #scissors {display: block;}
+  .scissors-picked svg #scissors {display: block;}
+  .paper-picked svg #paper {display: block;}
   .paper-picked svg #rock,
-  .scissors-picked svg #rock { display: none !important;}
+  .scissors-picked svg #rock {display: none;}
 
 </style>
 
@@ -123,7 +117,7 @@
     
     // Trigger default animations
     cpuHand.style.cssText = "animation: rpsBeginCpu 1.5s ease-out forwards";
-    userHand.style.cssText = "animation: rpsBeginUser 1.5s ease-out forwards";
+    userHand.style.cssText = "animation: rpsBeginUser 1.5s ease-out forwards;";
 
     if (userChoice == rpsChoices[0] && cpuChoice == rpsChoices[2]) {
       setTimeout(updateClassListA, 1400);
@@ -223,13 +217,13 @@
 
   function declareResults(results) {
     if (results == "You win") {
-      rpsResults.style.animation = "fadeInUp 1s 1s ease";
+      rpsResults.style.animation = "fadeInUp 0.2s 1.4s ease forwards";
       rpsResults.innerText = "You Win";
     } else if (results == "You lose") {
-      rpsResults.style.animation = "fadeInUp 1s 1s ease";
+      rpsResults.style.animation = "fadeInUp 0.2s 1.4s ease forwards";
       rpsResults.innerText = "You Lose";
     } else if (results == "It's a draw") {
-      rpsResults.style.animation = "fadeInUp 1s 1s ease";
+      rpsResults.style.animation = "fadeInUp 0.2s 1.4s ease forwards";
       rpsResults.innerText = "It's a draw";
     }
   }
@@ -249,7 +243,7 @@
 
   rpsRow.classList = "battle-container";
   rpsRow.style.cssText = "display: flex; justify-content: center; align-content: center;";
-  rpsResults.style.cssText = "width: 100%; height: 100px; text-align: center; opacity: 0;";
+  rpsResults.style.cssText = "width: 100%; height: 100px; text-align: center; opacity: 0; margin-top:30px;";
 
 </script>
 </html>
