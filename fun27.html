@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,46 +9,32 @@
 
 <style>
   @keyframes carJumps {
-    0% {
-      transform: translateY(0px);
-    }
-    20% {
-      transform: translateY(20px) rotate(5deg);
-    }
+    0% { transform: translateY(0px); }
+    20% { transform: translateY(20px) rotate(5deg); }
+    30% { transform: rotate(-5deg); }
+    40% { transform: translateY(-800px) rotate(-30deg); }
+    60% { transform: translateY(-800px) rotate(30deg); }
+    80% { transform: translateY(20px) rotate(15deg); }
+    100% { transform: translateY(0);}
+  }
 
-    30% {
-      transform: rotate(-5deg);
-    }
-
-    40% {
-      transform: translateY(-800px) rotate(-30deg);
-    }
-
-    60% {
-      transform: translateY(-800px) rotate(30deg);
-    }
-
-    80% {
-      transform: translateY(20px) rotate(15deg);
-    }
-    
-    100% {
-      transform: translateY(0);
-    }
+  @keyframes carDrives {
+    0% { transform: scale(1); }
+    20% { transform: scale(0.75); }
+    40% { transform: scale(1.15); }
+    80% { transform: scale(0.65); }
+    100% { transform: scale(1.5; }
   }
 
   @keyframes porkerDefault {
-    0% {
-      transform: translateY(-50px);
-    }
+    0% {transform: translateY(-50px);}
+    50% { transform: translateY(120px); }
+    100% { transform: translateY(-50px); }
+  }
 
-    50% {
-      transform: translateY(120px);
-    }
-
-    100% {
-      transform: translateY(-50px);
-    }
+  @keyframes barrierMoves {
+    0% {transform: translateX(0);}
+    100% { transform: translateX(-1000%); }
   }
 </style>
 
@@ -191,9 +178,10 @@
   const porkerBody = document.querySelector("#porker--body");
 
   const barrier = document.createElement("div");
+  barrier.classList.add("barrier-base");
   const road = document.createElement("div");
 
-  // Declare FUnctions
+  // Declare Functions
   const carJumps = () => {
     porkerCar.style.animation = "carJumps 1s ease-out";
   }
@@ -207,14 +195,33 @@
     }
   })
 
-  
   // Append / Inner Text / (Non Keyframe) Styling 
   body.append(road, barrier);
   porkerCar.style.cssText = "width: 350px; height: 400px;"
-  porkerContainer.style.cssText = "width: 100%; margin-top: 300px;"
+  porkerContainer.style.cssText = "width: 300px; margin-top: 300px; animation: carDrives 2s ease-out infinite;"
   porkerBody.style.cssText = "animation: porkerDefault 1.5s ease-out infinite;"
   road.style.cssText = "position: absolute; width: 100%; height: 319px; bottom: 0; left: 0; right:0; background: #434343;"
-  barrier.style.cssText = "width: 300px; height: 300px; background: blue;"
+  barrier.style.cssText = "width: 120px; height: 200px; top: 50%; right: 0; background: blue; z-index: 2; animation: barrierMoves 2s ease forwards infinite;"
+
+  // Intersectional Observer
+  const target = document.querySelector('.porker-car');
+  const barrierTarget = document.querySelector('.barrier-base')
+
+  function handleIntersection(entries) {
+    entries.map((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        console.log("goog");
+      } else {
+        entry.target.classList.remove('visible')
+        console.log("Boog");
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver(handleIntersection);
+
+  observer.observe(target, barrierTarget);
 
 </script>
 </html>
