@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun32</title>
+</head>
+
+<body>
+
+  <style>
+    @keyframes cupShake {
+      0% {
+        transform: translateX(-20px);
+      }
+
+      20% {
+        transform: translateX(30px);
+      }
+
+      40% {
+        transform: translateX(-20px);
+      }
+
+      60% {
+        transform: translateX(20px);
+      }
+
+      80% {
+        transform: translateX(-20px);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+  </style>
+
+  <svg class="diceCup" width="120" height="126.5" viewBox="0 0 1200 1265" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path opacity="0.4"
+      d="M4.22742 1161.87C4.22742 1218.69 270.956 1264.75 599.982 1264.75C929.009 1264.75 1195.74 1218.69 1195.74 1161.87C1195.74 1105.05 929.009 1058.99 599.982 1058.99C270.956 1058.99 4.22742 1105.05 4.22742 1161.87Z"
+      fill="#B3B0B0" />
+    <path fill-rule="evenodd" clip-rule="evenodd"
+      d="M160.305 1130.27H160.304L0.000488281 104.263L1200 103.611L1010.99 1129.55C1011.01 1129.85 1011.02 1130.14 1011.02 1130.44C1011.02 1171.01 820.584 1203.91 585.664 1203.91C350.744 1203.91 160.304 1171.01 160.304 1130.44C160.304 1130.38 160.305 1130.33 160.305 1130.27Z"
+      fill="url(#paint0_linear)" />
+    <path
+      d="M0.000443518 103.448C0.000443518 160.581 268.63 206.896 600 206.896C931.371 206.896 1200 160.581 1200 103.448C1200 46.3154 931.371 0 600 0C268.63 0 0.000443518 46.3154 0.000443518 103.448Z"
+      fill="url(#paint1_linear)" />
+    <defs>
+      <linearGradient id="paint0_linear" x1="599.919" y1="133.791" x2="599.919" y2="1132.38"
+        gradientUnits="userSpaceOnUse">
+        <stop stop-color="#9B6322" />
+        <stop offset="1" stop-color="#241707" />
+      </linearGradient>
+      <linearGradient id="paint1_linear" x1="600" y1="-319.631" x2="600" y2="206.896" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#C18136" />
+        <stop offset="1" stop-color="#241707" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+</body>
+
+<script>
+  // Declare Vars
+  const body = document.querySelector("body");
+  const rollDiceButton = document.createElement("button");
+  const diceCup = document.querySelector(".diceCup");
+  const di = document.createElement("div");
+
+
+  // Declare functions
+  const cupShakes = () => {
+    const rShakeSpeed = Math.floor(Math.random() * 5);
+    const randomShake = 'cupShake ' + rShakeSpeed + 's ' + 'ease';
+    diceCup.style.setProperty("animation", randomShake);
+  }
+
+  // Add EL's
+  rollDiceButton.addEventListener("click", cupShakes);
+
+  // Append inner text & styling 
+  body.append(diceCup, rollDiceButton);
+
+  // Add Innertext
+  rollDiceButton.innerText = "Roll Dice"
+
+
+  // https://codepen.io/jpanter/pen/PGqJOm spinning dice reference
+  // https://codesandbox.io/s/xjk3xqnprw?file=/styles.css spinning dice reference 2
+</script>
+
+
+</html>
