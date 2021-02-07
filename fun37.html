@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun37</title>
+</head>
+
+<body>
+  <style>
+    ul { background: red; list-style-type: none; padding-left: 0; }
+    ul li { border: 2px solid blue; padding: 15px 10px; max-width: 600px; margin: 0 auto;}
+
+
+  </style>
+
+  <script>
+    // Declare variables
+    const body = document.querySelector("body");
+    const header = document.createElement("h1");
+    const streakType = ['Workout', 'Language', 'Reading', 'Drawing', 'White Board', 'Coding', 'Design', 'Family/Frens']
+    const streakContainer = document.createElement("div");
+    const streakItem = document.createElement("div");
+
+    // Declare Functions
+
+    // Declare Constructor
+    class Streak {
+      constructor(name, days) {
+        this.name = name;
+        this.days = days;
+      }
+    }
+
+    const workout = new Streak('Workout', '1 day');
+    const language = new Streak('Language', '1 day');
+
+    console.log(workout, language);
+
+
+    for (i = 0; i < streakType.length; i++ ) {
+      console.log(streakType[i])
+      // const [i] = new Streak('[i]', '1 day');
+    }
+
+    text = "<ul>";
+    for(i=0; i<streakType.length; i++) {
+      text += "<li><a>" + streakType[i] + "</a></li>";
+    }
+    text += "</ul>";
+    
+    streakItem.innerHTML = text;
+
+
+    // Update Styling
+    header.style.cssText = "text-align: center;";
+    streakContainer.style.cssText = "background: blue; width: 90%;  margin: 0 auto; padding: 30px;"
+
+    // Append & InnerText
+    header.innerText = "🔥 Streak Tracker";
+    
+    body.append(header, streakContainer);
+    streakContainer.append(streakItem);
+
+
+  </script>
+</body>
+
+</html>
