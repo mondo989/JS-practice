@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fun38</title>
+</head>
+
+<body>
+  <script>
+    // Declare variables
+    const body = document.querySelector('body');
+    
+    // Declare Arrays
+    const weatherTypes = ["cloudy", 'sunny', 'rainy', 'snowy'];
+    const weatherButtonRow = document.createElement("div");
+    const chooseWeatherText = "Choose Weather";
+
+
+    // Iterate throught button choices
+    buttonChoices = "<div>";
+      for (i = 0; i < weatherTypes.length; i++) {
+        buttonChoices += "<button>" + weatherTypes[i] + "</button>";
+      }
+    buttonChoices += "</div>";
+
+
+    weatherButtonRow.innerHTML = buttonChoices;
+
+    // Declare Functions
+    
+
+    // Add Styling
+    weatherButtonRow.style.cssText = "background: red; display: flex; margin-top: auto; list-style-type: none;"
+
+    // Append Vars
+    body.append(weatherButtonRow);
+    weatherButtonRow.prepend("chooseWeatherText")
+  </script>
+</body>
+
+</html>
