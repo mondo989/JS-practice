@@ -7,29 +7,26 @@
   <title>Fun38</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Tauri&display=swap" rel="stylesheet">
-
 </head>
-
 <body>
-
   <h1>WhiteBoard Practice</h1>
   <div class="board"></div>
 
   <style>
-    @keyframes fadeInUp {
+    @keyframes fadeInDown {
       from {
-        opacity: 0;
-        transform: translateY(80px);
+        opacity: 0; transform: translateY(-80px);
       } to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        opacity: 1; transform: translateY(0);}}
 
-    .fadeInUp {
-      animation: fadeInUp 2s ease-out !important;
+    @keyframes newQuestionFade {
+     from { 
+        opacity: 0; transform: translateY(80px); 
+      } to {
+        opacity: 1; transform: translateY(0);}}
 
-    }
+    .fadeInUp {animation: fadeInDown 2s ease-out !important;}
+    .newQuestionFade {animation: newQuestionFade 2s ease-out !important;}
   </style>
 
   <script>
@@ -73,7 +70,7 @@
     practicedButton.innerHTML = "Practiced";
     nextButton.style.cssText = "border-radius: 0; border: 0; font-size: 24px; display: inline-block; padding: 15px 40px; font-family: 'Tauri', sans-serif; text-transform: uppercase; font-style: italic; font-weight: 600;";
     practicedButton.style.cssText = "border-radius: 0; border: 0; font-size: 24px; font-family: 'Tauri', sans-serif; padding: 15px 40px; text-transform: uppercase; font-style: italic; font-weight: 600;";
-    practiceQuestionContent.style.cssText = "text-align: center; position: relative; top: -50px; width: 60%; display: block; font-size: 33px; font-family: 'Tauri', Open-sans; animation: fadeInUp 1.0s; font-size: 24px;";
+    practiceQuestionContent.style.cssText = "text-align: center; position: relative; top: -50px; width: 60%; display: block; font-size: 33px; font-family: 'Tauri', Open-sans; animation: fadeInDown 1.0s; font-size: 24px;";
     board.style.cssText = "position: relative; height: 800px; width: 100%; background-image: url('/imgs/board-base.svg'); background-size: 100% 100%; justify-content: center; align-items: center; display: flex; flex-direction: column";
     body.style.cssText = "margin: 0 auto; text-align: center; font-family: 'Open Sans', sans-serif";
     header.style.cssText = "font-weight: 100; font-family: 'Open Sans', sans-serif; font-size: 25px;"

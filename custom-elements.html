@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  dialog-anchor {
+    cursor: pointer;
+  }
+
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, .5);
+  }
+</style>
+
+<body>
+
+  <dialog id="my-dialog">
+    hey this is a popup
+
+    <dialog-anchor target="my-dialog">X</dialog-anchor>
+  </dialog>
+
+  <dialog-anchor target="my-dialog">Open the dialog!</dialog-anchor>
+
+  <script>
+    customElements.define('dialog-anchor', class DialogAnchor extends HTMLElement {
+      constructor() {
+        super()
+        this.onClick = this._onClick.bind(this)
+      }
+      connectedCallback() {
+        this.addEventListener('click', this.onClick)
+      }
+      disconnectedCallback() {
+        this.removeEventListener('click', this.onClick)
+      }
+      _onClick() {
+        const dialog = document.getElementById(this.getAttribute('target'))
+        if (dialog) {
+          if (dialog.open) {
+            dialog.open = false
+          } else {
+            dialog.showModal()
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
