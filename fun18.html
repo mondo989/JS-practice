@@ -17,6 +17,45 @@
     100% { opacity: 1; transform: translateY(0px); }
   }
 
+  #hero-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  
+  #hero-main svg.m1 {
+    width: 800px;
+    height: 260px;
+    right: 0;
+    position: absolute;
+    bottom: -120px;
+  }
+  
+  #hero-main svg.m2 {
+    width: 200px;
+    height: 230px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+  }
+
+  #hero-main svg.m3 {
+    width: 400px;
+    height: 230px;
+    left: -120px;
+    position: absolute;
+    bottom: 0;
+  }
+
+  #hero-main h1 {
+
+  }
+
+
   .section__animate { height: 50px; overflow: hidden; position: relative; transition: 1s;}
   .section__animate.animated { height: 100%; padding-bottom: 20px;}
   .section__animate.animated h4 { display: none; }
@@ -27,7 +66,46 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
 </style>
 
 <body>
-  <section></section>
+  <section id="hero-main">
+
+    <h1>A miniblog about Mountains</h1>
+    <svg class="m1" width="3584" height="2491" viewBox="0 0 3584 2491" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2039.23 172.405C2083.5 95.764 2194.12 95.7637 2238.39 172.405L4277.62 3702.9H0L2039.23 172.405Z" fill="url(#paint0_radial)"/>
+      <path d="M2808.79 2117.2C2918.29 1928.29 2578.79 1294.87 2421.37 1071.01L2903.24 1323.15L4288.03 3708.5H3057.73C2750.89 3575.89 2102.47 3270.81 1963.51 3111.36C1789.81 2912.05 2671.91 2353.33 2808.79 2117.2Z" fill="#76829B" stroke="black"/>
+      <path d="M2840.28 1857.85C3002.93 2008.34 3078.28 1659.61 3095.63 1466.43C2829.61 986.958 2264.44 28.0156 2131.88 28.0156C1966.19 28.0156 1318.62 1067 1349.04 1285.53C1379.45 1504.05 1545.15 1292.73 1733.25 1225.49C1921.36 1158.25 1861.33 1428.81 2071.85 1669.74C2282.37 1910.68 2358.41 1466.43 2485.68 1466.43C2612.95 1466.43 2636.97 1669.74 2840.28 1857.85Z" fill="white" stroke="black"/>
+      <defs>
+      <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2138.81 1851.45) rotate(90) scale(1851.45 2138.81)">
+      <stop stop-color="#8F9AB9"/>
+      <stop offset="1" stop-color="#8F9AB9" stop-opacity="0.3"/>
+      </radialGradient>
+      </defs>
+    </svg>
+
+    <svg class="m2" width="3584" height="2491" viewBox="0 0 3584 2491" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2039.23 172.405C2083.5 95.764 2194.12 95.7637 2238.39 172.405L4277.62 3702.9H0L2039.23 172.405Z" fill="url(#paint0_radial)"/>
+      <path d="M2808.79 2117.2C2918.29 1928.29 2578.79 1294.87 2421.37 1071.01L2903.24 1323.15L4288.03 3708.5H3057.73C2750.89 3575.89 2102.47 3270.81 1963.51 3111.36C1789.81 2912.05 2671.91 2353.33 2808.79 2117.2Z" fill="#76829B" stroke="black"/>
+      <path d="M2840.28 1857.85C3002.93 2008.34 3078.28 1659.61 3095.63 1466.43C2829.61 986.958 2264.44 28.0156 2131.88 28.0156C1966.19 28.0156 1318.62 1067 1349.04 1285.53C1379.45 1504.05 1545.15 1292.73 1733.25 1225.49C1921.36 1158.25 1861.33 1428.81 2071.85 1669.74C2282.37 1910.68 2358.41 1466.43 2485.68 1466.43C2612.95 1466.43 2636.97 1669.74 2840.28 1857.85Z" fill="white" stroke="black"/>
+      <defs>
+      <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2138.81 1851.45) rotate(90) scale(1851.45 2138.81)">
+      <stop stop-color="#8F9AB9"/>
+      <stop offset="1" stop-color="#8F9AB9" stop-opacity="0.3"/>
+      </radialGradient>
+      </defs>
+    </svg>
+
+    <svg class="m3" width="3584" height="2491" viewBox="0 0 3584 2491" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2039.23 172.405C2083.5 95.764 2194.12 95.7637 2238.39 172.405L4277.62 3702.9H0L2039.23 172.405Z" fill="url(#paint0_radial)"/>
+      <path d="M2808.79 2117.2C2918.29 1928.29 2578.79 1294.87 2421.37 1071.01L2903.24 1323.15L4288.03 3708.5H3057.73C2750.89 3575.89 2102.47 3270.81 1963.51 3111.36C1789.81 2912.05 2671.91 2353.33 2808.79 2117.2Z" fill="#76829B" stroke="black"/>
+      <path d="M2840.28 1857.85C3002.93 2008.34 3078.28 1659.61 3095.63 1466.43C2829.61 986.958 2264.44 28.0156 2131.88 28.0156C1966.19 28.0156 1318.62 1067 1349.04 1285.53C1379.45 1504.05 1545.15 1292.73 1733.25 1225.49C1921.36 1158.25 1861.33 1428.81 2071.85 1669.74C2282.37 1910.68 2358.41 1466.43 2485.68 1466.43C2612.95 1466.43 2636.97 1669.74 2840.28 1857.85Z" fill="white" stroke="black"/>
+      <defs>
+      <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2138.81 1851.45) rotate(90) scale(1851.45 2138.81)">
+      <stop stop-color="#8F9AB9"/>
+      <stop offset="1" stop-color="#8F9AB9" stop-opacity="0.3"/>
+      </radialGradient>
+      </defs>
+    </svg>
+      
+  </section>
 </body>
 
 <script>
@@ -35,6 +113,7 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
   const body = document.querySelector("body");
   const blogSection = document.createElement("section");
   const feedbackSection = document.createElement("section");
+  const heroMain = document.getElementById("hero-main");
 
   // Lots of extra stuff here:
   const feedbackModal = document.createElement("div");
@@ -74,8 +153,7 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
     feedbackButtonNo.style.animation = "fadeOut 0.5s ease forwards";
     feedbackModalSubHeader.style.animation = "fadeOut 0.5s ease forwards";
     feedbackModalHeader.style.animation = "fadeOut 0.5s ease forwards";
-    feedbackModalHeader.innerText = "Thank You"
-
+    feedbackModalHeader.innerText = "Thank You";
     addPositiveContent()
   };
 
@@ -130,6 +208,8 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
   feedbackButtonYes.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackTrigger.style.cssText = "height: 20px; text-align: center; width: 100%;";
   feedbackModalSubHeader.style.opacity = "1";
+  heroMain.style.cssText = "background: ; height: 80vh; background: linear-gradient(119.3deg, #1061DB -0.58%, #83E1E5 -0.58%, #BBEBEB 25.24%, #39C5DD 59.07%, #00ADD9 82.95%, #004AB0 118.71%);"
+
   feedbackSection.classList = "section__animate";
   supportRow.style.cssText = "width: 100%; display: flex;";
   feedbackModal.style.cssText = "text-align: center;"
