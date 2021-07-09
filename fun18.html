@@ -57,7 +57,7 @@
 
 
   .section__animate { height: 50px; overflow: hidden; position: relative; transition: 1s;}
-  .section__animate.animated { height: 100%; padding-bottom: 20px;}
+  .section__animate.animated { height: 100%; padding-bottom: 20px; background: red;}
   .section__animate.animated h4 { display: none; }
   .social-links, .donate-links { display: flex; justify-content: center;list-style-type: none; }
   .social-links li a, .donate-links li a { padding: 7px; width: 30px; height: 30px; margin: 0 10px; border-radius: 120px;
@@ -67,7 +67,7 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
 
 <body>
   <section id="hero-main">
-
+    <p></p>
     <h1>A miniblog about Mountains</h1>
     <svg class="m1" width="3584" height="2491" viewBox="0 0 3584 2491" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M2039.23 172.405C2083.5 95.764 2194.12 95.7637 2238.39 172.405L4277.62 3702.9H0L2039.23 172.405Z" fill="url(#paint0_radial)"/>
@@ -124,6 +124,7 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
   const feedbackButtonNo = document.createElement("button");
 
   // Declare SupportRow
+  const blogHeader = document.createElement("h1");
   const supportRow = document.createElement("div");
   const shareLinks = document.createElement("div");
   const shareContent = document.createElement("div");
@@ -196,28 +197,28 @@ background-color: white; border: 1px solid #cecece; display: inline-block; curso
 
   // Append Elements
   body.append(blogSection, feedbackSection);
-  blogSection.append(blogContent);
+  blogSection.append(blogHeader, blogContent);
   feedbackSection.append(feedbackTrigger, feedbackModal);
   feedbackModal.append(feedbackModalSubHeader, feedbackModalHeader, feedbackButtonYes, feedbackButtonNo);
 
-
   // Styling & InnerText
-  blogSection.style.cssText = "height: 100vh;"
+  blogSection.style.cssText = "height: 100vh; border: 1px solid red; width: 80%; margin: 0 auto; padding: 30px 20px;"
   feedbackModal.style.cssText = "height: 0; padding: 20px 30px; text-align: center;";
   feedbackButtonNo.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackButtonYes.style.cssText = "padding: 15px 60px; border: 0; border-radius: 8px; cursor: pointer; margin: 5px;";
   feedbackTrigger.style.cssText = "height: 20px; text-align: center; width: 100%;";
   feedbackModalSubHeader.style.opacity = "1";
   heroMain.style.cssText = "background: ; height: 80vh; background: linear-gradient(119.3deg, #1061DB -0.58%, #83E1E5 -0.58%, #BBEBEB 25.24%, #39C5DD 59.07%, #00ADD9 82.95%, #004AB0 118.71%);"
-
   feedbackSection.classList = "section__animate";
   supportRow.style.cssText = "width: 100%; display: flex;";
   feedbackModal.style.cssText = "text-align: center;"
   shareLinks.style.cssText = "justify-content: center";
   shareContent.style.cssText = "width: 100%;"
-  supportContent.style.cssText = "width: 100%;"
+  supportContent.style.cssText = "width: 100%;";
+  blogHeader.style.cssText = "text-align: center;"
 
   // Inner text
+  blogHeader.innerText = "A miniblog about Mountains";
   feedbackTrigger.innerText = "Thanks for reading";
   feedbackButtonYes.innerText = "Yes";
   feedbackButtonNo.innerText = "No";

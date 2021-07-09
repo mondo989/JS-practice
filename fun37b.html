@@ -27,19 +27,14 @@
     // Declare variables
     const body = document.querySelector("body");
     const header = document.createElement("h1");
-    const streakType = ['Workout', 'Language', 'Reading', 'Drawing', 'White Board', 'Coding', 'Design', 'Family/Frens']
-
-    const streaks = {};
-
     const streakContainer = document.createElement("div");
     const streakItem = document.createElement("div");
 
-    const workout = new Streak('Workout', '1 day');
-    const language = new Streak('Language', '1 day');
-    const run = new Streak('Run', 0, 'icon-a.jpg');
-    // Declare Functions
+    const streakList = [];
 
-    // Declare Constructor
+    const run = new Streak('run', 0, 'run.png');
+    const fun = new Streak('fun', 0, 'fun.png');
+    const hun = new Streak('hun', 2, 'hun.png');
 
     function Streak(name, days, icon) {
       this.name = name;
@@ -47,28 +42,27 @@
       this.icon = icon;
     }
 
-    for (var key in streaks) {
-      console.log(key);
-      for (var k in streaks[key]) {
-        console.log(k + ": " + streaks[key][k]);
+    streakList.push(run, fun, hun);
+
+    streakList.forEach(function (name, days, icon) {
+
+      text = "<ul>";
+      for (i = 0; i < streakList.length; i++) {
+        text += "<li><a>" + [name] + "</a></li>";
       }
-    }
+      text += "</ul>";
+
+      streakItem.innerHTML = text;
+
+      console.log(name, days, icon)
+    })
 
 
-    console.log(workout, language, run);
 
-    for (i = 0; i < streakType.length; i++) {
-      console.log(streakType[i]);
-      // console.log(Streak[0]);
-    }
+    // Declare logic so that if theres a new StreakItem that it 
+    // is automatically pushed to StreakList
 
-    text = "<ul>";
-    for (i = 0; i < streakType.length; i++) {
-      text += "<li><a>" + streakType[i] + "</a></li>";
-    }
-    text += "</ul>";
 
-    streakItem.innerHTML = text;
 
 
     // Update Styling

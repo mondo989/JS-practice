@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  
+  
+  
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('https://pokeapi.co/api/v2/characteristic/43')
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        console.log(data)
+      })
+    })
+
+
+
+
+      const body = document.querySelector("body");
+
+    const updateName = () => {
+      const inputContent = document.querySelector("#inputContent").value;
+      const name = `Hello ${inputContent}`;
+
+      body.append(name);
+
+      // alert(name);
+    }
+  </script>
+
+</body>
+</html>
