@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun101 - Routine Randomizer</title>
+</head>
+<body>
+
+
+  <script>
+
+    // Declare vars
+    const routines = ["D", "R", "L", "P", "R", "Ru", "F", "E"]
+
+    const body = document.querySelector("body");
+    const routineButton = document.createElement("button");
+    
+    let routineContent = document.createElement("h2");
+    let mHeader = document.createElement("h1");
+
+    // Declare functions
+    const randomizeRoutines = () => {
+      // Shoutout to https://stackoverflow.com/a/43235780
+      let randomRoutineResults = routines.sort(() => Math.random() - 0.5);
+      // routineContent.innerHTML = randomRoutineResults;
+
+      text = "<ul class='routineList'>";
+      for (i=0; i<randomRoutineResults.length; i++) {
+        text += "<li> <a>" + randomRoutineResults[i] + "</a> </li>";
+      }
+      text += "</ul>";
+
+      routineContent.innerHTML = text;
+
+      // Styling here because currently cannot access ul until it is called
+      const routineList = document.querySelector(".routineList");
+      const routineListItems = document.querySelector("li");
+      routineList.style.cssText = "list-style-type: none; background: red;"
+      // routineListItems.style.cssText = "list-style-type: none; background: green;"
+    }
+
+    routineButton.addEventListener("click", randomizeRoutines)
+
+    
+
+    // Append / styling / copy
+    body.append(mHeader, routineContent, routineButton);
+    mHeader.innerText = "Randomize Routines";
+    routineButton.innerText = "Randomize Routines"
+
+
+    body.style.cssText = "display: flex; height: 100vh; justify-content: center; align-items: center; flex-direction: column;"
+    mHeader.style.cssText = "margin-bottom: auto;"
+    routineButton.style.cssText = "margin-bottom: auto;"
+
+  </script>
+</body>
+</html>
