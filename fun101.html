@@ -7,48 +7,69 @@
 </head>
 <body>
 
+  <style>
+    .routineList {transition: 2s; display: inline-block; list-style-type: none; display: flex; width: 100%;}
+    .routineList li { padding: 10px 20px; opacity: 0; animation: fadeInUp 2s ease-out forwards;}
+    .routineList li a {padding: 10px 20px; outline: 2px solid red; color: blue; text-decoration: underline; cursor: pointer;}
+    .routineList li a:hover {background: red;}
+
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(10000px);
+      }
+      90% {
+        opacity: 0.2;
+        transform: translateY(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 
   <script>
-
     // Declare vars
-    const routines = ["D", "R", "L", "P", "R", "Ru", "F", "E"]
+    const routines = ["D", "M", "L", "P", "R", "Ru", "F", "E", "U"]
 
     const body = document.querySelector("body");
     const routineButton = document.createElement("button");
+    const todaysDate = document.createElement("div");
     
-    let routineContent = document.createElement("h2");
+    let routineContent = document.createElement("div");
     let mHeader = document.createElement("h1");
+
+
 
     // Declare functions
     const randomizeRoutines = () => {
       // Shoutout to https://stackoverflow.com/a/43235780
       let randomRoutineResults = routines.sort(() => Math.random() - 0.5);
-      // routineContent.innerHTML = randomRoutineResults;
 
       text = "<ul class='routineList'>";
       for (i=0; i<randomRoutineResults.length; i++) {
-        text += "<li> <a>" + randomRoutineResults[i] + "</a> </li>";
+        text += "<li class='routineListItems'> <a>" + randomRoutineResults[i] + "</a> </li>";
       }
       text += "</ul>";
 
       routineContent.innerHTML = text;
-
-      // Styling here because currently cannot access ul until it is called
-      const routineList = document.querySelector(".routineList");
-      const routineListItems = document.querySelector("li");
-      routineList.style.cssText = "list-style-type: none; background: red;"
-      // routineListItems.style.cssText = "list-style-type: none; background: green;"
     }
 
     routineButton.addEventListener("click", randomizeRoutines)
 
+    // Find Current Day
+    const currentDay = new Date();
+    currentDay.getDate()
+    // console.log(currentDay.getDay(), currentDay.getDate());
+    todaysDate.innerHTML = currentDay.getDate();
     
 
     // Append / styling / copy
     body.append(mHeader, routineContent, routineButton);
+    mHeader.append(todaysDate)
+
     mHeader.innerText = "Randomize Routines";
     routineButton.innerText = "Randomize Routines"
-
 
     body.style.cssText = "display: flex; height: 100vh; justify-content: center; align-items: center; flex-direction: column;"
     mHeader.style.cssText = "margin-bottom: auto;"
