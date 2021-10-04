@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More API Practice</title>
+</head>
+
+<body>
+  
+  <div style="margin: auto; text-align: center;">
+    <div id="new-coin--list">
+      <img src="" id="pokemonSprite" alt="">
+      <!-- <p>Coin Name<p id="coinName"></p></p> -->
+      <p>Coin Symbol<p id="coinSymbol"></p></p>
+
+      <p>Last Price<p id="coinLastPrice"></p></p>
+
+      <p>24h High<p id="coin24hrHigh"></p></p>
+
+    </div>
+    <!-- <button onclick="randomizePokemon()">Randomize Pokemon</button> -->
+  </div>
+
+  <style>
+
+  </style>
+
+  <script>
+    const body = document.querySelector("body");
+    // const coinName = document.querySelector("#coinName");
+    const coinLastPrice = document.querySelector("#coinLastPrice")
+    const coin24hrHigh = document.querySelector("#coin24hrHigh")
+    const coinSymbol = document.querySelector("#coinSymbol");
+
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch('https://api2.binance.com/api/v3/ticker/24hr')
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          // coinName.innerText = [data['1']['symbol']];
+          coinSymbol.innerText = [data['12']['symbol']];
+          coin24hrHigh.innerText = [data['12']['highPrice']];
+          coin24hrHigh.innerText = [data['12']['highPrice']];
+          console.log([data['0']['symbol']]);
+          console.log([data]);
+        })
+    })
+  </script>
+
+</body>
+
+</html>

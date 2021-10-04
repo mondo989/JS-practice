@@ -1,41 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
+  
+  <div style="margin: auto; text-align: center;">
+    <div id="new-pokemon">
+      <img src="" id="pokemonSprite" alt="">
+      <p>Pokemon Name <span id="pokemonName"></span></p>
+      <p>Pokemon Type <span id="pokemonType"></span></p>
+      <p>Pokemon Weight <span id="pokemonWeight"></span></p>
 
-  
-  
-  
+    </div>
+    <button onclick="randomizePokemon()">Randomize Pokemon</button>
+  </div>
+
+  <style>
+    #new-pokemon {
+      position: relative;
+      background: red;
+      max-width: 600px;
+      margin: auto;
+      display: flex; 
+      justify-content: center;
+      align-items: flex-end;
+      flex-direction: column;
+      min-height: 400px;
+      padding-top: 80px;
+    }
+
+    #new-pokemon p {
+      text-align: left;
+      width: 300px;
+    }
+
+    #new-pokemon img {
+      position: absolute;
+      left: 0;
+      top: 150px;
+      margin: auto;
+      width: 250px;
+      height: auto;
+
+      opacity: 0;
+      transform: translateX(-200px);
+
+      animation: pkFadeIn 1s ease-out forwards;
+    }
+
+    #new-pokemon img#pokemonSprite.animate {
+      /* opacity: 0!important; */
+      /* transform: translateX(-200px); */
+      /* opacity: 1; */
+      animation: pkFadeIn 2s ease-out forwards;
+      background: blue;
+    }
+
+
+    @keyframes pkFadeIn {
+      from {
+        transform: translateX(-120px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+        background: black;
+      }
+    }
+  </style>
+
   <script>
+    const body = document.querySelector("body");
+    const pokemonName = document.querySelector("#pokemonName");
+    const pokemonType = document.querySelector("#pokemonType");
+    const pokemonWeight = document.querySelector("#pokemonWeight");
+    const pokemonSprite = document.querySelector("#pokemonSprite")
 
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('https://pokeapi.co/api/v2/characteristic/43')
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        console.log(data)
-      })
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch('https://pokeapi.co/api/v2/pokemon/33')
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          pokemonName.innerText = [data.name];
+          pokemonSprite.src = [data.sprites.other['dream_world']['front_default']];
+          pokemonType.innerText = [data.types];
+          pokemonWeight.innerText = [data.weight];
+          console.log(data);
+        })
     })
 
+    const randomizePokemon = () => {
+      const randomPokemonNumber = Math.floor(Math.random() * 151);
+      pokemonSprite.classList = "animate"; 
 
+      fetch('https://pokeapi.co/api/v2/pokemon/' + randomPokemonNumber)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          pokemonName.innerText = [data.name];
+          pokemonSprite.src = [data.sprites['back_default']];
+          pokemonSprite.src = [data.sprites.other['dream_world']['front_default']];
+          pokemonType.innerText = [data.types];
+          pokemonWeight.innerText = [data.weight];
 
-
-      const body = document.querySelector("body");
-
-    const updateName = () => {
-      const inputContent = document.querySelector("#inputContent").value;
-      const name = `Hello ${inputContent}`;
-
-      body.append(name);
-
-      // alert(name);
+          console.log(data.sprites['back_default'])
+          console.log(data);
+        })
     }
   </script>
 
 </body>
+
 </html>

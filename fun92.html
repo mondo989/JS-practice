@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Y'all got jokes</title>
+</head>
+<body>
+  <style>
+    div{display: flex; justify-content: center; align-items: center;flex-direction: column;}
+  </style>
+
+  <div>
+    <h1>Those were jokes</h1>
+    <p id="jokeSetup"></p>
+    <p id="jokeDelivery"></p>
+    <p id="jokeCategory"></p>
+    <p id="jokeSetup"></p>
+  </div>
+
+  <script>
+    const body = document.querySelector('body');
+    const jokeDelivery = document.querySelector('#jokeDelivery');
+    const jokeSetup = document.querySelector('#jokeSetup');
+
+    const jokeApi = 'https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,political,explicit&type=twopart'
+
+    fetch(jokeApi)
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        console.log(data);
+        jokeSetup.innerHTML = data.setup;
+        jokeDelivery.innerHTML = data.delivery;
+      })
+  </script>
+</body>
+</html>

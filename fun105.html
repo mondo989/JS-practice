@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Book</title>
+</head>
+<body>
+  <style>
+    body {display: flex;justify-content: center; align-items: center;}
+    .container{
+      /* background: red; */
+      display: flex;
+      justify-content: center;
+      width:90%;
+      height: 80%;
+      margin: auto;
+      flex-direction: column;
+      text-align: center;
+    }
+    .book {
+      width: 800px;
+      height: 500px;
+      border: 10px solid blue;
+      background: #f3f3f3;
+      display: flex;
+
+    }
+
+    .page__left {
+      outline: 2px solid green;
+      width: 50%;
+      background: green;
+      /* z-index: -30; */
+    }
+    .page__right {
+      outline: 2px solid orange;
+      width: 50%;
+      background: orange;
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .page__right {
+      perspective: 800px;
+      transition: 2s;
+      animation: pageTurnRight 2s ease-out forwards ;
+      animation-iteration-count: 1;
+      transform-origin: left;
+      transform-style: preserve-3d;
+      /* -webkit-backface-visibility: hidden; */
+      /* backface-visibility: hidden; */
+      z-index: 90;
+    }
+
+    @keyframes pageTurnRight {
+      to {
+        transform: rotateY(180deg);
+      }
+    }
+  </style>
+
+
+  <div class="container">
+    <div class="book">
+      <div class="page__left">
+        <p>Hello there sire</p>
+      </div>
+      <div class="page__right">
+        <p>Whoa there buddy</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="button__left"><button id="prevButton" onclick="prevPage()">Prev</button></div>
+      <div class="button__right"><button onclick="nextPage()">Next</button></div>
+    </div>
+  </div>
+</body>
+
+<script>
+
+  // Decl vars
+  const body = document.querySelector("body");
+  // const prevPage = document.querySelector("#prevButton")
+  const currentPages = '' || 'pg1pg2';
+  const updatedPages = '';
+
+  const prevPage = () => {
+    console.log("prev page")
+  }
+  const nextPage = () =>{
+    console.log("next page");
+
+    // Check current page
+
+    console.log(currentPages + ' turning to pgs' + updatedPages)
+
+
+    // Update page animation
+  }
+
+  // Add event listeners
+  // prevPage.onClick(
+  //   console.log("Hello")
+  // )
+
+  // Decl funcs
+  
+
+  // Append
+
+  
+  // styling
+</script>
+</html>
