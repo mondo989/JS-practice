@@ -14,9 +14,28 @@
     <h1>Those were jokes</h1>
     <p id="jokeSetup"></p>
     <p id="jokeDelivery"></p>
-    <p id="jokeCategory"></p>
-    <p id="jokeSetup"></p>
   </div>
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    p {
+      opacity: 0;
+      transform: translateY(100px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    p:last-child {
+      animation-delay: 3s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
 
   <script>
     const body = document.querySelector('body');
