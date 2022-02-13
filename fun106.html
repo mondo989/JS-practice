@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curved Card</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hurricane&family=Satisfy&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+  <style>
+    body {
+      font-family: 'Satisfy', 'Open Sans', sans-serif;
+    }
+
+    section {
+      transform-style: preserve-3d;
+      margin: auto;
+      text-align: center;
+      display: block;
+      margin: auto;
+      width: 100%;
+      margin-top: 60px;
+    }
+
+
+
+
+
+
+
+
+
+
+    .card {
+      background: transparent;
+      /* border-width: 10px; */
+      border-style: solid;
+      border-radius: 80px;
+      /* border-image: linear-gradient(to right, darkblue, darkorchid) 1; */
+      /* border-radius: 300px; */
+      overflow: hidden;
+      z-index: 1;
+      width: 350px;
+      background: black;
+      text-align: center;
+      /* padding: 25px 20px; */
+      margin: 0 auto !important;
+      transform-style: preserve-3d;
+      animation: cardRotate 6s ease-out infinite;
+    }
+
+    .card h1 {
+      font-size: 40px;
+    }
+
+    .card h1,
+    .card p {
+      color: white;
+      text-shadow: 0 0px 2px white;
+      animation: textAnimation 6s ease-out infinite;
+    }
+
+    .card svg {
+      width: 90%;
+      animation: textAnimation 10s ease-out infinite;
+    }
+
+    .card__background {
+      position: absolute;
+      background: red;
+      background: url('/assets/pexels-uv.mp4');
+      background-size: 100% 100%;
+      z-index: -10;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+      animation: bkgdRotate 20s ease-out infinite;
+    }
+
+    @keyframes cardRotate {
+      0% {
+        transform: scale(1) rotateY(0deg);
+      }
+
+      25% {
+        transform: scale(1.1) rotateY(-45deg);
+      }
+
+      50% {
+        transform: scale(0.95) rotateY(0);
+      }
+
+      75% {
+        transform: scale(1.1) rotateY(45deg);
+      }
+
+      100% {
+        transform: scale(1) rotateY(0deg);
+      }
+    }
+
+    @keyframes bkgdRotate {
+      0% {
+        transform: scale(1) rotateY(0deg) rotateZ(0);
+      }
+
+      /* 25% {
+        transform: scale(2) translateZ(-300px) rotateY(-25deg) rotateZ(90deg);
+      } */
+
+      50% {
+        transform: scale(1.5) rotateY(0) rotateZ(360deg);
+      }
+
+      /* 75% {
+        transform: scale(2) translateZ(-300px) rotateY(25deg) rotateZ(270deg);
+      } */
+
+      100% {
+        transform: scale(1) rotateY(0deg) rotateZ(-2000deg);
+      }
+    }
+
+    @keyframes textAnimation {
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      25% {
+        transform: rotateY(0deg) translateZ(100px);
+      }
+
+      50% {
+        transform: rotateY(0);
+      }
+
+      75% {
+        transform: rotateY(0) translateZ(100px);
+        ;
+      }
+
+      100% {
+        transform: rotateY(0deg);
+      }
+    }
+
+    .mini-card {
+      margin-top: 300px;
+      margin-bottom: 300px;
+    }
+
+    .mini-card .card {
+      width: 200px;
+      height: 300px;
+    }
+
+    .mini-card .card svg {
+      height: 150px;
+    }
+
+    .mini-card .card h1 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+
+
+
+
+
+
+
+
+
+    /* BACKUP STYLING for PREVIOUS HOGE */
+
+
+    body.dark {
+      background-color: #1d1d1b;
+    }
+
+    .logo-container {
+      width: 100%;
+      height: 600px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-animation: logoContainerEntrance 1s ease forwards;
+      animation: logoContainerEntrance 1s ease forwards;
+    }
+
+    .logo-container svg {
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+
+    .logo-container svg #circle-background {
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+    }
+
+    .logo-container svg:hover {
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+
+    .logo-container svg:hover #circle-background {
+      background: -webkit-gradient(linear, left top, left bottom, from(rgba(29, 29, 27, 0.5)), to(#1D1D1B));
+      background: linear-gradient(180deg, rgba(29, 29, 27, 0.5) 0%, #1D1D1B 100%);
+    }
+
+    .logo-container svg:hover #mouth {
+      -webkit-animation: mouthYawn 1s ease-out;
+      animation: mouthYawn 1s ease-out;
+    }
+
+    #hoge-logo-full,
+    #hoge-logo-full2 {
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      -webkit-animation: logoSpin 1.5s ease-in forwards;
+      animation: logoSpin 1.5s ease-in forwards;
+    }
+
+    #hoge-logo-full.glasses-anim,
+    #hoge-logo-full2.glasses-anim {
+      -webkit-transition: 1s;
+      transition: 1s;
+    }
+
+    #hoge-logo-full.glasses-anim #circle-background,
+    #hoge-logo-full-2.glasses-anim #circle-background {
+      -webkit-animation: circleAnim 0.5s ease-out forwards;
+      animation: circleAnim 0.5s ease-out forwards;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      fill: white;
+      stroke: #1d1d1b;
+      border: 40px solid red;
+    }
+
+    #hoge-logo-full.glasses-anim #hoge-eyes #left-eyebrow,
+    #hoge-logo-full.glasses-anim #hoge-eyes #right-eyebrow,
+    #hoge-logo-full2.glasses-anim #hoge-eyes #left-eyebrow,
+    #hoge-logo-full2.glasses-anim #hoge-eyes #right-eyebrow {
+      -webkit-animation: eyebrowRaise 0.5s ease-out forwards;
+      animation: eyebrowRaise 0.5s ease-out forwards;
+      -webkit-animation-iteration-count: 2;
+      animation-iteration-count: 2;
+    }
+
+    #hoge-logo-full.glasses-anim #glasses,
+    #hoge-logo-full2.glasses-anim #glasses {
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      padding: 20px;
+      -webkit-animation: glassesFlip 1.5s ease-out forwards;
+      animation: glassesFlip 1.5s ease-out forwards;
+    }
+
+    #glasses {
+      opacity: 1;
+    }
+
+    @-webkit-keyframes circleAnim {
+      0% {
+        -webkit-transform: scale(0.1);
+        transform: scale(0.1);
+      }
+
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+
+    @keyframes circleAnim {
+      0% {
+        -webkit-transform: scale(0.1);
+        transform: scale(0.1);
+      }
+
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+
+    @keyframes logoSpin {
+      0% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+      }
+
+      50% {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+      }
+
+      100% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+      }
+    }
+
+    @-webkit-keyframes mouthYawn {
+      0% {}
+
+      50% {
+        -webkit-transform: translate(5px, 10px);
+        transform: translate(5px, 10px);
+      }
+
+      100% {}
+    }
+
+    @keyframes mouthYawn {
+      0% {}
+
+      50% {
+        -webkit-transform: translate(5px, 10px);
+        transform: translate(5px, 10px);
+      }
+
+      100% {}
+    }
+
+    @-webkit-keyframes glassesFlip {
+      0% {
+        -webkit-transform: rotate(0deg) translateY(0);
+        transform: rotate(0deg) translateY(0);
+      }
+
+      20% {
+        -webkit-transform: translateY(-500px);
+        transform: translateY(-500px);
+      }
+
+      100% {
+        -webkit-transform: translateY(0) rotate(-360deg);
+        transform: translateY(0) rotate(-360deg);
+      }
+    }
+
+    @keyframes glassesFlip {
+      0% {
+        -webkit-transform: rotate(0deg) translateY(0);
+        transform: rotate(0deg) translateY(0);
+      }
+
+      20% {
+        -webkit-transform: translateY(-500px);
+        transform: translateY(-500px);
+      }
+
+      100% {
+        -webkit-transform: translateY(0) rotate(-360deg);
+        transform: translateY(0) rotate(-360deg);
+      }
+    }
+
+    @-webkit-keyframes eyebrowRaise {
+      0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+
+      50% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+      }
+
+      100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes eyebrowRaise {
+      0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+
+      50% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+      }
+
+      100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+    }
+
+    /*# sourceMappingURL=styles.css.map */
+  </style>
+
+  <section>
+    <div class="card">
+      <h1>Hello Sir</h1>
+
+
+      <svg width="390" height="390" viewBox="0 0 390 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="hoge-logo-full">
+          <circle id="circle-background" cx="195" cy="195" r="187.5" fill="#1D1D1B" stroke="white" stroke-width="15" />
+          <g id="hoge-head">
+            <g id="mouth">
+              <path id="mouth_2"
+                d="M109.323 282.5C105.823 264 84.8229 201.5 133.323 201.5C179.411 199.443 228.25 247.1 227.323 293.224C173.323 321.5 137.656 292.816 109.323 282.5Z"
+                fill="white" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="Subtract"
+                d="M200.292 230C189.996 251.894 171.619 267.49 148 267.49C123.775 267.49 109.287 252.761 102.111 231.155C101.299 245.564 105.129 261.913 107.73 273.015C108.47 276.175 109.111 278.911 109.517 281.055C114.793 282.976 120.324 285.534 126.18 288.243C151.77 300.079 183.573 314.789 227.516 291.779C227.961 269.653 216.954 247.174 200.292 230Z"
+                fill="#D2D2D2" />
+            </g>
+            <g id="face-main">
+              <path id="face"
+                d="M109.323 154C54.3228 171.5 73.8228 282.5 109.323 282.5C105.823 264 84.823 201.5 133.323 201.5C189.323 199 194.5 323 254.823 288C290.324 260.138 290.324 235.741 290.323 205.943V205.5C290.323 191 271.323 182.333 263.323 177C259.656 181.333 248.823 189.8 234.823 189C217.323 188 202.323 151.5 155.323 151.5C129.323 145.5 109.323 153.5 109.323 154Z"
+                fill="white" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="Intersect"
+                d="M234.935 255.5C268.5 255.5 262 218.5 271 190C265.5 186 260 181 260 181L264.5 177L289.749 199.323C291.148 233.181 285.5 262 254.5 285.5C223.5 304.5 208.177 278.874 191 249.823L190.648 249.227C177.092 226.296 160.268 197.835 133.5 199.323C90.6214 199.323 98.8523 246.714 104.5 270.823C105.24 273.983 106.566 278.178 106.971 280.323C97.5 278.5 90.8999 270 85.8999 259L95.4352 264C87.4352 243 85.4352 179 132.435 179C160.157 176.346 182.765 203.993 201.408 226.792L201.408 226.792C214.372 242.647 225.419 256.156 234.935 255.5Z"
+                fill="#D2D2D2" />
+              <path id="Vector 7"
+                d="M131.338 181C128.013 186.714 129.011 200.643 129.676 201H133C129.676 195.286 131.338 187.429 131.338 181Z"
+                fill="black" />
+              <g id="freckles">
+                <g id="freckles-right">
+                  <circle id="Ellipse 1" cx="168" cy="161" r="2" fill="#C4C4C4" />
+                  <circle id="Ellipse 2" cx="179" cy="170" r="2" fill="#C4C4C4" />
+                  <circle id="Ellipse 3" cx="171" cy="178" r="2" fill="#C4C4C4" />
+                  <circle id="Ellipse 4" cx="162.5" cy="176.5" r="2" fill="#C4C4C4" />
+                  <circle id="Ellipse 5" cx="161.5" cy="167" r="2" fill="#C4C4C4" />
+                </g>
+                <g id="freckles-left">
+                  <circle id="Ellipse 6" cx="108.5" cy="161.5" r="1.5" fill="#C4C4C4" />
+                  <circle id="Ellipse 7" cx="100.5" cy="165.5" r="1.5" fill="#C4C4C4" />
+                  <circle id="Ellipse 8" cx="106.5" cy="175.5" r="1.5" fill="#C4C4C4" />
+                  <circle id="Ellipse 9" cx="112.5" cy="170.5" r="1.5" fill="#C4C4C4" />
+                  <circle id="Ellipse 10" cx="101.5" cy="172.5" r="1.5" fill="#C4C4C4" />
+                </g>
+              </g>
+            </g>
+            <path id="head"
+              d="M155.323 151.5C129.323 145.5 109.323 153.5 109.323 154C115.823 131.667 143.623 87 202.823 87C262.023 87 302.823 140 281.24 189C275.219 183.757 267.657 179.889 263.323 177C259.656 181.333 248.823 189.8 234.823 189C217.323 188 202.323 151.5 155.323 151.5Z"
+              fill="white" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            <g id="hoge-eyes">
+              <g id="hoge-eye-right">
+                <circle id="left-eye" cx="194" cy="137.684" r="6" fill="black" />
+                <path id="left-eyebrow" d="M185 119.184C189.333 114.517 200 107.984 208 119.184" stroke="black"
+                  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+              <g id="hoge-eye-left">
+                <circle id="right-eye" cx="150" cy="133.684" r="4" fill="black" />
+                <path id="right-eyebrow" d="M161 118.684C157.42 114.911 148.609 109.629 142 118.684" stroke="black"
+                  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+            </g>
+            <g id="glasses">
+              <path id="glasses_2"
+                d="M127.323 108.5C94.5226 118.1 99.3226 142.167 105.823 153C182.323 135.5 213.823 178 232.823 189.5C249.323 192 258.989 185 263.823 178C275.656 185.5 300.723 202 306.323 208C313.323 215.5 308.323 220 314.323 219C320.323 218 317.823 200 314.323 192C311.523 185.6 281.489 162 266.823 151C267.323 143.5 259.323 126.5 246.823 118C234.823 105.5 168.323 96.5 127.323 108.5Z"
+                fill="#1D1D1B" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <g id="glasses-reflection">
+                <path
+                  d="M131.948 149.19C144.897 148.466 156.252 149.631 166.263 151.984L141.214 105.331C135.982 106.18 130.964 107.277 126.279 108.648C120.891 110.225 116.518 112.192 113 114.427L131.948 149.19Z"
+                  fill="white" />
+                <path
+                  d="M213.991 176.098C207.44 171.013 199.714 165.507 190.379 160.793L157.847 103.474C162.559 103.161 167.337 103.009 172.108 103L213.991 176.098Z"
+                  fill="white" />
+                <path
+                  d="M229.346 188.062C226.583 186.148 223.557 183.719 220.185 181.012C218.823 179.919 217.406 178.781 215.926 177.613L173.579 103.002C175.955 103.012 178.327 103.058 180.686 103.137L229.346 188.062Z"
+                  fill="white" />
+                <path
+                  d="M261.819 179.453C259.76 182.087 256.992 184.637 253.405 186.587L200.712 104.62C205.747 105.203 210.578 105.93 215.098 106.776L261.819 179.453Z"
+                  fill="white" />
+                <path
+                  d="M131.948 149.19C144.897 148.466 156.252 149.631 166.263 151.984L141.214 105.331C135.982 106.18 130.964 107.277 126.279 108.648C120.891 110.225 116.518 112.192 113 114.427L131.948 149.19Z"
+                  stroke="#1D1D1B" />
+                <path
+                  d="M213.991 176.098C207.44 171.013 199.714 165.507 190.379 160.793L157.847 103.474C162.559 103.161 167.337 103.009 172.108 103L213.991 176.098Z"
+                  stroke="#1D1D1B" />
+                <path
+                  d="M229.346 188.062C226.583 186.148 223.557 183.719 220.185 181.012C218.823 179.919 217.406 178.781 215.926 177.613L173.579 103.002C175.955 103.012 178.327 103.058 180.686 103.137L229.346 188.062Z"
+                  stroke="#1D1D1B" />
+                <path
+                  d="M261.819 179.453C259.76 182.087 256.992 184.637 253.405 186.587L200.712 104.62C205.747 105.203 210.578 105.93 215.098 106.776L261.819 179.453Z"
+                  stroke="#1D1D1B" />
+              </g>
+            </g>
+            <g id="nose">
+              <path id="nose_2"
+                d="M150.713 144.938C133.55 140.263 122.844 145.038 115.615 148.831C114.773 149.273 114.187 150.093 114.103 151.041C113.046 162.947 120.276 174.505 128.908 177.455C130.43 177.975 132.09 177.794 133.561 177.145C146.876 171.272 153.971 156.299 153.17 147.644C153.047 146.308 152.008 145.291 150.713 144.938Z"
+                fill="#1D1D1B" stroke="#1D1D1B" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="Vector 5"
+                d="M117.451 149.265C113.051 152.065 116.951 164.265 119.451 168.265C115.451 157.265 118.951 151.765 118.951 151.765C122.451 148.265 135.951 144.265 150.451 146.765C132.451 141.965 118.451 148.629 117.451 149.265Z"
+                fill="#C4C4C4" />
+            </g>
+            <g id="right-ear">
+              <path id="Vector 3"
+                d="M312.323 251C295.823 277.5 268.323 265 268.323 251C268.323 231 276.323 193.5 276.323 193.5C277.323 174.5 273.323 122 276.323 123.5C350.823 195.5 326.823 223 312.323 251Z"
+                fill="white" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="Intersect_2" fill-rule="evenodd" clip-rule="evenodd"
+                d="M270.75 236.5C279.855 239.809 300.896 234.938 318.226 184.647C320 174.5 325.5 195 326.5 204C328.5 223.5 311 254.5 303.5 259C303.5 259 300.5 262 296 263.59C291.5 265.5 287.5 265 287.5 265C279.5 265 273.5 261 270.5 254.5C269.205 250.614 269.96 243.746 270.512 238.724C270.6 237.93 270.682 237.182 270.75 236.5Z"
+                fill="#C4C4C4" />
+            </g>
+          </g>
+        </g>
+      </svg>
+
+      <p>Get some slp pls</p>
+      <br>
+
+
+      <div class="card__background">
+
+      </div>
+    </div>
+    <div css="card__background">
+
+    </div>
+  </section>
+
+
+  <!-- Shoutout https://codepen.io/chriscoyier/pen/d70643d71d123cbf13ad9b1980438526 -->
+  <div class="triangle" onclick="flyPotter()">
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg">
+  </div>
+
+
+  <style>
+    .triangle {
+      width: 200px;
+      height: 280px;
+      /* 	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg) center center; */
+      background-size: cover;
+      transition: 0.4s ease-out;
+      clip-path: polygon(50% 5%, 0% 100%, 100% 100%);
+    }
+
+    .triangle img {
+      transition: 0.4s ease-out;
+      width: 200px;
+      height: 200px;
+    }
+
+    .triangle:hover img {
+      /*   clip-path: polygon(50% 19%, 0 76%, 100% 76%);   */
+      transform: rotateX(40deg);
+    }
+
+    .triangle:hover {
+      clip-path: polygon(50% 19%, 0 76%, 100% 76%);
+    }
+
+    .triangle.flight {
+      padding: 30px;
+      animation: triangleFlight 1s ease-out forwards;
+      clip-path: polygon(50% 19%, 0 76%, 100% 76%);
+      opacity: 0.9;
+    }
+
+    .triangle.flight img {
+      transition-delay: 0.3s;
+      
+      box-shadow: 0px 10px 10px black;
+      opacity: 0.9;
+    }
+
+    /* Center the demo */
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes triangleFlight {
+      from {
+        transform: scale(1) translateY(0);
+      }
+
+      to {
+        transform: scale(0.4) translateY(-120px);
+      }
+    }
+  </style>
+
+
+  <script>
+    const potterTriangle = document.querySelector(".triangle");
+    console.log("potterTriangle");
+
+    const flyPotter = () => {
+      potterTriangle.classList.toggle("flight");
+    }
+  </script>
+
+  <br>
+  <br>
+
+  <!-- <section class="mini-card">
+    <div class="card card-small">
+      <h1>Hello Sir</h1>
+
+
+      <svg width="390" height="390" viewBox="0 0 390 390" fill="none" xmlns="http://www.w3.org/2000/svg"
+        id="hoge-logo-full2">
+        <g>
+          <circle id="circle-background" cx="195" cy="195" r="187.5" fill="#1D1D1B" stroke="white" stroke-width="15" />
+          <g id="hoge-head">
+            <g id="mouth">
+              <path id="mouth_2"
+                d="M109.323 282.5C105.823 264 84.8229 201.5 133.323 201.5C179.411 199.443 228.25 247.1 227.323 293.224C173.323 321.5 137.656 292.816 109.323 282.5Z"
+                fill="white" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="Subtract"
+                d="M200.292 230C189.996 251.894 171.619 267.49 148 267.49C123.775 267.49 109.287 252.761 102.111 231.155C101.299 245.564 105.129 261.913 107.73 273.015C108.47 276.175 109.111 278.911 109.517 281.055C114.793 282.976 120.324 285.534 126.18 288.243C151.77 300.079 183.573 314.789 227.516 291.779C227.961 269.653 216.954 247.174 200.292 230Z"
+                fill="#D2D2D2" />
+            </g>
+            <g id="face-main">
+              <path id="face"
+                d="M109.323 154C54.3228 171.5 73.8228 282.5 109.323 282.5C105.823 264 84.823 201.5 133.323 201.5C189.323 199 194.5 323 254.823 288C290.324 260.138 290.324 235.741 290.323 205.943V205.5C290.323 191 271.323 182.333 263.323 177C259.656 181.333 248.823 189.8 234.823 189C217.323 188 202.323 151.5 155.323 151.5C129.323 145.5 109.323 153.5 109.323 154Z"
+                fill="white" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="Intersect"
+                d="M234.935 255.5C268.5 255.5 262 218.5 271 190C265.5 186 260 181 260 181L264.5 177L289.749 199.323C291.148 233.181 285.5 262 254.5 285.5C223.5 304.5 208.177 278.874 191 249.823L190.648 249.227C177.092 226.296 160.268 197.835 133.5 199.323C90.6214 199.323 98.8523 246.714 104.5 270.823C105.24 273.983 106.566 278.178 106.971 280.323C97.5 278.5 90.8999 270 85.8999 259L95.4352 264C87.4352 243 85.4352 179 132.435 179C160.157 176.346 182.765 203.993 201.408 226.792L201.408 226.792C214.372 242.647 225.419 256.156 234.935 255.5Z"
+                fill="#D2D2D2" />
+              <path id="Vector 7"
+                d="M131.338 181C128.013 186.714 129.011 200.643 129.676 201H133C129.676 195.286 131.338 187.429 131.338 181Z"
+                fill="black" />
+              <g id="freckles">
+                <g id="freckles-right">
+                  <circle id="Ellipse 1" cx="168" cy="161" r="2" fill="#C4C4C4" />
+                  <circle id="Ellipse 2" cx="179" cy="170" r="2" fill="#C4C4C4" />
+                  <circle id="Ellipse 3" cx="171" cy="178" r="2" fill="#C4C4C4" />
+                  <circle id="Ellipse 4" cx="162.5" cy="176.5" r="2" fill="#C4C4C4" />
+                  <circle id="Ellipse 5" cx="161.5" cy="167" r="2" fill="#C4C4C4" />
+                </g>
+                <g id="freckles-left">
+                  <circle id="Ellipse 6" cx="108.5" cy="161.5" r="1.5" fill="#C4C4C4" />
+                  <circle id="Ellipse 7" cx="100.5" cy="165.5" r="1.5" fill="#C4C4C4" />
+                  <circle id="Ellipse 8" cx="106.5" cy="175.5" r="1.5" fill="#C4C4C4" />
+                  <circle id="Ellipse 9" cx="112.5" cy="170.5" r="1.5" fill="#C4C4C4" />
+                  <circle id="Ellipse 10" cx="101.5" cy="172.5" r="1.5" fill="#C4C4C4" />
+                </g>
+              </g>
+            </g>
+            <path id="head"
+              d="M155.323 151.5C129.323 145.5 109.323 153.5 109.323 154C115.823 131.667 143.623 87 202.823 87C262.023 87 302.823 140 281.24 189C275.219 183.757 267.657 179.889 263.323 177C259.656 181.333 248.823 189.8 234.823 189C217.323 188 202.323 151.5 155.323 151.5Z"
+              fill="white" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            <g id="hoge-eyes">
+              <g id="hoge-eye-right">
+                <circle id="left-eye" cx="194" cy="137.684" r="6" fill="black" />
+                <path id="left-eyebrow" d="M185 119.184C189.333 114.517 200 107.984 208 119.184" stroke="black"
+                  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+              <g id="hoge-eye-left">
+                <circle id="right-eye" cx="150" cy="133.684" r="4" fill="black" />
+                <path id="right-eyebrow" d="M161 118.684C157.42 114.911 148.609 109.629 142 118.684" stroke="black"
+                  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+            </g>
+            <g id="glasses">
+              <path id="glasses_2"
+                d="M127.323 108.5C94.5226 118.1 99.3226 142.167 105.823 153C182.323 135.5 213.823 178 232.823 189.5C249.323 192 258.989 185 263.823 178C275.656 185.5 300.723 202 306.323 208C313.323 215.5 308.323 220 314.323 219C320.323 218 317.823 200 314.323 192C311.523 185.6 281.489 162 266.823 151C267.323 143.5 259.323 126.5 246.823 118C234.823 105.5 168.323 96.5 127.323 108.5Z"
+                fill="#1D1D1B" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <g id="glasses-reflection">
+                <path
+                  d="M131.948 149.19C144.897 148.466 156.252 149.631 166.263 151.984L141.214 105.331C135.982 106.18 130.964 107.277 126.279 108.648C120.891 110.225 116.518 112.192 113 114.427L131.948 149.19Z"
+                  fill="white" />
+                <path
+                  d="M213.991 176.098C207.44 171.013 199.714 165.507 190.379 160.793L157.847 103.474C162.559 103.161 167.337 103.009 172.108 103L213.991 176.098Z"
+                  fill="white" />
+                <path
+                  d="M229.346 188.062C226.583 186.148 223.557 183.719 220.185 181.012C218.823 179.919 217.406 178.781 215.926 177.613L173.579 103.002C175.955 103.012 178.327 103.058 180.686 103.137L229.346 188.062Z"
+                  fill="white" />
+                <path
+                  d="M261.819 179.453C259.76 182.087 256.992 184.637 253.405 186.587L200.712 104.62C205.747 105.203 210.578 105.93 215.098 106.776L261.819 179.453Z"
+                  fill="white" />
+                <path
+                  d="M131.948 149.19C144.897 148.466 156.252 149.631 166.263 151.984L141.214 105.331C135.982 106.18 130.964 107.277 126.279 108.648C120.891 110.225 116.518 112.192 113 114.427L131.948 149.19Z"
+                  stroke="#1D1D1B" />
+                <path
+                  d="M213.991 176.098C207.44 171.013 199.714 165.507 190.379 160.793L157.847 103.474C162.559 103.161 167.337 103.009 172.108 103L213.991 176.098Z"
+                  stroke="#1D1D1B" />
+                <path
+                  d="M229.346 188.062C226.583 186.148 223.557 183.719 220.185 181.012C218.823 179.919 217.406 178.781 215.926 177.613L173.579 103.002C175.955 103.012 178.327 103.058 180.686 103.137L229.346 188.062Z"
+                  stroke="#1D1D1B" />
+                <path
+                  d="M261.819 179.453C259.76 182.087 256.992 184.637 253.405 186.587L200.712 104.62C205.747 105.203 210.578 105.93 215.098 106.776L261.819 179.453Z"
+                  stroke="#1D1D1B" />
+              </g>
+            </g>
+            <g id="nose">
+              <path id="nose_2"
+                d="M150.713 144.938C133.55 140.263 122.844 145.038 115.615 148.831C114.773 149.273 114.187 150.093 114.103 151.041C113.046 162.947 120.276 174.505 128.908 177.455C130.43 177.975 132.09 177.794 133.561 177.145C146.876 171.272 153.971 156.299 153.17 147.644C153.047 146.308 152.008 145.291 150.713 144.938Z"
+                fill="#1D1D1B" stroke="#1D1D1B" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="Vector 5"
+                d="M117.451 149.265C113.051 152.065 116.951 164.265 119.451 168.265C115.451 157.265 118.951 151.765 118.951 151.765C122.451 148.265 135.951 144.265 150.451 146.765C132.451 141.965 118.451 148.629 117.451 149.265Z"
+                fill="#C4C4C4" />
+            </g>
+            <g id="right-ear">
+              <path id="Vector 3"
+                d="M312.323 251C295.823 277.5 268.323 265 268.323 251C268.323 231 276.323 193.5 276.323 193.5C277.323 174.5 273.323 122 276.323 123.5C350.823 195.5 326.823 223 312.323 251Z"
+                fill="white" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="Intersect_2" fill-rule="evenodd" clip-rule="evenodd"
+                d="M270.75 236.5C279.855 239.809 300.896 234.938 318.226 184.647C320 174.5 325.5 195 326.5 204C328.5 223.5 311 254.5 303.5 259C303.5 259 300.5 262 296 263.59C291.5 265.5 287.5 265 287.5 265C279.5 265 273.5 261 270.5 254.5C269.205 250.614 269.96 243.746 270.512 238.724C270.6 237.93 270.682 237.182 270.75 236.5Z"
+                fill="#C4C4C4" />
+            </g>
+          </g>
+        </g>
+      </svg>
+
+
+      <p>Get some hlb pls</p>
+
+      <div class="card__background">
+
+      </div>
+    </div>
+    <div cl="card__background">
+
+    </div> 
+  </section> -->
+
+
+  <script>
+    const hogeLogo = document.querySelector('#hoge-logo-full');
+    // const hogeLogoMini = document.querySelector('#hoge-logo-full2');
+    const body = document.querySelector('body');
+
+    hogeLogo.addEventListener("click", function () {
+      hogeLogo.classList.toggle("glasses-anim");
+      body.classList.toggle('dark');
+    })
+
+    // hogeLogoMini.addEventListener("click", function () {
+    //   hogeLogoMini.classList.toggle("glasses-anim");
+    //   body.classList.toggle('dark');
+    // })
+  </script>
+
+
+</body>
+
+</html>
