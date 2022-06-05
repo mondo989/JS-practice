@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  
+  <style>
+    body {
+      height: 100%;
+    }
+
+    .svg-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #tower-full {
+      opacity: 0;
+    }
+
+    #letter-e path{
+      /* opacity: 0; */
+      /* fill: green; */
+      animation: pathAppear 1s 1.5s ease-in-out infinite;
+      /* background: red; */
+    }
+
+    @keyframes pathAppear {
+      /* from {
+        fill: black;
+      }
+      to {
+        fill: green;
+      } */
+    }
+
+  
+    #letter-e .fill {
+      fill: url(#header-shape-gradient) #fff;
+    }
+
+    .ethnyc-svg {
+      animation: svgAppear 1s ease-in-out forwards;
+    }
+
+    #letter-e,
+    #letter-t,
+    #letter-h,
+    #letter-n,
+    #letter-y,
+    #letter-c {
+      opacity: 0.1;
+      transform: scale(0.65);
+      transform-origin: center;
+    }
+
+  
+ 
+    /* ANIM 1  */
+    /* #letter-e {
+      animation: letterAppear 0.35s 0.7s ease-in-out forwards;
+    }
+
+    #letter-t {
+      animation: letterAppear 0.35s 1.05s ease-in-out forwards;
+    }
+
+    #letter-h {
+      animation: letterAppear 0.35s 1.4s ease-in-out forwards;
+    }
+
+    #letter-n {
+      animation: letterAppear 0.35s 1.75s ease-in-out forwards;
+    }
+
+    #letter-y {
+      animation: letterAppear 0.35s 2.1s ease-in-out forwards;
+    }
+
+    #letter-c {
+      animation: letterAppear 0.35s 2.45s ease-in-out forwards;
+    } */
+
+    #letter-e {
+      animation: letterAppear 0.35s 0.7s ease-in-out forwards;
+    }
+
+    #letter-t {
+      animation: letterAppear 0.35s 0.7s ease-in-out forwards;
+    }
+
+    #letter-h {
+      animation: letterAppear 0.35s 0.7s ease-in-out forwards;
+    }
+
+    #letter-n {
+      animation: letterAppear 0.35s 1.05s ease-in-out forwards;
+    }
+
+    #letter-y {
+      animation: letterAppear 0.35s 1.05s ease-in-out forwards;
+    }
+ 
+    #letter-c {
+      animation: letterAppear 0.35s 1.05s ease-in-out forwards;
+    }
+
+    @keyframes letterAppear {
+      from {
+        opacity: 0.4;
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes svgAppear {
+      from {
+        opacity: 0;
+        transform: translateY(120px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #tower-full {
+      animation: towerAppear 1s 0.15s ease-in-out forwards;
+      transform-origin: center;
+    }
+
+    @keyframes towerAppear {
+      from {
+        opacity: 0;
+        transform: translateY(130px);
+      }
+
+      to {
+        opacity: 1;
+        background: red;
+        transform: translateY(0px) scale(1);
+      }
+    }
+
+    #tower-base {
+      overflow: hidden !important;
+    }
+
+    #triangle-bk {
+      animation: triangle-bk 0.5s 1s ease-in-out forwards;
+
+    }
+
+
+    @keyframes triangle-bk {
+      from {
+        fill: #ffffff
+      }
+
+      to {
+        fill: #F3C245;
+      }
+    }
+  </style>
+
+
+  <!-- <h1>Sup foos</h1> -->
+
+
+  <div class="svg-container">
+    <svg class="ethnyc-svg" width="751" height="196" viewBox="0 0 751 196" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g id="letters-tower-full">
+        <g id="letters-full">
+          <g id="letter-c">
+            <mask id="path-3-outside-2_1_167" maskUnits="userSpaceOnUse" x="645" y="41" width="106" height="114"
+              fill="black">
+              <rect fill="white" x="645" y="41" width="106" height="114" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M743.525 65.0623L725.016 79.6268C719.802 72.552 711.655 68 702.5 68C686.76 68 674 81.4559 674 98.0545C674 114.653 686.76 128.109 702.5 128.109C711.898 128.109 720.233 123.312 725.425 115.914L744.652 129.468C734.999 142.53 719.489 151 702 151C672.729 151 649 127.271 649 98C649 68.7289 672.729 45 702 45C718.823 45 733.816 52.8384 743.525 65.0623Z" />
+            </mask>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M743.525 65.0623L725.016 79.6268C719.802 72.552 711.655 68 702.5 68C686.76 68 674 81.4559 674 98.0545C674 114.653 686.76 128.109 702.5 128.109C711.898 128.109 720.233 123.312 725.425 115.914L744.652 129.468C734.999 142.53 719.489 151 702 151C672.729 151 649 127.271 649 98C649 68.7289 672.729 45 702 45C718.823 45 733.816 52.8384 743.525 65.0623Z"
+              fill="white" />
+            <path
+              d="M725.016 79.6268L721.796 82L724.245 85.3232L727.489 82.7703L725.016 79.6268ZM743.525 65.0623L745.999 68.2058L749.156 65.7209L746.657 62.5745L743.525 65.0623ZM725.425 115.914L727.729 112.645L724.453 110.335L722.15 113.616L725.425 115.914ZM744.652 129.468L747.868 131.845L750.3 128.555L746.956 126.198L744.652 129.468ZM727.489 82.7703L745.999 68.2058L741.051 61.9188L722.542 76.4834L727.489 82.7703ZM702.5 72C710.28 72 717.272 75.8616 721.796 82L728.236 77.2537C722.331 69.2424 713.03 64 702.5 64V72ZM678 98.0545C678 83.4622 689.167 72 702.5 72V64C684.353 64 670 79.4496 670 98.0545H678ZM702.5 124.109C689.167 124.109 678 112.647 678 98.0545H670C670 116.66 684.353 132.109 702.5 132.109V124.109ZM722.15 113.616C717.643 120.04 710.485 124.109 702.5 124.109V132.109C713.31 132.109 722.823 126.585 728.699 118.212L722.15 113.616ZM746.956 126.198L727.729 112.645L723.12 119.183L742.347 132.737L746.956 126.198ZM741.435 127.09C732.503 139.176 718.166 147 702 147V155C720.811 155 737.494 145.883 747.868 131.845L741.435 127.09ZM702 147C674.938 147 653 125.062 653 98H645C645 129.48 670.52 155 702 155V147ZM653 98C653 70.938 674.938 49 702 49V41C670.52 41 645 66.5198 645 98H653ZM702 49C717.552 49 731.41 56.2404 740.393 67.5501L746.657 62.5745C736.222 49.4363 720.095 41 702 41V49Z"
+              fill="black" mask="url(#path-3-outside-2_1_167)" />
+          </g>
+          <g id="letter-y">
+            <mask id="path-5-outside-3_1_167" maskUnits="userSpaceOnUse" x="548" y="44" width="111" height="108"
+              fill="black">
+              <rect fill="white" x="548" y="44" width="111" height="108" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M591.5 148H615V111L655 48.9775V48H626.967L604 87L581.9 48H552V49.7528L591.5 111V148Z" />
+            </mask>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M591.5 148H615V111L655 48.9775V48H626.967L604 87L581.9 48H552V49.7528L591.5 111V148Z" fill="white" />
+            <path
+              d="M615 148V152H619V148H615ZM591.5 148H587.5V152H591.5V148ZM615 111L611.638 108.832L611 109.822V111H615ZM655 48.9775L658.362 51.1455L659 50.1555V48.9775H655ZM655 48H659V44H655V48ZM626.967 48V44H624.68L623.52 45.9702L626.967 48ZM604 87L600.52 88.9721L603.933 94.9958L607.447 89.0298L604 87ZM581.9 48L585.38 46.0279L584.231 44H581.9V48ZM552 48V44H548V48H552ZM552 49.7528H548V50.9308L548.638 51.9208L552 49.7528ZM591.5 111H595.5V109.822L594.862 108.832L591.5 111ZM615 144H591.5V152H615V144ZM611 111V148H619V111H611ZM651.638 46.8096L611.638 108.832L618.362 113.168L658.362 51.1455L651.638 46.8096ZM651 48V48.9775H659V48H651ZM626.967 52H655V44H626.967V52ZM607.447 89.0298L630.413 50.0298L623.52 45.9702L600.553 84.9702L607.447 89.0298ZM578.42 49.9721L600.52 88.9721L607.48 85.0279L585.38 46.0279L578.42 49.9721ZM552 52H581.9V44H552V52ZM556 49.7528V48H548V49.7528H556ZM548.638 51.9208L588.138 113.168L594.862 108.832L555.362 47.5849L548.638 51.9208ZM587.5 111V148H595.5V111H587.5Z"
+              fill="black" mask="url(#path-5-outside-3_1_167)" />
+          </g>
+          <g id="letter-n">
+            <mask id="path-1-outside-1_1_167" maskUnits="userSpaceOnUse" x="445" y="44" width="103" height="108"
+              fill="black">
+              <rect fill="white" x="445" y="44" width="103" height="108" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M475.439 48H449V148H475V91.9348C475 90.9805 476.209 90.5685 476.792 91.3242L520.489 148H544V48H519V101.565C519 102.519 517.791 102.932 517.208 102.176L475.439 48Z" />
+            </mask>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M475.439 48H449V148H475V91.9348C475 90.9805 476.209 90.5685 476.792 91.3242L520.489 148H544V48H519V101.565C519 102.519 517.791 102.932 517.208 102.176L475.439 48Z"
+              fill="white" />
+            <path
+              d="M449 48V44H445V48H449ZM475.439 48L478.607 45.5577L477.406 44H475.439V48ZM449 148H445V152H449V148ZM475 148V152H479V148H475ZM476.792 91.3242L479.96 88.8819L479.96 88.8819L476.792 91.3242ZM520.489 148L517.321 150.442L518.522 152H520.489V148ZM544 148V152H548V148H544ZM544 48H548V44H544V48ZM519 48V44H515V48H519ZM517.208 102.176L520.376 99.7335L520.376 99.7334L517.208 102.176ZM449 52H475.439V44H449V52ZM453 148V48H445V148H453ZM475 144H449V152H475V144ZM479 148V91.9348H471V148H479ZM479 91.9348C479 94.7977 475.372 96.0338 473.624 93.7666L479.96 88.8819C477.046 85.1031 471 87.1633 471 91.9348H479ZM473.624 93.7666L517.321 150.442L523.656 145.558L479.96 88.8819L473.624 93.7666ZM544 144H520.489V152H544V144ZM540 48V148H548V48H540ZM519 52H544V44H519V52ZM515 48V101.565H523V48H515ZM515 101.565C515 98.7024 518.628 97.4661 520.376 99.7335L514.04 104.618C516.954 108.397 523 106.337 523 101.565H515ZM520.376 99.7334L478.607 45.5577L472.271 50.4423L514.04 104.618L520.376 99.7334Z"
+              fill="black" mask="url(#path-1-outside-1_1_167)" />
+          </g>
+          <g id="letter-e" >
+            <mask id="path-7-outside-4_1_167" maskUnits="userSpaceOnUse" x="0" y="44" width="89" height="108"
+              fill="black">
+              <rect fill="white" y="44" width="89" height="108" />
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M85 48H4V148H85V129H28V107H79V89H28V68H85V48Z" />
+            </mask>
+            <path class="fill" fill-rule="evenodd" clip-rule="evenodd" d="M85 48H4V148H85V129H28V107H79V89H28V68H85V48Z"
+              fill="white" />
+            <path class="border"
+              d="M4 48V44H0V48H4ZM85 48H89V44H85V48ZM4 148H0V152H4V148ZM85 148V152H89V148H85ZM85 129H89V125H85V129ZM28 129H24V133H28V129ZM28 107V103H24V107H28ZM79 107V111H83V107H79ZM79 89H83V85H79V89ZM28 89H24V93H28V89ZM28 68V64H24V68H28ZM85 68V72H89V68H85ZM4 52H85V44H4V52ZM8 148V48H0V148H8ZM85 144H4V152H85V144ZM81 129V148H89V129H81ZM85 125H28V133H85V125ZM32 129V107H24V129H32ZM28 111H79V103H28V111ZM83 107V89H75V107H83ZM79 85H28V93H79V85ZM32 89V68H24V89H32ZM28 72H85V64H28V72ZM81 48V68H89V48H81Z"
+              fill="black" mask="url(#path-7-outside-4_1_167)" />
+          </g>
+          <g id="letter-t">
+            <mask id="path-9-outside-5_1_167" maskUnits="userSpaceOnUse" x="87" y="44" width="96" height="108"
+              fill="black">
+              <rect fill="white" x="87" y="44" width="96" height="108" />
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M179 48H91V68H123V148H147V68H179V48Z" />
+            </mask>
+            <path class="border" fill-rule="evenodd" clip-rule="evenodd" d="M179 48H91V68H123V148H147V68H179V48Z" fill="white" />
+            <path
+              d="M91 48V44H87V48H91ZM179 48H183V44H179V48ZM91 68H87V72H91V68ZM123 68H127V64H123V68ZM123 148H119V152H123V148ZM147 148V152H151V148H147ZM147 68V64H143V68H147ZM179 68V72H183V68H179ZM91 52H179V44H91V52ZM95 68V48H87V68H95ZM123 64H91V72H123V64ZM127 148V68H119V148H127ZM147 144H123V152H147V144ZM143 68V148H151V68H143ZM179 64H147V72H179V64ZM175 48V68H183V48H175Z"
+              fill="black" mask="url(#path-9-outside-5_1_167)" />
+          </g>
+          <g id="letter-h">
+            <mask id="path-11-outside-6_1_167" maskUnits="userSpaceOnUse" x="185" y="44" width="100" height="108"
+              fill="black">
+              <rect fill="white" x="185" y="44" width="100" height="108" />
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M214 48V87H256V48H281V148H256V109H214V148H189V48H214Z" />
+            </mask>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M214 48V87H256V48H281V148H256V109H214V148H189V48H214Z"
+              fill="white" />
+            <path
+              d="M214 48H218V44H214V48ZM214 87H210V91H214V87ZM256 87V91H260V87H256ZM256 48V44H252V48H256ZM281 48H285V44H281V48ZM281 148V152H285V148H281ZM256 148H252V152H256V148ZM256 109H260V105H256V109ZM214 109V105H210V109H214ZM214 148V152H218V148H214ZM189 148H185V152H189V148ZM189 48V44H185V48H189ZM210 48V87H218V48H210ZM214 91H256V83H214V91ZM260 87V48H252V87H260ZM256 52H281V44H256V52ZM277 48V148H285V48H277ZM281 144H256V152H281V144ZM260 148V109H252V148H260ZM256 105H214V113H256V105ZM210 109V148H218V109H210ZM214 144H189V152H214V144ZM193 148V48H185V148H193ZM189 52H214V44H189V52Z"
+              fill="black" mask="url(#path-11-outside-6_1_167)" />
+          </g>
+        </g>
+        <g id="tower-base">
+          <path id="triangle-bk"
+            d="M287.837 140.246L286.628 142.331L288.668 143.616L364.919 191.616L366.255 192.457L367.589 191.612L443.338 143.612L445.363 142.329L444.166 140.252L368.417 8.75213L366.258 5.00386L364.088 8.74594L287.837 140.246Z"
+            fill="white" stroke="black" stroke-width="5" />
+          <g id="tower-full">
+            <mask id="mask0_1_167" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="290" y="10" width="152"
+              height="180">
+              <path id="Vector 4_2" d="M366.251 10L290 141.5L366.251 189.5L442 141.5L366.251 10Z" fill="white" />
+            </mask>
+            <g mask="url(#mask0_1_167)">
+              <g id="tower">
+                <g id="Group 4" opacity="0.9">
+                  <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
+                    d="M367.504 74.2726L379 98.7027L377.19 99.5543L366.23 76.2636L355.27 99.5543L353.46 98.7027L364.957 74.2726L366.23 74.8718L367.504 74.2726Z"
+                    fill="black" />
+                  <path id="Rectangle 6"
+                    d="M343.5 100C343.5 98.8954 344.395 98 345.5 98H385.5C386.605 98 387.5 98.8954 387.5 100V106H343.5V100Z"
+                    fill="black" />
+                  <path id="Rectangle 7"
+                    d="M338.448 106.946C338.477 105.863 339.363 105 340.447 105H390.553C391.637 105 392.523 105.863 392.552 106.946L395 198H336L338.448 106.946Z"
+                    fill="black" />
+                  <path id="Vector 6" d="M357 191.5L344.5 110H387.5L375.5 191.5H357Z" fill="white" />
+                  <path id="Vector 5" d="M366 28L363.5 98H369L366 28Z" fill="black" />
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+
+
+
+
+
+  </div>
+
+
+
+</body>
+
+</html>

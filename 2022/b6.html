@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    #main li { width: 50px; height: 50px; margin: 10px; border: 1px solid #ccc; text-align: center;}
+    #main ul { list-style-type: none;}
+  </style>
+
+  <div id="main"></div>
+
+  <script>
+
+    // Declare Vars
+    // Empty array for total cars
+    const totalCars = [];
+    const mainContainer = document.getElementById("main")
+
+
+    // Setup car class.
+    class Car {
+      constructor(color, licensePlateNumber, passengers) {
+        this.licensePlateNumber = this.setLicensePlate();
+        this.color = this.setColor();
+        this.passengers = this.setPassengers();
+        totalCars.push(this);
+      };
+
+      setColor() {
+        let colorTypes = ["red", "blue", "green", "yellow", "white", "black", "pink", "purple"];
+        let randomColor = Math.floor(Math.random() * colorTypes.length);
+        return colorTypes[randomColor];
+      }
+
+      setLicensePlate() {
+        // Shoutout https://www.programiz.com/javascript/examples/generate-random-strings#:~:text=random()%20method%20is%20used,a%20random%20character%20is%20generated.
+        let randomizedLicensePlateNumber = Math.random().toString(36).substring(2,7);
+        return randomizedLicensePlateNumber;
+      }
+
+      setPassengers() {
+        const randomizePassengers = Math.floor(Math.random() * 5 + 1);
+        return randomizePassengers;
+      }
+    }
+
+    const setupRoads = () => {
+      // Randomize amount of cars
+      const carAmount = Math.floor(Math.random() * 5);
+      console.log(carAmount);
+
+      // Use For loop to iterate through car amount and push objects to array
+      for (i=0; i < carAmount; i++) {
+        carAmount[i] = new Car()
+      }
+      console.log(totalCars)
+    }
+
+    setupRoads();
+
+    // Iterating through cars and assigning license plates annd colors
+
+    totalCars.forEach(car => {
+      
+        console.log(car);
+
+        text = "<ul>";
+          for (i = 0; i < totalCars.length; i++) {
+            text += "<li style= background:" +  totalCars[i].color + ">" + totalCars[i].passengers + totalCars[i].licensePlateNumber + "</li>";
+          }
+        text += "</ul>";
+        
+      },
+    );
+    
+    mainContainer.innerHTML = text;
+
+    // console.log(totalCars + "are the total cars")
+
+
+
+
+    // new Car()
+  </script>
+</body>
+
+</html>

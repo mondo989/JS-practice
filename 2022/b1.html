@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1 - Weather Selector</title>
+</head>
+<body>
+
+  <style>
+    body {
+      height: 100%;
+      background: red;
+    }
+    .weather-action__row,
+    .weather-image__row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  <div class="weather-image__row">
+    <img src="assets/cloud.png" id="cloud" alt="">
+    <img src="assets/rain.png" id="rain" alt="">
+    <img src="assets/snow.png" id="snow" alt="">
+  </div>
+
+  <div class="weather-action__row">
+    <button id="cloudyBtn">Cloudy</button>
+    <button id="rainyBtn">Rainy</button>
+    <button id="snowyBtn">Snowy</button>
+  </div>
+
+
+  <script>
+    // Declare Vars
+    const cloudImg = document.querySelector("#cloud");
+    const rainImg = document.querySelector("#rain");
+    const snowImg = document.querySelector("#snow")
+    const cloudyBtn = document.querySelector("#cloudyBtn");
+    const rainyBtn = document.querySelector("#rainyBtn");
+    const snowyBtn = document.querySelector("#snowyBtn");
+
+    // Add E Listeners
+    cloudyBtn.addEventListener('click', function() {
+      clearAllWeather();
+      showClouds()
+    })
+
+    rainyBtn.addEventListener('click', function() {
+      clearAllWeather();
+      showRain()
+    })
+
+    snowyBtn.addEventListener('click', function() {
+      clearAllWeather();
+      showSnow()
+    })
+
+    const showClouds = () => {
+      cloudImg.style.cssText = "display: block;";
+    }
+
+    const showRain = () => {
+      rainImg.style.cssText = "display: block;";
+    }
+
+    const showSnow = () => {
+      snowImg.style.cssText = "display: block;";
+    }
+
+    const clearAllWeather = () => {
+      cloudImg.style.cssText = "display: none;";
+      snowImg.style.cssText = "display: none;";
+      rainImg.style.cssText = "display: none;";
+    }
+
+
+  </script>
+</body>
+</html> 

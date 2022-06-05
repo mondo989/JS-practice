@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body style="background: blue">
+  <div class="circle-container"></div>
+
+  <script>
+    // 
+    const body = document.querySelector("body");
+    // Set variable fro randy circles
+    let circleContainer = document.querySelector(".circle-container")
+    // Declare empty Array
+    let circlesArray = [];
+
+    class Circle {
+      constructor(size, color) {
+        this.size = this.setSize();
+        this.color = this.setColor();
+        circlesArray.push(this)
+      };
+
+      setSize() {
+        const randomNm = Math.floor(Math.random() * 500);
+        return randomNm + "px"
+      }
+
+      setColor() {
+        const colors = ['red', 'blue', 'black', 'white'];
+        const randomizeColors = Math.floor(Math.random() * colors.length)
+        return colors[randomizeColors];
+      }
+    }
+
+    let setupCircles = () => {
+
+      // Randomize amount of circles
+      const randomCircles = Math.floor(Math.random() * 10);
+
+      // for loop for each random circles
+      for (i = 0; i < randomCircles; i++) {
+        circlesArray[i] = new Circle();
+      }
+
+    }
+
+    setupCircles()
+    console.log(circlesArray)
+
+
+  </script>
+</body>
+
+</html>
