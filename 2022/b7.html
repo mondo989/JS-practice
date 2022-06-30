@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="assets/stylesheets/b7.css">
+</head>
+
+<body>
+  <!-- This is practice for a weather app
+      Using Openweather API 
+      SVG's
+      SCSS/Keyframes
+      Parallax.JS
+      
+    -->
+
+  <form>
+    <input type="text" id="cityName" type="text">
+    <input type="submit" value="Convert">
+  </form>
+
+  <script>
+  
+    document.querySelector('form').onsubmit = () => {
+      // alert("Hey");
+
+      // const cityName = document.querySelector("cityName").value;
+
+      console.log(cityName);
+      const apiURL = 'https://api.openweathermap.org/data/2.5/weather?q='
+      const searchedQuery = document.querySelector("#cityName").value;
+      const apiKey = ',us&appid=53571566a423b86ed35e95f27b2d0493&units=imperial';
+
+      const totalQuery = apiURL + searchedQuery + apiKey;
+
+      console.log(totalQuery);
+
+
+      fetch(
+          totalQuery
+          // 'https://api.openweathermap.org/data/2.5/weather?q=detroit,us&appid=53571566a423b86ed35e95f27b2d0493&units=imperial'
+        )
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+
+          currentConditions.innerText = [data.weather[0].main];
+          currentLocation.innerText = "Current weather for " + [data.name];
+          currentTemp.innerText = [data.main.temp] + "°";
+
+          console.log(data.name);
+          console.log([data.weather[0].main]);
+          console.log(currentTemp);
+          console.log(data);
+
+          if ([data.weather[0].main] == "Clouds") {
+            body.style.cssText = "background: linear-gradient(180deg, #08577D 0%, #003055 100%);";
+            console.log("Cloudy day yo")
+          } else if (([data.weather[0].main] == "Rainy")) {
+            body.style.cssText = "background: pink;";
+            console.log("Rainy Day yo")
+          } else if (([data.weather[0].main] == "Clear")) {
+            body.style.cssText = "background: black;";
+            console.log("Clear Day")
+          } else {
+            console.log("Hello");
+          }
+        })
+
+        return false;
+
+
+    }
+  </script>
+
+
+  <div class="weather-container">
+    <div class="weather-container__content">
+      <h4 id="current-time"></h4>
+      <h4 id="current-location">XXX</h4>
+      <h4 id="current-conditions">XXX</h4>
+      <h4 id="current-temp">XXX</h4>
+    </div>
+
+
+    <div class="cloud-full" id="scene-2">
+      <div data-depth="2.27" class="cloud" id="cloud-back"></div>
+      <div data-depth="4.7" class="cloud" id="cloud-mid"></div>
+      <div data-depth="12.5" class="cloud" id="cloud-front"></div>
+      <!--   77, 327,109, 841, 2319, 5032, 1094, 892, 6739, 512, 84 -->
+      <svg width="0" height="0">
+        <!--Top Layer-->
+        <filter id="filter-back">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="0" />
+          <feDisplacementMap in="SourceGraphic" scale="170" />
+        </filter>
+        <filter id="filter-mid">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="0" />
+          <feDisplacementMap in="SourceGraphic" scale="150" />
+        </filter>
+        <filter id="filter-front">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="0" />
+          <feDisplacementMap in="SourceGraphic" scale="100" />
+        </filter>
+      </svg>
+
+
+    </div>
+
+
+
+
+    <div class="lighthouse-container" id="scene">
+      <div class="lighthouse" data-depth="0.07">
+        <div id="lightWrapper">
+          <div class="light"></div>
+        </div>
+        <div class="lighthouse-light"></div>
+        <svg width="327" height="1196" viewBox="0 0 327 1196" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="lighthouse">
+            <rect id="Rectangle 78" opacity="0.5" x="79" y="191" width="174" height="91"
+              fill="url(#paint0_radial_1703_169)" />
+            <!-- <circle id="Ellipse 54" cx="168" cy="237" r="25" fill="white"/> -->
+            <g id="Group 169">
+              <g id="Group 168">
+                <rect id="Rectangle 80" x="163" width="6" height="105" fill="url(#paint1_radial_1703_169)" />
+                <circle id="Ellipse 53" cx="166" cy="66" r="13" fill="url(#paint2_radial_1703_169)" />
+              </g>
+              <g id="Group 167">
+                <g id="Vector 31" filter="url(#filter0_i_1703_169)">
+                  <path d="M3 1196L52 413H278L327 1196H3Z" fill="url(#paint3_linear_1703_169)" />
+                </g>
+                <path id="Rectangle 76" d="M69 289H263L268 394H62L69 289Z" fill="#0B0910" />
+                <g id="base-windows">
+                  <g id="windows">
+                    <g id="Subtract" filter="url(#filter1_i_1703_169)">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M5 325C2.23858 325 0 327.239 0 330V413H327V330C327 327.239 324.761 325 322 325H5ZM48 337H11V370H48V337ZM56 337H93V370H56V337ZM138 337H101V370H138V337ZM146 337H183V370H146V337ZM228 337H191V370H228V337ZM236 337H273V370H236V337ZM318 337H281V370H318V337Z"
+                        fill="url(#paint4_linear_1703_169)" />
+                    </g>
+                  </g>
+                </g>
+                <rect id="Rectangle 77" x="58" y="282" width="215" height="7" fill="#3D3C3C" />
+                <rect id="Rectangle 79" x="66" y="184" width="200" height="7" fill="url(#paint5_linear_1703_169)" />
+                <path id="Vector 32" d="M108 204L81.5 190.5V185.5H255L229.5 204H108Z"
+                  fill="url(#paint6_radial_1703_169)" stroke="#730909" />
+                <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
+                  d="M187.518 122.543C218.517 130.077 243.236 153.663 252.375 184H80C89.0989 153.797 113.64 130.286 144.446 122.644C147.686 113.373 156.114 100 166 100C175.851 100 184.253 113.277 187.518 122.543Z"
+                  fill="url(#paint7_linear_1703_169)" />
+              </g>
+            </g>
+            <g id="Group 170">
+              <rect id="Rectangle 81" x="165" y="204" width="6" height="78" fill="#2D2727" />
+              <rect id="Rectangle 82" x="224" y="204" width="6" height="78" fill="#2D2727" />
+              <rect id="Rectangle 83" x="108" y="204" width="6" height="78" fill="#2D2727" />
+            </g>
+          </g>
+          <defs>
+            <filter id="filter0_i_1703_169" x="3" y="413" width="344" height="796" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dx="20" dy="13" />
+              <feGaussianBlur stdDeviation="32" />
+              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.254902 0 0 0 0 0.376471 0 0 0 1 0" />
+              <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1703_169" />
+            </filter>
+            <filter id="filter1_i_1703_169" x="0" y="325" width="347" height="101" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dx="20" dy="13" />
+              <feGaussianBlur stdDeviation="32" />
+              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.254902 0 0 0 0 0.376471 0 0 0 1 0" />
+              <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1703_169" />
+            </filter>
+            <radialGradient id="paint0_radial_1703_169" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(166 236.5) rotate(163.106) scale(70.5443 134.887)">
+              <stop offset="0.158468" stop-color="#F9E3B6" />
+              <stop offset="1" stop-color="#B16216" />
+            </radialGradient>
+            <radialGradient id="paint1_radial_1703_169" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(166.525 86) rotate(-90.1138) scale(75.5002 45.1126)">
+              <stop stop-color="#CF0909" />
+              <stop offset="1" stop-color="#8E0A0A" />
+            </radialGradient>
+            <radialGradient id="paint2_radial_1703_169" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(168.275 74.2952) rotate(-91.9913) scale(18.7065 195.37)">
+              <stop stop-color="#CF0909" />
+              <stop offset="1" stop-color="#8E0A0A" />
+            </radialGradient>
+            <linearGradient id="paint3_linear_1703_169" x1="-227.5" y1="825.5" x2="618" y2="825.5"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0.25444" stop-color="#A0899B" />
+              <stop offset="0.766757" stop-color="white" />
+            </linearGradient>
+            <linearGradient id="paint4_linear_1703_169" x1="-232.634" y1="371.36" x2="620.694" y2="371.36"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0.25444" stop-color="#A0899B" />
+              <stop offset="0.766757" stop-color="white" />
+            </linearGradient>
+            <linearGradient id="paint5_linear_1703_169" x1="166" y1="101.5" x2="166" y2="191"
+              gradientUnits="userSpaceOnUse">
+              <stop stop-color="#CF0909" />
+              <stop offset="1" stop-color="#710808" />
+            </linearGradient>
+            <radialGradient id="paint6_radial_1703_169" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(168 195.5) rotate(89.9999) scale(13.5 61.5672)">
+              <stop stop-color="#FF8716" />
+              <stop offset="1" stop-color="#8F0B0B" />
+            </radialGradient>
+            <linearGradient id="paint7_linear_1703_169" x1="197.134" y1="168.25" x2="80" y2="168.25"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0.333769" stop-color="#CF0909" />
+              <stop offset="0.734915" stop-color="#8E0A0A" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const body = document.querySelector("body");
+    const weatherContainer = document.querySelector(".weather-container");
+    const currentTime = document.querySelector("#current-time");
+    const currentTemp = document.querySelector("#current-temp");
+    const currentConditions = document.querySelector("#current-conditions");
+    const currentLocation = document.querySelector("#current-location");
+
+    //https://stackoverflow.com/questions/3313875/javascript-date-ensure-getminutes-gethours-getseconds-puts-0-in-front-i
+    let d = new Date()
+    let h = `${d.getHours()}`.padStart(2, '0')
+    let m = `${d.getMinutes()}`.padStart(2, '0')
+    let displayDate = h + ":" + m;
+
+    currentTime.innerText = displayDate;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch(
+          'https://api.openweathermap.org/data/2.5/weather?q=detroit,us&appid=53571566a423b86ed35e95f27b2d0493&units=imperial'
+        )
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+
+          currentConditions.innerText = [data.weather[0].main];
+          currentLocation.innerText = "Current weather for " + [data.name];
+          currentTemp.innerText = [data.main.temp] + "°";
+
+          console.log(data.name);
+          console.log([data.weather[0].main]);
+          console.log(currentTemp);
+          console.log(data);
+
+          if ([data.weather[0].main] == "Clouds") {
+            body.style.cssText = "background: linear-gradient(180deg, #08577D 0%, #003055 100%);";
+            console.log("Cloudy day yo")
+          } else if (([data.weather[0].main] == "Rainy")) {
+            body.style.cssText = "background: pink;";
+            console.log("Rainy Day yo")
+          } else if (([data.weather[0].main] == "Clear")) {
+            body.style.cssText = "background: black;";
+            console.log("Rainy Day yo")
+          } else {
+            console.log("Hello");
+          }
+        })
+    })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+  <script>
+    var scene = document.getElementById('scene');
+    var scene2 = document.getElementById('scene-2');
+    var parallaxInstance = new Parallax(scene);
+    var parallaxInstance2 = new Parallax(scene2);
+  </script>
+
+</body>
+
+</html>

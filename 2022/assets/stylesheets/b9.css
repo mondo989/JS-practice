@@ -1,0 +1,186 @@
+.container__svg-full {
+  background: red;
+  outline: 2px solid red;
+  /* width: 50%; */
+}
+
+.container__svg-full svg {
+  height: auto;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.container__svg-full #circle--ring,
+.container__svg-full #pic-a,
+.container__svg-full #pic-b,
+.container__svg-full #pic-c,
+.container__svg-full #pic-d,
+.container__svg-full #card--main,
+.container__svg-full #hero--card--back-3,
+.container__svg-full #hero--card--back-2 {
+  opacity: 0;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.container__svg-full.animated #circle--ring {
+  display: block;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-animation: circleRingsAnimating 2s ease-out forwards;
+          animation: circleRingsAnimating 2s ease-out forwards;
+}
+
+.container__svg-full.animated #pic-d,
+.container__svg-full.animated #pic-c,
+.container__svg-full.animated #pic-b,
+.container__svg-full.animated #pic-a {
+  -webkit-animation: profilePicsAppear 10s 2s linear forwards infinite;
+          animation: profilePicsAppear 10s 2s linear forwards infinite;
+}
+
+.container__svg-full.animated #card--main {
+  -webkit-animation: cardMainAnimation 0.5s 1.4s ease-out forwards;
+          animation: cardMainAnimation 0.5s 1.4s ease-out forwards;
+}
+
+.container__svg-full.animated #hero--card--back-2 {
+  -webkit-animation: cardBack2Animation 0.5s 1.5s ease-out forwards;
+          animation: cardBack2Animation 0.5s 1.5s ease-out forwards;
+}
+
+.container__svg-full.animated #hero--card--back-3 {
+  -webkit-animation: cardBack3Animation 0.5s 1.6s ease-out forwards;
+          animation: cardBack3Animation 0.5s 1.6s ease-out forwards;
+}
+
+@-webkit-keyframes circleRingsAnimating {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes circleRingsAnimating {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes profilePicsAppear {
+  from {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes profilePicsAppear {
+  from {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes cardMainAnimation {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-120px);
+            transform: translateY(-120px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes cardMainAnimation {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-120px);
+            transform: translateY(-120px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes cardBack2Animation {
+  from {
+    opacity: 0;
+    -webkit-transform: rotateZ(-20deg);
+            transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+}
+
+@keyframes cardBack2Animation {
+  from {
+    opacity: 0;
+    -webkit-transform: rotateZ(-20deg);
+            transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+}
+
+@-webkit-keyframes cardBack3Animation {
+  from {
+    opacity: 0;
+    -webkit-transform: rotateZ(-20deg);
+            transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+}
+
+@keyframes cardBack3Animation {
+  from {
+    opacity: 0;
+    -webkit-transform: rotateZ(-20deg);
+            transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+}
+/*# sourceMappingURL=b9.css.map */

@@ -7,53 +7,119 @@
   <title>Document</title>
 </head>
 
-<body style="background: blue">
-  <div class="circle-container"></div>
+
+<style>
+  body {overflow: hidden; width: 100%; height: 100vh; margin: 0 auto; display: flex; justify-content: center; align-items: center; background: #fff;}
+  .content-container { padding: 20px; background: white; width: 600px; height: 300px; z-index: 90; box-shadow: 0 1px 5px #ccc; border-radius: 5px;}
+  .circle-backdrop ul { width: 100px; height: 100px; z-index: 100; border: 2px solid red; list-style-type: none;}
+  .circle-backdrop li { position: absolute; border-radius: 100%; animation: fadeInUp 2s ease-in-out forwards, pulse 3s 2s ease-in-out infinite; transition: 0.3s; opacity: 0.8; background-size: 3000%;}
+
+  @keyframes fadeInUp {
+    from {transform:  scale(0.4) translate(200px, -1000px); opacity: 0;}
+    to {transform: scale(1.5) translate(-500px, -600px); opacity: 0.6; } 
+  }
+
+  @keyframes pulse {
+    0% {opacity: 0.6;}
+    50% {opacity: 1; transform: scale(1.45) translate(-500px, -610px)}
+    100% {opacity: 0.6;}
+  }
+</style>
+
+<body>
+  <div class="content-container">
+    <h1>Lorem Ipsum</h1>
+    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups</p>
+  </div>
+  <div class="circle-backdrop" style="position: absolute;"></div>
 
   <script>
-    // 
     const body = document.querySelector("body");
-    // Set variable fro randy circles
-    let circleContainer = document.querySelector(".circle-container")
-    // Declare empty Array
+    const circleBackdrop = document.querySelector(".circle-backdrop");
+    const contentContainer = document.querySelector(".content-container");
+
     let circlesArray = [];
 
     class Circle {
-      constructor(size, color) {
+      constructor(size, gradientAColor, gradientBColor, positionA, positionB) {
         this.size = this.setSize();
-        this.color = this.setColor();
+        // Todo set this up as a static method
+        this.gradientAColor = this.setGradientAColor();
+        this.gradientBColor = this.setGradientBColor();
+        this.positionA = this.setPositionA();
+        this.positionB = this.setPositionB();
         circlesArray.push(this)
       };
 
       setSize() {
-        const randomNm = Math.floor(Math.random() * 500);
+        const randomNm = Math.floor(Math.random() * 200);
+        return randomNm + "px";
+      }
+
+      // Def know this can be dry 
+      setGradientAColor() {
+        const gradientColors = ['#56ab2f', 'hotpink', '#2193b0', 'teal', '#cc2b5e', '#f45c43', '#a8e063' ];
+        const randomizeColors = Math.floor(Math.random() * gradientColors.length);
+        return gradientColors[randomizeColors];
+      }
+
+      setGradientBColor() {
+        const gradientColors = ['orange', '#eb3349', 'burgendy', 'teal', 'purple', '#753a88', '#516395'];
+        const randomizeColors = Math.floor(Math.random() * gradientColors.length);
+        return gradientColors[randomizeColors];
+      }
+
+      // Def can be dry with static method 
+      setPositionA () {
+        const randomNm = Math.floor(Math.random() * 2000);
         return randomNm + "px"
       }
 
-      setColor() {
-        const colors = ['red', 'blue', 'black', 'white'];
-        const randomizeColors = Math.floor(Math.random() * colors.length)
-        return colors[randomizeColors];
+      setPositionB () {
+        const randomNm = Math.floor(Math.random() * 1500);
+        return randomNm + "px"
       }
     }
 
+    // Initialize circles
     let setupCircles = () => {
-
       // Randomize amount of circles
-      const randomCircles = Math.floor(Math.random() * 10);
+      const randomCircles = Math.floor(Math.random() * 10000);
 
       // for loop for each random circles
       for (i = 0; i < randomCircles; i++) {
         circlesArray[i] = new Circle();
       }
-
     }
 
     setupCircles()
+    
     console.log(circlesArray)
+
+    // Forloop to display circles
+    circlesArray.forEach(circle => {
+      text = "<ul>";
+        for (i = 0; i < circlesArray.length; i++) {
+          text += `<li style='--bg-default: linear-gradient(to bottom, ${circlesArray[i].gradientAColor}, ${circlesArray[i].gradientBColor}); 
+                      background: var(--bg, var(--bg-default)); 
+                      width: ${circlesArray[i].size}; 
+                      height: ${circlesArray[i].size}; 
+                      top: ${circlesArray[i].positionA}; 
+                      left: ${circlesArray[i].positionB}; 
+                       '> 
+                    </li>`;
+        }
+      text += "</ul>";
+    },
+  );
+  
+  circleBackdrop.innerHTML = text;
 
 
   </script>
+
+<!-- Adds Parallax js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,336 @@
+body {
+  font-family: 'Open-sans', sans-serif;
+  overflow: hidden;
+}
+
+.weather-container {
+  position: relative;
+  text-align: center;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.weather-container h4 {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.weather-container #current-time {
+  font-weight: 300;
+  font-size: 6em;
+  margin: 0;
+}
+
+.weather-container * {
+  color: white;
+}
+
+.weather-container .weather-container__content {
+  background: inherit;
+}
+
+#lightWrapper {
+  width: 100px;
+  z-index: 20;
+  height: 10px;
+  position: absolute;
+  margin: 30px;
+  -webkit-perspective: 10px;
+          perspective: 10px;
+  -webkit-animation: rotate 8s infinite ease-out;
+          animation: rotate 8s infinite ease-out;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  top: 95px;
+  right: -0px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.light {
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjE2JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ4JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjcyIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -webkit-gradient(linear, left top, right top, from(white), color-stop(16%, white), color-stop(48%, rgba(255, 255, 255, 0.72)), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(to right, white 0%, white 16%, rgba(255, 255, 255, 0.72) 48%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#00ffffff", GradientType=1);
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotatey(-12deg);
+          transform: rotatey(-12deg);
+  border-radius: 5000px 5px 5px 5000px;
+}
+
+.lighthouse-container {
+  width: 200px;
+  height: 500px;
+  position: absolute;
+  left: 150px;
+  bottom: 0;
+  -webkit-animation: lightHouseAnimation 4s ease-out forwards;
+          animation: lightHouseAnimation 4s ease-out forwards;
+}
+
+.lighthouse-container svg {
+  position: relative;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 140px;
+  height: 100%;
+}
+
+.lighthouse-container .lighthouse-light {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  border-radius: 120px;
+  background: white;
+  z-index: -2;
+  right: 0;
+  left: 2px;
+  margin: 0 auto;
+  top: 85px;
+  -webkit-box-shadow: 0 0 40px 15px #ffd901, 0 0 40px 12px #eedd82;
+          box-shadow: 0 0 40px 15px #ffd901, 0 0 40px 12px #eedd82;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-animation: lightUp 2s ease-out forwards, lightPulse 4s 2s ease-out alternate infinite;
+          animation: lightUp 2s ease-out forwards, lightPulse 4s 2s ease-out alternate infinite;
+}
+
+.lighthouse-container .lighthouse {
+  margin: auto;
+}
+
+.cloud-full {
+  position: absolute;
+  top: 0;
+  opacity: 0.4;
+  -webkit-transform: scale(0.1);
+          transform: scale(0.1);
+}
+
+.cloud {
+  width: 500px;
+  height: 275px;
+  border-radius: 50%;
+  position: absolute;
+  top: -35vh;
+  left: -25vw;
+}
+
+#cloud-back {
+  -webkit-filter: url(#filter-back);
+          filter: url(#filter-back);
+  -webkit-box-shadow: 300px 300px 30px -20px #fff;
+          box-shadow: 300px 300px 30px -20px #fff;
+}
+
+#cloud-mid {
+  -webkit-filter: url(#filter-mid);
+          filter: url(#filter-mid);
+  -webkit-box-shadow: 300px 340px 70px -60px rgba(158, 168, 179, 0.5);
+          box-shadow: 300px 340px 70px -60px rgba(158, 168, 179, 0.5);
+  left: -25vw;
+}
+
+#cloud-front {
+  -webkit-filter: url(#filter-front);
+          filter: url(#filter-front);
+  -webkit-box-shadow: 300px 370px 60px -100px rgba(0, 0, 0, 0.3);
+          box-shadow: 300px 370px 60px -100px rgba(0, 0, 0, 0.3);
+  left: -25vw;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotatey(0deg);
+            transform: rotatey(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    -webkit-transform: rotatey(180deg);
+            transform: rotatey(180deg);
+  }
+  61% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotatey(0deg);
+            transform: rotatey(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    -webkit-transform: rotatey(180deg);
+            transform: rotatey(180deg);
+  }
+  61% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes lightHouseAnimation {
+  0% {
+    -webkit-transform: translateY(230px);
+            transform: translateY(230px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.25;
+  }
+  80% {
+    opacity: 0.8;
+    -webkit-transform: translateY(-100px) scale(1.4);
+            transform: translateY(-100px) scale(1.4);
+  }
+  100% {
+    opacity: 0.8;
+    -webkit-transform: translateY(-120px) scale(1.4);
+            transform: translateY(-120px) scale(1.4);
+  }
+}
+
+@keyframes lightHouseAnimation {
+  0% {
+    -webkit-transform: translateY(230px);
+            transform: translateY(230px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.25;
+  }
+  80% {
+    opacity: 0.8;
+    -webkit-transform: translateY(-100px) scale(1.4);
+            transform: translateY(-100px) scale(1.4);
+  }
+  100% {
+    opacity: 0.8;
+    -webkit-transform: translateY(-120px) scale(1.4);
+            transform: translateY(-120px) scale(1.4);
+  }
+}
+
+@-webkit-keyframes lightUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0 30px 5px #eedd82, 0 0 13px 0px #eedd82;
+            box-shadow: 0 0 30px 5px #eedd82, 0 0 13px 0px #eedd82;
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@keyframes lightUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0 30px 5px #eedd82, 0 0 13px 0px #eedd82;
+            box-shadow: 0 0 30px 5px #eedd82, 0 0 13px 0px #eedd82;
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@-webkit-keyframes lightPulse {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+  50% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-transform: scale(0.6);
+            transform: scale(0.6);
+  }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@keyframes lightPulse {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+  50% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-transform: scale(0.6);
+            transform: scale(0.6);
+  }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@-webkit-keyframes cloudPass {
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateX(0px) scale(0.1);
+            transform: translateX(0px) scale(0.1);
+  }
+  to {
+    opacity: 0.7;
+    -webkit-transform: translateX(-600px) scale(1);
+            transform: translateX(-600px) scale(1);
+  }
+}
+
+@keyframes cloudPass {
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateX(0px) scale(0.1);
+            transform: translateX(0px) scale(0.1);
+  }
+  to {
+    opacity: 0.7;
+    -webkit-transform: translateX(-600px) scale(1);
+            transform: translateX(-600px) scale(1);
+  }
+}
+/*# sourceMappingURL=b7.css.map */

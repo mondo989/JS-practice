@@ -1,0 +1,113 @@
+.container__svg-full {
+  background: red;
+  outline: 2px solid red;
+  /* width: 50%; */
+
+
+  svg {
+    height: auto;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .container__svg-full {}
+
+  #circle--ring,
+  #pic-a,
+  #pic-b,
+  #pic-c,
+  #pic-d,
+  #card--main,
+  #hero--card--back-3,
+  #hero--card--back-2 {
+    opacity: 0;
+    transform-origin: center center;
+  }
+}
+
+.container__svg-full.animated {
+  #circle--ring {
+    display: block;
+    transform-origin: center center;
+    animation: circleRingsAnimating 2s ease-out forwards;
+  }
+
+  #pic-d,
+  #pic-c,
+  #pic-b,
+  #pic-a {
+    animation: profilePicsAppear 10s 2s linear forwards infinite;
+  }
+
+  #card--main {
+    animation: cardMainAnimation 0.5s 1.4s ease-out forwards;
+  }
+
+  #hero--card--back-2 {
+    animation: cardBack2Animation 0.5s 1.5s ease-out forwards;
+  }
+
+  #hero--card--back-3 {
+    animation: cardBack3Animation 0.5s 1.6s ease-out forwards;
+  }
+}
+
+@keyframes circleRingsAnimating {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes profilePicsAppear {
+  from {
+    transform: rotateZ(360deg);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotateZ(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes cardMainAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-120px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes cardBack2Animation {
+  from {
+    opacity: 0;
+    transform: rotateZ(-20deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateZ(0deg);
+  }
+}
+
+@keyframes cardBack3Animation {
+  from {
+    opacity: 0;
+    transform: rotateZ(-20deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateZ(0deg);
+  }
+}

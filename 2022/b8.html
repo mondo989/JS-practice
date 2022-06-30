@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Quiz</title>
+</head>
+
+<body style="background: #ccc">
+  <style>
+    body {
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      padding-left: 0;
+      align-items: center;
+      min-height: 300px;
+    }
+
+    .answer-items li {
+      width: 50%;
+      height: 150px;
+      margin: 5px;
+      border: 2px solid #f3f3f3;
+      border-radius: 10px;
+    }
+  </style>
+
+  <div class="quiz-container">
+    <div>
+      <h2>Question:</h2>
+      <div id="question"></div>
+    </div>
+    <div>
+      <h2>Answer:</h2>
+      <div class="answer-items"></div>
+    </div>
+    <div>
+      <h2>Tags:</h2>
+      <div id="tags"></div>
+    </div>
+    <div>
+      <h2>Difficulty:</h2>
+      <div id="difficulty"></div>
+    </div>
+  </div>
+
+  <script>
+    const body = document.querySelector("body")
+    const question = document.querySelector("#question");
+    const answer = document.querySelector("#answer");
+    const tags = document.querySelector("#tags");
+    const difficulty = document.querySelector("#difficulty");
+    const answerItems = document.querySelector(".answer-items");
+
+    const Question = function (question, answer, tags, difficulty) {
+      const obj = {};
+      obj.question = question;
+      obj.answer = answer;
+      obj.tags = tags;
+      obj.difficulty = difficulty;
+
+      populatePossibleAnswers = () => {
+        const possibleAnswers = [];
+
+        // TODO: decide where false answers come from, proba makes sense to include as array
+        // X-Populate other 3 items-X
+        const falseAnswerA = "Not True";
+        const falseAnswerB = "Not Trueee";
+        const falseAnswerC = "Nada It";
+
+        // X-Add other strings to array-X
+        possibleAnswers.push(obj.answer, falseAnswerA, falseAnswerB, falseAnswerC);
+
+        // X-Randomize Array Items-X -- Thanks https://flaviocopes.com/how-to-shuffle-array-javascript/
+        let possibleAnswersRandomized = possibleAnswers.sort(() => Math.random() - 0.5);
+
+        // X-Iterate through arrays contents and populate items-X
+        possibleAnswersRandomized.forEach(possibleAnswers => {
+          text = "<ul>";
+          for (i = 0; i < possibleAnswersRandomized.length; i++) {
+            text += "<li>" + possibleAnswersRandomized[i] + "</li>";
+          }
+          text += "</ul>";
+        }, );
+        answerItems.innerHTML = text;
+      }
+      populatePossibleAnswers();
+      return obj;
+    };
+
+    // X-Setup current question-X
+    let current = Question("What is an array",
+      "The Array object, as with arrays in other programming languages, enables storing a collection of multiple items under a single variable name, and has members for performing common array operations.",
+      ["array", "js", "learning"], 10);
+
+    let questionCatalog = [
+      Question("What is an array", "The Array object, as with arrays in other programming languages, enables storing a collection of multiple items under a single variable name, and has members for performing common array operations.", ["array", "js", "learning"], 3),
+      Question("What is big booba", "The biggest boobas with all the milk.", ["array", "js", "learning"], 10),
+      Question("Who is who", "I am the guy who is the guy.", ["Guessing", "new things", "Hello"], 300)
+    ]
+
+    current = questionCatalog[1];
+    // console.log(questionCatalog[2])
+    // console.log(questionCatalog.answer)
+
+    // Append Items
+    question.append(current.question);
+    tags.append(current.tags);
+    difficulty.append(current.difficulty);
+
+    const options = document.querySelectorAll('li');
+    for (i of options) {
+      let currentGuess = this.innerText;
+
+      i.addEventListener('click', function () {
+        const selectedAnswer = this.innerText;
+        checkIfSelectedAnswerIsCorrect(selectedAnswer);
+      })
+    }
+
+    const checkIfSelectedAnswerIsCorrect = (selectedAnswer, answer) => {
+      console.log("The selected answer is: \n " + "---------\n" + current.answer + ".\n \nTzhe actual answer is: \n " +
+        "---------\n" + selectedAnswer + ".")
+
+      if (selectedAnswer === current.answer) {
+        body.style.cssText = "background: lightgreen"
+      } else {
+        body.style.cssText = "background: orange"
+      }
+    }
+
+
+    // X-Setup sample question-X
+    // X-Instantiate Total Question Set
+    // --TODO: Firebase setup for total Questions
+    // X-Create Question Object-X
+    // X-Have current question / Instantiate Question-X
+    // X-Question object has answer array-X
+    // X-String Is 1st item Array-X
+    // X-Populate Possible Wrong Answers-X
+    // X-Push other 3 items to Array
+    // X-Use CorrectAnswer as a Param-X
+    // X-Randomize Array
+    // X-Iterate Through Array Populating Possible Answers to List Items
+    // X-Add Event listener for each possible answers-X
+    // X-When user Clicks on Possible AnswerEL checks item's contents to see if it == obj.answer-X
+    // X-Check if selected answer is correct->
+    // X-Display to user whether answer correct / incorrect->
+    // Show next Question
+    // Update User's Score Count
+    // Update/Keep Track User's overall score for question
+    // Instanciate New Question
+    // Allow ability to CRUD Question
+  </script>
+</body>
+
+</html>

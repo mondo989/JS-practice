@@ -1,0 +1,230 @@
+body {
+  font-family: 'Open-sans', sans-serif;
+  overflow: hidden;
+}
+
+.weather-container {
+  position: relative;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h4 {
+    font-size: 25px;
+    font-weight: 500;
+  }
+
+  #current-time {
+    font-weight: 300;
+    font-size: 6em;
+    margin: 0
+  }
+
+  * {
+    color: white;
+  }
+
+  .weather-container__content {
+    background: inherit;
+
+  }
+}
+
+#lightWrapper {
+  width: 100px;
+  z-index: 20;
+  height: 10px;
+  position: absolute;
+  margin: 30px;
+  perspective: 10px;
+  animation: rotate 8s infinite ease-out;
+  transform-origin: left;
+
+  top: 95px;
+  right: -0px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.light {
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjE2JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ4JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjcyIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: linear-gradient(to right, white 0%, white 16%, rgba(255, 255, 255, 0.72) 48%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#00ffffff", GradientType=1);
+  width: 100%;
+  height: 100%;
+  transform: rotatey(-12deg);
+  border-radius: 5000px 5px 5px 5000px;
+}
+
+.lighthouse-container {
+  width: 200px;
+  height: 500px;
+  position: absolute;
+  left: 150px;
+  bottom: 0;
+  // opacity: 0.1;
+
+  animation: lightHouseAnimation 4s ease-out forwards;
+
+  svg {
+    position: relative;
+    // left: 230px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 140px;
+    height: 100%;
+  }
+
+  .lighthouse-light {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    border-radius: 120px;
+    background: white;
+    z-index: -2;
+    right: 0;
+    left: 2px;
+    margin: 0 auto;
+    top: 85px;
+    box-shadow: 0 0 40px 15px #ffd901, 0 0 40px 12px #eedd82;
+    transform: scale(0.5);
+    animation: lightUp 2s ease-out forwards, lightPulse 4s 2s ease-out alternate infinite;
+  }
+
+  .lighthouse {
+    margin: auto;
+
+  }
+}
+
+.cloud-full {
+  position: absolute;
+  top: 0;
+  // right: 40px;
+  opacity: 0.4;
+  transform: scale(0.1);
+  // animation: cloudPass 8s 2s ease-in-out alternate infinite;
+}
+
+
+
+// https://css-tricks.com/drawing-realistic-clouds-with-svg-and-css/
+.cloud {
+  width: 500px;
+  height: 275px;
+  border-radius: 50%;
+  position: absolute;
+  top: -35vh;
+  left: -25vw;
+}
+
+#cloud-back {
+  filter: url(#filter-back);
+  box-shadow: 300px 300px 30px -20px #fff;
+}
+
+#cloud-mid {
+  filter: url(#filter-mid);
+  box-shadow: 300px 340px 70px -60px rgba(158, 168, 179, 0.5);
+  left: -25vw;
+}
+
+#cloud-front {
+  filter: url(#filter-front);
+  box-shadow: 300px 370px 60px -100px rgba(0, 0, 0, 0.3);
+  left: -25vw;
+}
+
+
+@keyframes rotate {
+  0% {
+    transform: rotatey(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  60% {
+    transform: rotatey(180deg);
+  }
+
+  61% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes lightHouseAnimation {
+  0% {
+    transform: translateY(230px);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.25;
+  }
+
+  80% {
+    opacity: 0.8;
+    transform: translateY(-100px) scale(1.4);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateY(-120px) scale(1.4);
+  }
+}
+
+@keyframes lightUp {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 30px 5px #eedd82, 0 0 13px 0px #eedd82;
+    filter: blur(0px);
+  }
+}
+
+@keyframes lightPulse {
+  0% {
+    transform: scale(0.5);
+    filter: blur(0px);
+  }
+
+  50% {
+    filter: blur(0px);
+    transform: scale(.6);
+  }
+
+  100% {
+    transform: scale(0.5);
+    filter: blur(0px);
+  }
+}
+
+@keyframes cloudPass {
+  from {
+    opacity: 0.3;
+    transform: translateX(0px) scale(0.1);
+  }
+
+  to {
+    opacity: 0.7;
+    transform: translateX(-600px) scale(1);
+  }
+}
