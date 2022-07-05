@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TypeFlip</title>
+</head>
+
+<body>
+  <style>
+    .content-row {
+      display: flex; justify-content: center; align-items: center; height: 300px;;
+      position: absolute;
+      right: 0;
+      left: 0;
+      background: pink;
+    }
+    input {
+      font-size: 70px ;
+      /* min-height: 70px; */
+      max-height: 80px;
+      padding: 20px; 
+      position: absolute;
+    }
+    .actions-row {
+      position: relative;
+      top: 300px;
+      /* bottom: 30vh; */
+      background: red;
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+    button {
+      padding: 30px;
+
+    }
+    .uploadBtn {
+      position: absolute;
+      background: green;
+    }
+    .actions-row {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .actions-row button {
+      width: 200px;
+      height: auto;
+    }
+
+  </style>
+
+  <h1 style="height: 130px;">TypeFlip</h1>
+
+  <div class="content-row">
+    <button class="uploadBtn">Upload</button>
+    <input id="placeholderInput" type="text" placeholder="Your Logo Name">
+  </div>
+
+  <div class="actions-row">
+    <button>Previous</button>
+    <button onclick="saveType()">Save</button>
+    <button onclick="randomizeType()">Next</button>
+  </div>
+
+  <h1 id="fam1"></h1>
+
+  <h1 id="sample">A Sample Header</h1>
+  <h1 id="fam2"></h1>
+
+  <script>
+    const sampleHeader = document.querySelector("#sample");
+    const fam1Array = [];
+    const savedTypesArray = [];
+    
+    const rndBtn = document.querySelector(".rndbtn");
+    const mainInput = document.querySelector("#placeholderInput");
+    const fQuery = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=TRENDING&key=';
+
+    console.log(fQuery);
+
+    const randomizeType = () => {
+      fetch(
+        fQuery
+      )
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        const rndNum = Math.floor(Math.random() * 1000)
+        const currentTypeface = data.items[rndNum].family;
+        const currentTypefaceURL = data.items[rndNum].files.regular;
+        console.log(rndNum, currentTypeface, currentTypefaceURL);
+
+        // Select 3 typefaces // const ty1 = data.items[0]
+        fam1Array.push(data.items[rndNum].family)
+        fam1Array.push(data.items[rndNum].files.regular)
+        // fam1Array.push(data.items[rndNum].category)
+
+        const loaderURL = data.items[rndNum].files.regular;
+        console.log("The LoaderURL is "+ loaderURL);
+        console.log("Your array is " + fam1Array);
+
+        // Creates style element
+        var newTypeface = document.createElement('style');
+
+        // Adds font-face to style element
+        newTypeface.appendChild(document.createTextNode("\
+        @font-face {\
+          font-family: " + data.items[rndNum].family + ";\
+          src: url('" + data.items[rndNum].files.regular + "') format('truetype');\
+        }\
+      "));
+
+        console.log(newTypeface)
+        document.head.appendChild(newTypeface);
+
+        mainInput.style.cssText = `font-family: ${data.items[rndNum].family}`;
+      })
+    }
+
+    const saveType = (currentTypeface, currentTypefaceURL) => {
+      savedTypesArray.push(currentTypeface, currentTypefaceURL);
+
+      console.log(savedTypesArray);
+    }
+
+
+    // User Uses Left and right to traverse
+      // RIGHT randomizes new
+      // LEFT shows previeous
+          // How far back should it go?
+            // As far as it can without being challenging
+      // SPACE saves current family to array.
+
+    // 
+
+  </script>
+</body>
+
+</html>
