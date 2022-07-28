@@ -25,10 +25,6 @@
   <script>
   
     document.querySelector('form').onsubmit = () => {
-      // alert("Hey");
-
-      // const cityName = document.querySelector("cityName").value;
-
       console.log(cityName);
       const apiURL = 'https://api.openweathermap.org/data/2.5/weather?q='
       const searchedQuery = document.querySelector("#cityName").value;
@@ -106,9 +102,7 @@
           <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="0" />
           <feDisplacementMap in="SourceGraphic" scale="100" />
         </filter>
-      </svg>
-
-
+      </svg> c
     </div>
 
 

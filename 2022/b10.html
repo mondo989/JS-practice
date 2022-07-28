@@ -4,143 +4,502 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TypeFlip</title>
+  <link rel="stylesheet" href="assets/stylesheets/b10.css">
+  <title>.</title>
 </head>
 
 <body>
-  <style>
-    .content-row {
-      display: flex; justify-content: center; align-items: center; height: 300px;;
-      position: absolute;
-      right: 0;
-      left: 0;
-      background: pink;
-    }
-    input {
-      font-size: 70px ;
-      /* min-height: 70px; */
-      max-height: 80px;
-      padding: 20px; 
-      position: absolute;
-    }
-    .actions-row {
-      position: relative;
-      top: 300px;
-      /* bottom: 30vh; */
-      background: red;
-      width: 200px;
-      height: 200px;
-      text-align: center;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
-    button {
-      padding: 30px;
 
-    }
-    .uploadBtn {
-      position: absolute;
-      background: green;
-    }
-    .actions-row {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-    }
-    .actions-row button {
-      width: 200px;
-      height: auto;
-    }
-
-  </style>
-
-  <h1 style="height: 130px;">TypeFlip</h1>
+  <h1 style="color: #000">:)</h1>
 
   <div class="content-row">
-    <button class="uploadBtn">Upload</button>
-    <input id="placeholderInput" type="text" placeholder="Your Logo Name">
+    <div class="button-content">
+      <div class="logo-container">
+        <input type="file" id="files" name="files[]" multiple />
+        <svg width="71" height="83" viewBox="0 0 71 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M35.3 0C15.872 0 0 15.7853 0 35.3C0 50.7383 9.88745 63.8348 23.6779 68.6051V57.2432C15.7852 53.0801 10.4079 44.7538 10.4079 35.2132C10.4079 21.5095 21.5963 10.3211 35.3 10.3211C49.0037 10.3211 60.1921 21.5095 60.1921 35.2132C60.1921 44.8405 54.728 53.2535 46.6619 57.3299V68.6051C60.539 63.8348 70.6 50.6515 70.6 35.2132C70.6 15.7852 54.728 0 35.3 0Z"
+            fill="black" />
+          <path
+            d="M51.0885 39.7236C53.0833 37.7287 53.0833 34.4329 51.0885 32.3513L39.0327 20.2956C37.9919 19.2548 36.6909 18.7344 35.3899 18.7344C34.089 18.7344 32.7013 19.2548 31.7472 20.2956L19.6914 32.3513C17.6966 34.3462 17.6966 37.642 19.6914 39.7236C21.6863 41.7184 24.9821 41.7184 27.0637 39.7236L30.186 36.6012V77.1919C30.186 80.054 32.5278 82.3958 35.3899 82.3958C38.2521 82.3958 40.5939 80.054 40.5939 77.1919V36.4278L43.8897 39.7236C45.7111 41.7184 49.0069 41.7184 51.0885 39.7236Z"
+            fill="black" />
+        </svg>
+        <output class="img-thumbnail" id="list"></output>
+      </div>
+    </div>
+    <input id="placeholderInput" type="text" placeholder="Your Project's Name">
+    <span class="duplicate-span">Your Project's Name</span>
+  </div>
+  <div class="current-typeface">
+    <p id="current-typeface-name"></p>
+    <div class="typeface-items"></div>
   </div>
 
-  <div class="actions-row">
-    <button>Previous</button>
-    <button onclick="saveType()">Save</button>
-    <button onclick="randomizeType()">Next</button>
+
+  <div class="bottom-content">
+    <div class="actions-container">
+      <div class="actions-row">
+        <button class="btn__prev" onclick="previousType()">
+          <svg width="24" height="47" viewBox="0 0 24 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="47" />
+            <path id="arrow" d="M0 46.5V0L24 23L0 46.5Z" fill="black" />
+          </svg>
+
+        </button>
+        <button class="btn__save" id="keep-btn" onclick="saveType()">
+          <svg width="24" height="47" viewBox="0 0 24 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="47" />
+            <path id="arrow" d="M0 46.5V0L24 23L0 46.5Z" fill="black" />
+          </svg>
+
+        </button>
+        <button class="btn__next" onclick="randomizeType()">
+          <svg width="24" height="47" viewBox="0 0 24 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="47" />
+            <path id="arrow" d="M0 46.5V0L24 23L0 46.5Z" fill="black" />
+          </svg>
+
+        </button>
+        <!-- <button onclick="clearType()">Clear</button> -->
+
+      </div>
+    </div>
+
+    <div class="exported-contents">
+
+    </div>
   </div>
 
-  <h1 id="fam1"></h1>
-
-  <h1 id="sample">A Sample Header</h1>
-  <h1 id="fam2"></h1>
 
   <script>
-    const sampleHeader = document.querySelector("#sample");
-    const fam1Array = [];
-    const savedTypesArray = [];
-    
+    const body = document.querySelector("body");
+    const keepBtn = document.querySelector("#keep-btn");
     const rndBtn = document.querySelector(".rndbtn");
+    const typefaceItems = document.querySelector(".typeface-items");
     const mainInput = document.querySelector("#placeholderInput");
-    const fQuery = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=TRENDING&key=';
+    const totalContent = document.querySelector(".content-row");
+    let currentTypeFaceP = document.querySelector("#current-typeface-name");
+    // let placeholderDuplicate = document.querySelector(".duplicate-span")
+    let newTypeface = document.createElement('style');
+    // const imgThumbnail = document.querySelector(".img-thumbnail")
+    let exportedContents = document.querySelector(".exported-contents")
 
-    console.log(fQuery);
+    let fam1Array = [];
+    let savedTypesArray = [];
+    let lastTypesViewedArray = [];
+    let currentViewedType = [];
+
+    const fQuery =
+      'https://www.googleapis.com/webfonts/v1/webfonts?sort=TRENDING&key=';
 
     const randomizeType = () => {
       fetch(
-        fQuery
-      )
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        const rndNum = Math.floor(Math.random() * 1000)
-        const currentTypeface = data.items[rndNum].family;
-        const currentTypefaceURL = data.items[rndNum].files.regular;
-        console.log(rndNum, currentTypeface, currentTypefaceURL);
+          fQuery
+        )
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          // Create Class, needs to be used to removed
+          class Typeface {
+            // constructor(typefaceName, typefaceURL) {
+            // this.typefaceName = typefaceName;
+            // this.typefaceURL = typefaceURL;
+            // }
 
-        // Select 3 typefaces // const ty1 = data.items[0]
-        fam1Array.push(data.items[rndNum].family)
-        fam1Array.push(data.items[rndNum].files.regular)
-        // fam1Array.push(data.items[rndNum].category)
+            // To be used or removed
+            // static getRandomizedTypeFace() {
+            // const rndNum = Math.floor(Math.random() * 1300);
+            // const typefaceName = data.items[rndNum].family;
+            // const typefaceURL = data.items[rndNum].files.regular;
 
-        const loaderURL = data.items[rndNum].files.regular;
-        console.log("The LoaderURL is "+ loaderURL);
-        console.log("Your array is " + fam1Array);
+            // randomizeBackground();
+            // animateTypeface();
 
-        // Creates style element
-        var newTypeface = document.createElement('style');
+            // return rndNum, typefaceName, typefaceURL;
+            // }
+          }
 
-        // Adds font-face to style element
-        newTypeface.appendChild(document.createTextNode("\
+          // Push Current Typeface to input
+          const rndNum = Math.floor(Math.random() * 1300)
+          const currentTypeface = data.items[rndNum].family;
+          const currentTypefaceURL = data.items[rndNum].files.regular;
+          const loaderURL = data.items[rndNum].files.regular;
+          currentTypeFaceP.innerHTML = data.items[rndNum].family;
+
+          console.log("New font has a random number of " + rndNum + ".\nThe Current Typeface is: " +
+            currentTypeface + ".\nThe Typeface URL is: " + currentTypefaceURL);
+          const gradientColors = [setGradientBColor(), setGradientAColor()]
+
+          // Clear array before adding
+          fam1Array = [];
+
+          // Adding Array and URL in a way I can reference each separately
+          fam1Array.push([currentTypeface, [currentTypefaceURL],
+            [gradientColors]
+          ])
+
+          // Check if lastTypesViewedArray is less than 10
+          if (lastTypesViewedArray.length < 10) {
+            // If Yes push it to the array.
+            lastTypesViewedArray.push([currentTypeface, [currentTypefaceURL],
+              [gradientColors]
+            ])
+
+            console.table(lastTypesViewedArray);
+          } else {
+            lastTypesViewedArray.shift([currentTypeface, [currentTypefaceURL],
+              [gradientColors]
+            ])
+            lastTypesViewedArray.push([currentTypeface, [currentTypefaceURL],
+              [gradientColors]
+            ])
+            console.log("Greater than 10")
+          }
+
+
+          // Adds font-face to style element
+          newTypeface.appendChild(document.createTextNode("\
+          @font-face {\
+            font-family: " + data.items[rndNum].family + ";\
+            src: url('" + data.items[rndNum].files.regular + "') format('truetype');\
+          }\
+      "));
+
+          document.head.appendChild(newTypeface);
+          mainInput.style.cssText = `font-family: ${data.items[rndNum].family}`;
+          // placeholderDuplicate.style.cssText = `font-family: ${data.items[rndNum].family}`;
+
+          enableKeepButton();
+          randomizeBackground();
+          animateTypeface();
+
+          // checkInputWidth();
+          // exportAsset();
+        })
+    }
+
+    const saveType = () => {
+      savedTypesArray.push(fam1Array);
+      disableKeepButton()
+
+      // See if there was a previous type viewee
+      updateSavedTypesListItems();
+    }
+
+
+    const previousType = () => {
+
+      console.log(lastTypesViewedArray);
+
+      lastTypesViewedArray.pop()
+      const lastItem = lastTypesViewedArray[lastTypesViewedArray.length - 1];
+
+      const recentFamily = lastItem[0];
+      const recentFamilyURL = lastItem[1];
+
+      currentViewedType = [recentFamily, [recentFamilyURL]]
+      console.log(currentViewedType)
+
+      newTypeface.appendChild(document.createTextNode("\
+          @font-face {\
+            font-family: " + recentFamily + ";\
+            src: url('" + recentFamilyURL + "') format('truetype');\
+          }\
+      "));
+
+      // placeholderDuplicate.style.cssText = `font-family: ${recentFamily}`;
+      mainInput.style.cssText = `font-family: ${recentFamily}`;
+      currentTypeFaceP.innerHTML = recentFamily;
+      animateTypeface();
+    }
+
+    const removeItem = (i) => {
+      const indexItemToRemove = [i];
+      savedTypesArray.shift(i, [i]);
+      updateSavedTypesListItems()
+    }
+
+    // Spacebar Flips
+    document.body.onkeyup = function (e) {
+      if (mainInput == document.activeElement) {
+        console.log("Main Element focused")
+      } else {
+        if (e.key == " " ||
+          e.code == "Space" ||
+          e.keyCode == 32
+        ) {
+          randomizeType()
+        } else if (e.key == "f" ||
+          e.code == "f" ||
+          e.keyCode == 70
+        ) {
+          randomizeType()
+        } else if (e.key == "t" ||
+          e.code == "t" ||
+          e.keyCode == 84
+        ) {
+          randomizeType()
+        } else if (e.key == "k" ||
+          e.code == "k" ||
+          e.keyCode == 75
+        ) {
+          saveType()
+        } else if (e.key == "s" ||
+          e.code == "s" ||
+          e.keyCode == 83
+        ) {
+          saveType()
+        } else if (e.key == "right arrow" ||
+          e.code == "right arrow" ||
+          e.keyCode == 39
+        ) {
+          randomizeType()
+        } else if (e.key == "up arrow" ||
+          e.code == "up arrow" ||
+          e.keyCode == 38
+        ) {
+          saveType()
+        } else if (e.key == "left arrow" ||
+          e.code == "left arrow" ||
+          e.keyCode == 37
+        ) {
+          previousType()
+        } else if (e.key == "backspace" ||
+          e.code == "backspace" ||
+          e.keyCode == 8
+        ) {
+          // saveType()
+          console.log(savedTypesArray)
+
+          savedTypesArray.pop();
+          updateSavedTypesListItems()
+
+          console.log(savedTypesArray)
+        }
+      }
+    }
+
+    const randomizeBackground = () => {
+      body.style.cssText = "background: linear-gradient(180deg, " + setGradientAColor() + " 0%, " +
+        setGradientBColor() +
+        " 100%);";
+    }
+
+    // Def know this can be dry 
+    const setGradientAColor = () => {
+      const gradientColors = ['#56ab2f', 'hotpink', '#2193b0', 'teal', '#cc2b5e', '#f45c43', '#a8e063', '#f3f3f3'];
+      const randomizeColors = Math.floor(Math.random() * gradientColors.length);
+      return gradientColors[randomizeColors];
+    }
+
+    const setGradientBColor = () => {
+      const gradientColors = ['orange', '#eb3349', 'burgendy', 'teal', 'purple', '#753a88', '#516395', '#f3f3f3'];
+      const randomizeColors = Math.floor(Math.random() * gradientColors.length);
+      return gradientColors[randomizeColors];
+    }
+
+    const animateTypeface = () => {
+      mainInput.classList.toggle("active");
+    }
+
+    const clearType = () => {
+      savedTypesArray = [];
+      updateSavedTypesListItems();
+      clearLocalStorageImage()
+    }
+
+    const updateSavedTypesListItems = () => {
+      text = "<ul>";
+      for (i = 0; i < savedTypesArray.length; i++) {
+        text += "<li onclick='updateTypeFace(" + [i] + ")' id=" + [i] +
+          " style ='background: linear-gradient(360deg, " + savedTypesArray[i][0][2][0][0] + ", " +
+          savedTypesArray[i][0][2][0][1] + " 250%) bottom; '> " + savedTypesArray[i][0][0] +
+          " <i onclick='removeItem(" + [i] +
+          ")'>x</i></li>";
+      }
+      text += "</ul>";
+      typefaceItems.innerHTML = text;
+    }
+
+    const updateTypeFace = (i) => {
+      const typeFaceToUpdateUrl = savedTypesArray[i][0][1];
+      const typeFaceToUpdateFamily = savedTypesArray[i][0][0];
+
+      // Adds font-face to style element
+      newTypeface.appendChild(document.createTextNode("\
         @font-face {\
-          font-family: " + data.items[rndNum].family + ";\
-          src: url('" + data.items[rndNum].files.regular + "') format('truetype');\
+          font-family: " + typeFaceToUpdateFamily + ";\
+          src: url('" + typeFaceToUpdateUrl + "') format('truetype');\
         }\
       "));
 
-        console.log(newTypeface)
-        document.head.appendChild(newTypeface);
+      document.head.appendChild(newTypeface);
+      mainInput.style.cssText = `font-family: ${typeFaceToUpdateFamily}`;
+      currentTypeFaceP.innerHTML = typeFaceToUpdateFamily;
 
-        mainInput.style.cssText = `font-family: ${data.items[rndNum].family}`;
-      })
-    }
-
-    const saveType = (currentTypeface, currentTypefaceURL) => {
-      savedTypesArray.push(currentTypeface, currentTypefaceURL);
-
-      console.log(savedTypesArray);
+      animateTypeface();
+      disableKeepButton()
     }
 
 
+    const clearLocalStorageImage = () => {
+      console.log(localStorage)
+      localStorage.clear();
+      localStorage.img = "";
+      console.log(localStorage);
+    }
+
+    const enableKeepButton = () => {
+      keepBtn.disabled = false;
+    }
+
+    const disableKeepButton = () => {
+      keepBtn.disabled = true;
+    }
+
+    // const duplicateInputStylingtoSpan = () => {
+    //   // placeholderDuplicate
+    // }
+
+    // Checks Input width...
+    // const checkInputWidth = () => {
+    //   // console.log(clientWidth)
+
+    //   console.log("hello" + mainInput.placeholder);
+    //   // console.log(mainInput.placeholder, mainInput, mainInput.value.checkInputWidth);
+    //   // mainInput.value = mainInput.placeholder;
+    //   // console.log(mainInput.width)
+    //   const isOverflowed = mainInput.scrollWidth > mainInput.clientWidth;
+    //   // mainInput.placeholder = "";
+    //   // console.log(that sleep of death, what dreams)
+
+    //   console.log(isOverflowed + "or nah");
+    //   console.log(mainInput.placeholder.size + " <- Look Here")
+    // }
+
+    // Starts out automatically with a randomize
+    setTimeout(() => {
+      randomizeType();
+    }, "700")
+
+
+    // setInterval(() => {
+    //   randomizeType();
+    // }, "500")
+
+
+
+    // User can upload logo next to typeface using local storage
+    // User can upload logo next to typeface local storage
+    // Shoutout to http://jsfiddle.net/8V9w6/
+
+    function handleFileSelect(evt) {
+      var files = evt.target.files; // FileList object
+
+      // Loop through the FileList and render image files as thumbnails.
+      for (var i = 0, f; f = files[i]; i++) {
+
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+          continue;
+        }
+
+        var reader = new FileReader();
+
+        // Closure to capture the file information.
+        reader.onload = (function (theFile) {
+          return function (e) {
+            // Render thumbnail.
+            var span = document.createElement('span');
+            span.innerHTML = ['<img class="thumb" src="', e.target.result,
+              '" title="', escape(theFile.name), '"/>'
+            ].join('');
+
+            document.getElementById('list').insertBefore(span, null);
+            localStorage.setItem('img', e.target.result);
+          };
+        })(f);
+
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+      }
+    }
+
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+    if (localStorage.img) {
+
+      var span = document.createElement('span');
+      span.innerHTML += ['<img class="thumb" src="', localStorage.img,
+        '" title="test"/>'
+      ].join('');
+
+      document.getElementById('list').insertBefore(span, null);
+
+      // console.log(localStorage + "Was added yo")
+
+    }
+
+
+    // User can upload logo next to typeface using local storage
+    // User can upload logo next to typeface local storage
+
+
+    // TODO
+    // TODO
+    // TODO
     // User Uses Left and right to traverse
-      // RIGHT randomizes new
-      // LEFT shows previeous
-          // How far back should it go?
-            // As far as it can without being challenging
-      // SPACE saves current family to array.
+    // RIGHT randomizes new
+    // LEFT shows previeous
+    // SPACE saves current family to array.
+    // How far back should it go?
+    // As far as it can without being challenging
+    // CLEAR clears array on one click.
+    // Clicking Kept TF updates input.
 
-    // 
-
+    // EXPORT
+    // Exporting as png or svg?
+    // Exporting as SVG using text with foreign object
+    // Using Foreign object well be able to style text instide SVG.
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+  <script>
+    // Run Dom to pn
+    // const exportAsset = () => {
+    //   domtoimage.toSvg(mainInput)
+    //     .then(function (dataUrl) {
+    //       // let exportedImg.src = "";
+    //       let exportedImg = new Image();
+    //       exportedImg.src = dataUrl;
+    //       exportedContents.appendChild(exportedImg);
+    //       console.log(exportedImg);
+
+
+    //       var link = document.createElement('a');
+    //       link.download = 'my-image-name.svg';
+    //       link.href = dataUrl;
+    //       // link.click();
+    //     })
+    //     .catch(function (error) {
+    //       console.error('oops, something went wrong!', error);
+    //     });
+
+
+    // Exports
+    //   domtoimage.toJpeg(placeholderInput, {
+    //     quality: 0.95
+    //   })
+    //   .then(function (dataUrl) {
+    //     var link = document.createElement('a');
+    //     link.download = 'my-image-name.jpeg';
+    //     link.href = dataUrl;
+    //     link.click();
+    //   });
+
+    // }
+  </script>
+
 </body>
 
 </html>

@@ -1,0 +1,18 @@
+{
+  "name": "2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon index.js"
+  },
+  "dependencies": {
+    "puppeteer": "^15.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "author": "",
+  "license": "ISC"
+}

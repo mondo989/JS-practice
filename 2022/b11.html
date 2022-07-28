@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uncle Chuckie's converter</title>
+</head>
+
+<body>
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+    }
+  </style>
+
+  <form>
+    <input type="text" id="selectedYearByUser" placeholder="year" type="text">
+    <input type="text" id="selectedMakeByUser" placeholder="make" type="text">
+    <input type="text" id="selectedModelByUser" placeholder="model" type="text">
+    <input type="submit" value="Update">
+  </form>
+
+
+
+  <h1>The Curb Weight for a
+    <span id="selectedYear"></span>
+    <span id="selectedMake"></span>
+    <span id="selectedModel"></span>
+    is
+    <span id="curb-weight"></span> lbs.
+  </h1>
+
+  <h1>We will pay you $<span id="pay-price"></span></h1>
+
+  <script>
+    const body = document.querySelector("body");
+    const steelPriceApi = "150";
+
+    const selectedYear = document.querySelector("#selectedYear");
+    const selectedMake = document.querySelector("#selectedMake");
+    const selectedModel = document.querySelector("#selectedModel");
+    let curbWeight = document.querySelector("#curb-weight");
+    const payPrice = document.querySelector("#pay-price");
+
+    let returnedCurbWeight;
+
+    document.querySelector('form').onsubmit = () => {
+      const apiURL = 'https://vpic.nhtsa.dot.gov/api/vehicles?Year='
+      const searchedYear = document.querySelector("#selectedYearByUser").value;
+      const searchedMake = document.querySelector("#selectedMakeByUser").value;
+      const searchedModel = document.querySelector("#selectedModelByUser").value;
+      const fullQuery = apiURL + searchedYear + '&Make=' + searchedMake + '&Model= ' +
+        searchedModel + '&units=US&format=json';
+      console.log(fullQuery);
+
+      fetch(
+          fullQuery
+          // 'https://api.openweathermap.org/data/2.5/weather?q=detroit,us&appid=53571566a423b86ed35e95f27b2d0493&units=imperial'
+        )
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          console.log(data.Results);
+          // steelPrice.append(steelPriceApi)
+          let returnedCurbWeight = data.Results[0].Specs[7].Value;
+          let convertedCurbWeight = returnedCurbWeight / 2000;
+          let priceBefoFreUnc = convertedCurbWeight * steelPriceApi;
+          let payPriceReturned = priceBeforeUnc * .75;
+          let finalPriceReturned = payPriceReturned.toFixed(2)
+
+          curbWeight.append(returnedCurbWeight);
+          payPrice.append(payPriceReturned);
+          selectedYear.append(searchedYear);
+          selectedMake.append(searchedMake);
+          selectedModel.append(searchedModel)
+
+          return console.log("Your curb weight for a " + selectedYearByUser + " " + selectedMakeByUser + " " +
+            selectedModelByUser + " is " + data.Results[0].Specs[7].Value)
+        })
+
+      return false;
+    }
+  </script>
+
+
+
+</body>
+
+</html>

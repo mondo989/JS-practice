@@ -95,7 +95,7 @@
 
     // X-Setup current question-X
     let current = Question("What is an array",
-      "The Array object, as with arrays in other programming languages, enables storing a collection of multiple items under a single variable name, and has members for performing common array operations.",
+      "The Array object, as with arrays in other programming languaes, enables storing a collection of multiple items under a single variable name, and has members for performing common array operations.",
       ["array", "js", "learning"], 10);
 
     let questionCatalog = [
@@ -104,7 +104,7 @@
       Question("Who is who", "I am the guy who is the guy.", ["Guessing", "new things", "Hello"], 300)
     ]
 
-    current = questionCatalog[1];
+    current = questionCatalog[2];
     // console.log(questionCatalog[2])
     // console.log(questionCatalog.answer)
 
@@ -124,7 +124,7 @@
     }
 
     const checkIfSelectedAnswerIsCorrect = (selectedAnswer, answer) => {
-      console.log("The selected answer is: \n " + "---------\n" + current.answer + ".\n \nTzhe actual answer is: \n " +
+      console.log("The selected answer is: \n " + "---------\n" + current.answer + ".\n \nThe actual answer is: \n " +
         "---------\n" + selectedAnswer + ".")
 
       if (selectedAnswer === current.answer) {
